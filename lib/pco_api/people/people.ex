@@ -1,6 +1,5 @@
 defmodule PcoApi.People.People do
   use HTTPoison.Base
-  alias PcoApi.People.Person
 
   @endpoint "https://api.planningcenteronline.com/people/v2/people/"
 
@@ -8,9 +7,7 @@ defmodule PcoApi.People.People do
     get("", [])
   end
 
-  # params = {attr, value} ie {"first_name", "geoffrey"}
-  def get({:where, params}) do
-    params = params |> Enum.map(fn ({attr, value}) -> {"where[#{attr}]", value} end)
+  def get(params) when is_list(params) do
     get("", params)
   end
 
@@ -18,9 +15,8 @@ defmodule PcoApi.People.People do
     get(id)
   end
 
-  def get(url, options) do
-    # options = Keyword.merge(options, [hackney: [basic_auth: {PcoApi.key, PcoApi.secret}]])
-    case get(url, [], params: options, hackney: [basic_auth: {PcoApi.key, PcoApi.secret}]) do
+  def get(url, params) do
+    case get(url, [], params: params, hackney: [basic_auth: {PcoApi.key, PcoApi.secret}]) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         body["data"]
       {:ok, %HTTPoison.Response{body: body}} ->
