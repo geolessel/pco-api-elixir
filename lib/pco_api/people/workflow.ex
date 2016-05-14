@@ -1,62 +1,54 @@
 defmodule PcoApi.People.Workflow do
   @moduledoc """
-  Let's you access Workflows, WorkflowCards, WorkflowCardActivities, WorkflowCardNotes, WorkflowSteps, and WorkflowTasks
+  Access Workflows, WorkflowCards, WorkflowCardActivities, WorkflowCardNotes, WorkflowSteps, and WorkflowTasks
   """
 
-  # Activity
-  def get(id, card_id: card_id, activity_id: activity_id) do
-    id <> "/cards/" <> card_id <> "/activities/" <> activity_id
-    |> get([])
+  def get(url_str, [{:card_id, card_id} | params]) do
+    url_str |> add_card_url(card_id) |> get(params)
   end
 
-  # Note
-  def get(id, card_id: card_id, note_id: note_id) do
-    id <> "/cards/" <> card_id <> "/notes/" <> note_id
-    |> get([])
+  def get(url_str, [{:step_id, step_id} | params]) do
+    url_str |> add_step_url(card_id) |> get(params)
   end
 
-  # Task
-  def get(id, card_id: card_id, task_id: task_id) do
-    id <> "/cards/" <> card_id <> "/tasks/" <> task_id
-    |> get([])
+  def get(url_str, [{:note_id, note_id} | params]) do
+    url_str |> add_note_url(note_id) |> get(params)
   end
 
-  # Card
-  def get(id, card_id: card_id) do
-    id <> "/cards/" <> card_id
-    |> get([])
+  def get(url_str, [{:activity_id, activity_id} | params]) do
+    url_str |> add_activity_url(activity_id) |> get(params)
   end
 
-  # Step
-  def get(id, step_id: step_id) do
-    id <> "/steps/" <> step_id
-    |> get([])
+  def get(url_str, [{:task_id, task_id} | params]) do
+    url_str |> add_task_url(task_id) |> get(params)
   end
 
-  def cards(id) do
-    id <> "/cards"
-    |> get([])
+  def activities(url_str, [{:card_id, card_id} | params]) do
+    url_str |> add_card_url(card_id) |> add_activity_url("") |> get(params)
   end
 
-  def activities(id, card_id: card_id) do
-    id <> "/cards/" <> card_id <> "/activities"
-    |> get([])
+  def notes(url_str, [{:card_id, card_id} | params]) do
+    url_str |> add_card_url(card_id) |> add_note_url("") |> get(params)
   end
 
-  def notes(id, card_id: card_id) do
-    id <> "/cards/" <> card_id <> "/notes"
-    |> get([])
+  def steps(url_str, params \\ []) do
+    url_str |> add_step_url("") |> get(params)
   end
 
-  def steps(id) do
-    id <> "/steps"
-    |> get([])
+  def tasks(url_str, [{:card_id, card_id} | params]) do
+    url_str |> add_card_url(card_id) |> add_task_url |> get(params)
   end
 
-  def tasks(id, card_id: card_id) do
-    id <> "/cards/" <> card_id <> "/tasks"
-    |> get([])
-  end
+  defp add_card_url(url_str, card_id \\ ""),
+    do: url_str <> "/cards/" <> card_id
+  defp add_step_url(url_str, step_id \\ ""),
+    do: url_str <> "/steps/" <> step_id
+  defp add_note_url(url_str, note_id \\ ""),
+    do: url_str <> "/notes/" <> note_id
+  defp add_activity_url(url_str, activity_id \\ ""),
+    do: url_str <> "/activities/" <> activity_id
+  defp add_task_url(url_str, task_id \\ ""),
+    do: url_str <> "/tasks/" <> task_id
 
   use PcoApi.Actions
 
