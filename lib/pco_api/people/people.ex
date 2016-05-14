@@ -5,19 +5,23 @@ defmodule PcoApi.People.People do
   @endpoint "https://api.planningcenteronline.com/people/v2/people/"
 
   def get do
-    get("") |> Enum.map(fn(%{"attributes" => attrs, "id" => id, "links" => links}) ->
-      %Person{attributes: attrs, id: id, links: links}
-    end)
+    get("", [])
   end
 
-  def get({:id, id}) do
-    %{"attributes" => attrs, "id" => id, "links" => links} = get(id)
-    %Person{attributes: attrs, id: id, links: links}
+  # params = {attr, value} ie {"first_name", "geoffrey"}
+  def get({:where, params}) do
+    params = params |> Enum.map(fn ({attr, value}) -> {"where[#{attr}]", value} end)
+    get("", params)
   end
 
-  def get(url) do
-    case get(url, [], [hackney: [basic_auth: {PcoApi.key, PcoApi.secret}]]) do
-      {:ok, %HTTPoison.Response{body: body, status_code: 200}} ->
+  def get({:id, id}, []) do
+    get(id)
+  end
+
+  def get(url, options) do
+    # options = Keyword.merge(options, [hackney: [basic_auth: {PcoApi.key, PcoApi.secret}]])
+    case get(url, [], params: options, hackney: [basic_auth: {PcoApi.key, PcoApi.secret}]) do
+      {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         body["data"]
       {:ok, %HTTPoison.Response{body: body}} ->
         %{"errors" => [%{"detail" => detail, "title" => title}]} = body
