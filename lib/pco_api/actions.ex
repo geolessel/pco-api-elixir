@@ -4,11 +4,13 @@ defmodule PcoApi.Actions do
       import PcoApi.Actions
       use HTTPoison.Base
 
-      def get, do: get("", [])
-      def get(url) when is_binary(url), do: get(url, [])
-      def get(params) when is_list(params), do: get("", params)
+      def get, do: do_get("", [])
+      def get(url) when is_binary(url), do: do_get(url, [])
+      def get(params) when is_list(params), do: do_get("", params)
       def get({:id, id}, []), do: get(id)
-      def get(url, params) do
+      def get(url, params) when is_map(params), do: do_get(url, Map.to_list(params))
+
+      def do_get(url, params) do
         case get(url, [], params: params, hackney: [basic_auth: {PcoApi.key, PcoApi.secret}]) do
           {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
             body["data"]
