@@ -1,56 +1,43 @@
 defmodule PcoApi.People.Workflow do
   @moduledoc """
-  Access Workflows, WorkflowCards, WorkflowCardActivities, WorkflowCardNotes, WorkflowSteps, and WorkflowTasks
+  Access Workflows, WorkflowCards, WorkflowCardActivities, WorkflowCardNotes,
+  WorkflowSteps, and WorkflowTasks
   """
-
-  def get(url_str, [{:card_id, card_id} | params]) do
-    url_str |> add_card_url(card_id) |> get(params)
-  end
-
-  def get(url_str, [{:step_id, step_id} | params]) do
-    url_str |> add_step_url(card_id) |> get(params)
-  end
-
-  def get(url_str, [{:note_id, note_id} | params]) do
-    url_str |> add_note_url(note_id) |> get(params)
-  end
-
-  def get(url_str, [{:activity_id, activity_id} | params]) do
-    url_str |> add_activity_url(activity_id) |> get(params)
-  end
-
-  def get(url_str, [{:task_id, task_id} | params]) do
-    url_str |> add_task_url(task_id) |> get(params)
-  end
-
-  def activities(url_str, [{:card_id, card_id} | params]) do
-    url_str |> add_card_url(card_id) |> add_activity_url("") |> get(params)
-  end
-
-  def notes(url_str, [{:card_id, card_id} | params]) do
-    url_str |> add_card_url(card_id) |> add_note_url("") |> get(params)
-  end
-
-  def steps(url_str, params \\ []) do
-    url_str |> add_step_url("") |> get(params)
-  end
-
-  def tasks(url_str, [{:card_id, card_id} | params]) do
-    url_str |> add_card_url(card_id) |> add_task_url |> get(params)
-  end
-
-  defp add_card_url(url_str, card_id \\ ""),
-    do: url_str <> "/cards/" <> card_id
-  defp add_step_url(url_str, step_id \\ ""),
-    do: url_str <> "/steps/" <> step_id
-  defp add_note_url(url_str, note_id \\ ""),
-    do: url_str <> "/notes/" <> note_id
-  defp add_activity_url(url_str, activity_id \\ ""),
-    do: url_str <> "/activities/" <> activity_id
-  defp add_task_url(url_str, task_id \\ ""),
-    do: url_str <> "/tasks/" <> task_id
-
   use PcoApi.Actions
 
   endpoint "https://api.planningcenteronline.com/people/v2/workflows/"
+
+  @key_to_url %{
+    card_id: "/cards/",
+    step_id: "/steps/",
+    activity_id: "/activities/",
+    note_id: "/notes/",
+    task_id: "/tasks/",
+  }
+
+  def get(id, params) when is_list(params), do: get(id, Map.new(params))
+
+  def get(id, params) do
+    params
+    |> Enum.reduce(id, fn({k, v}, acc) -> build_url(acc, k, v) end)
+    # |> do_get(params)
+  end
+
+  def activities(id, params \\ []), do: get(id, Map.new([{:activity_id, ""} | params]))
+  def cards(id, params \\ []), do: get(id, Map.new([{:card_id, ""} | params]))
+  def notes(id, params \\ []), do: get(id, Map.new([{:note_id, ""} | params]))
+  def steps(id, params \\ []), do: get(id, Map.new([{:step_id, ""} | params]))
+  def tasks(id, params \\ []), do: get(id, Map.new([{:task_id, ""} | params]))
+
+  def build_url(url_str, key, id) do
+    case @key_to_url[key] do
+      nil -> url_str
+      url -> url_str <> url <> id
+    end
+  end
+
+  # use PcoApi.Actions
+  #
+  # endpoint "https://api.planningcenteronline.com/people/v2/workflows/"
+
 end
