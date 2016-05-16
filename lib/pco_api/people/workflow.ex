@@ -19,8 +19,10 @@ defmodule PcoApi.People.Workflow do
 
   def get(id, params) do
     params
-    |> Enum.reduce(id, fn({k, v}, acc) -> build_url(acc, k, v) end)
-    # |> do_get(params)
+    |> Map.split([:card_id, :step_id])
+    |> Tuple.to_list
+    |> Enum.reduce(id, fn(x, acc) -> build_url(x, acc) end)
+    |> do_get(params)
   end
 
   def activities(id, params \\ []), do: get(id, Map.new([{:activity_id, ""} | params]))
@@ -29,15 +31,14 @@ defmodule PcoApi.People.Workflow do
   def steps(id, params \\ []), do: get(id, Map.new([{:step_id, ""} | params]))
   def tasks(id, params \\ []), do: get(id, Map.new([{:task_id, ""} | params]))
 
+  def build_url(map, id) do
+    Enum.reduce(map, id, fn({k, v}, acc) -> build_url(acc, k, v) end)
+  end
+
   def build_url(url_str, key, id) do
     case @key_to_url[key] do
       nil -> url_str
       url -> url_str <> url <> id
     end
   end
-
-  # use PcoApi.Actions
-  #
-  # endpoint "https://api.planningcenteronline.com/people/v2/workflows/"
-
 end
