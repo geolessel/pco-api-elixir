@@ -4,10 +4,11 @@ defmodule PcoApi.People.Workflow do
   WorkflowSteps, and WorkflowTasks
   """
   use PcoApi.Actions
+  import PcoApi.UrlBuilder
 
   endpoint "https://api.planningcenteronline.com/people/v2/workflows/"
 
-  @key_to_url %{
+  @url_key %{
     card_id: "/cards/",
     step_id: "/steps/",
     activity_id: "/activities/",
@@ -25,18 +26,18 @@ defmodule PcoApi.People.Workflow do
     |> do_get(params)
   end
 
-  def activities(id, params \\ []), do: get(id, Map.new([{:activity_id, ""} | params]))
-  def cards(id, params \\ []), do: get(id, Map.new([{:card_id, ""} | params]))
-  def notes(id, params \\ []), do: get(id, Map.new([{:note_id, ""} | params]))
-  def steps(id, params \\ []), do: get(id, Map.new([{:step_id, ""} | params]))
-  def tasks(id, params \\ []), do: get(id, Map.new([{:task_id, ""} | params]))
+  get_plural_function :activity, :activities
+  get_plural_function :card, :cards
+  get_plural_function :note, :notes
+  get_plural_function :step, :steps
+  get_plural_function :task, :tasks
 
   def build_url(map, id) do
     Enum.reduce(map, id, fn({k, v}, acc) -> build_url(acc, k, v) end)
   end
 
   def build_url(url_str, key, id) do
-    case @key_to_url[key] do
+    case @url_key[key] do
       nil -> url_str
       url -> url_str <> url <> id
     end
