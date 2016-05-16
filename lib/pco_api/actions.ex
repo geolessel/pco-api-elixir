@@ -4,11 +4,7 @@ defmodule PcoApi.Actions do
       import PcoApi.Actions
       use HTTPoison.Base
 
-      def get, do: get("", [])
-      def get(url) when is_binary(url), do: get(url, [])
-      def get(params) when is_list(params), do: get("", params)
-      def get({:id, id}, []), do: get(id)
-      def get(url, params) do
+      def request(:get, url, params) do
         case get(url, [], params: params, hackney: [basic_auth: {PcoApi.key, PcoApi.secret}]) do
           {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
             body["data"]
@@ -20,7 +16,14 @@ defmodule PcoApi.Actions do
         end
       end
 
-      def process_url(url), do: api_endpoint <> url
+      # if this is a full URL, don't add the endpoint. This allows using direct links.
+      def process_url(url) do
+        endpoint = __MODULE__.api_endpoint
+        case url |> String.starts_with?(endpoint) do
+          true  -> url
+          false -> endpoint <> url
+        end
+      end
       def process_response_body(body), do: body |> Poison.decode!
     end
   end
@@ -28,6 +31,19 @@ defmodule PcoApi.Actions do
   defmacro endpoint(url) do
     quote do
       def unquote(:api_endpoint)(), do: unquote(url)
+    end
+  end
+
+  # TODO: this probably doesn't belong here
+  defmacro linked_association(name) do
+    quote do
+      def unquote(:"#{name}")(record) do
+        # TODO: error handling when the association link doesn't exist
+        request(:get, record.links[Atom.to_string(unquote(name))], [])
+        |> Enum.map(fn(%{"attributes" => attrs, "id" => id, "links" => links, "type" => type}) ->
+          %PcoApi.Record{attributes: attrs, id: id, links: links, type: type}
+        end)
+      end
     end
   end
 end
