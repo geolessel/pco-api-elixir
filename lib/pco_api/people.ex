@@ -4,6 +4,6 @@ defmodule PcoApi.People do
   endpoint "https://api.planningcenteronline.com/people/v2/"
 
   def me do
-    request(:get, "me", []) |> PcoApi.People.Person.new
+    get("me")
   end
 end

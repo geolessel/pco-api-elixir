@@ -1,7 +1,9 @@
 defmodule PcoApi.People.Person do
   use PcoApi.Actions
+  import PcoApi.RecordAssociation
 
   endpoint "https://api.planningcenteronline.com/people/v2/people/"
+
   linked_association :addresses
   linked_association :apps
   linked_association :connnected_people
@@ -18,13 +20,4 @@ defmodule PcoApi.People.Person do
   linked_association :phone_numbers
   linked_association :school
   linked_association :social_profiles
-
-  def get, do: get("")
-  def get(url) when is_binary(url), do: request(:get, url, []) |> new
-  def get(params, url) when is_list(params), do: request(:get, url, params) |> new
-
-  def new(results) when is_list(results), do: results |> Enum.map(&(&1 |> new))
-  def new(%{"id" => id, "links" => links, "attributes" => attrs, "type" => type}) do
-    %PcoApi.Record{id: id, links: links, attributes: attrs, type: type}
-  end
 end
