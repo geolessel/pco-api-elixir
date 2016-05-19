@@ -27,7 +27,7 @@ use Mix.Config
 # Configuration from the imported file will override the ones defined
 # here (which is why it is important to import them last).
 #
-#     import_config "#{Mix.env}.exs"
+import_config "#{Mix.env}.exs"
 
 config :pco_api, :api_key, System.get_env("PCO_API_KEY")
 config :pco_api, :api_secret, System.get_env("PCO_API_SECRET")
