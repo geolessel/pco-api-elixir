@@ -2,7 +2,7 @@ defmodule PcoApi.People.Person do
   use PcoApi.Actions
   import PcoApi.RecordAssociation
 
-  endpoint "https://api.planningcenteronline.com/people/v2/people/"
+  endpoint "people/v2/people/"
 
   linked_association :addresses
   linked_association :apps

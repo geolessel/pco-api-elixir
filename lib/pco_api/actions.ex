@@ -22,26 +22,24 @@ defmodule PcoApi.Actions do
       def get(params) when is_list(params), do: get(params, "")
       def get(params, url) when is_list(params), do: request(:get, url, params) |> new
 
-      def get_list([%PcoApi.Record{} | rest] = records), do: get_one(records)
-      def get_one([]), do: []
-      def get_one(%PcoApi.Record{} = record) do
-        get record.links["self"]
-      end
-      def get_one([%PcoApi.Record{} = first | rest]) do
-        [get_one(first) | get_one(rest)]
-      end
+      def get_list([%PcoApi.Record{} | rest] = records), do: do_get_list(records)
+      defp do_get_list([]), do: []
+      defp do_get_list(%PcoApi.Record{} = record), do: get record.links["self"]
+      defp do_get_list([%PcoApi.Record{} = first | rest]), do: [do_get_list(first) | do_get_list(rest)]
 
       def new(results) when is_list(results), do: results |> Enum.map(&(&1 |> new))
       def new(%{"id" => id, "links" => links, "attributes" => attrs, "type" => type}) do
         %PcoApi.Record{id: id, links: links, attributes: attrs, type: type}
       end
 
+      # HTTPoison.Base API
+
       # if this is a full URL, don't add the endpoint. This allows using direct links.
       def process_url(url) do
         endpoint = __MODULE__.api_endpoint
         case url |> String.starts_with?(endpoint) do
           true  -> url
-          false -> endpoint <> url
+          false -> endpoint <> Regex.replace(~r{^https?://.+/}, url, "") # enforce the endpoint
         end
       end
       def process_response_body(body), do: body |> Poison.decode!
@@ -50,7 +48,9 @@ defmodule PcoApi.Actions do
 
   defmacro endpoint(url) do
     quote do
-      def unquote(:api_endpoint)(), do: unquote(url)
+      def unquote(:api_endpoint)() do
+        Application.get_env(:pco_api, :endpoint_base) <> unquote(url)
+      end
     end
   end
 end
