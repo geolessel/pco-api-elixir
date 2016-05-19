@@ -33,7 +33,8 @@ defmodule PcoApi.Mixfile do
       {:ex_doc, "~> 0.11", only: :dev},
       {:earmark, "~> 0.1", only: :dev},
       {:credo, "~> 0.3", only: [:dev, :test]},
-      {:bypass, "~> 0.1", only: :test}
+      {:bypass, "~> 0.1", only: :test},
+      {:mix_test_watch, "~> 0.2", only: :dev}
     ]
   end
 end

@@ -1,0 +1,31 @@
+{
+  "data": {
+    "type": "Workflow",
+    "id": "1",
+    "attributes": {
+      "completed_card_count": 0,
+      "created_at": "2016-04-18T23:08:25Z",
+      "my_ready_card_count": 0,
+      "name": "First Time Guest Workflow",
+      "total_ready_card_count": 6,
+      "updated_at": "2016-04-26T18:04:53Z"
+    },
+    "links": {
+      "cards": "https:\/\/api.planningcenteronline.com\/people\/v2\/workflows\/1\/cards",
+      "steps": "https:\/\/api.planningcenteronline.com\/people\/v2\/workflows\/1\/steps",
+      "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/workflows\/1"
+    }
+  },
+  "included": [
+
+  ],
+  "meta": {
+    "can_include": [
+      "steps"
+    ],
+    "parent": {
+      "id": "1",
+      "type": "Organization"
+    }
+  }
+}
