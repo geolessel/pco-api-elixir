@@ -24,7 +24,7 @@ defmodule PcoApi.People.PersonTest do
     Bypass.expect bypass, fn conn ->
       Plug.Conn.resp(conn, 200, Fixture.read("people_list.json"))
     end
-    assert [%PcoApi.Record{} | rest] = Person.get
+    assert [%PcoApi.Record{} | _rest] = Person.get
   end
 
   test ".get(id) returns a single record", %{bypass: bypass} do
@@ -57,14 +57,20 @@ defmodule PcoApi.People.PersonTest do
     |> Person.get("foo")
   end
 
-  #.get_list
-  test ".get_list takes a list of Records and queries the details of each", %{bypass: bypass} do
+  test ".get retrieves the details of a Person when passed a single record", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
-      assert conn.request_path |> String.match?(~r{/people/v2/people/[12]})
+      assert "/people/v2/people/1" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("me.json"))
     end
     me = %PcoApi.Record{links: %{"self" => "https://api.planningcenteronline.com/people/v2/people/1"}}
-    em = %PcoApi.Record{links: %{"self" => "https://api.planningcenteronline.com/people/v2/people/2"}}
-    [me, em] |> Person.get_list
+    me |> Person.get
+  end
+
+  test ".get gets Person details even if no self link", %{bypass: bypass} do
+    Bypass.expect bypass, fn conn ->
+      assert "/people/v2/people/1000" == conn.request_path
+      Plug.Conn.resp(conn, 200, Fixture.read("me.json"))
+    end
+    %PcoApi.Record{id: "1000", links: %{}} |> Person.get
   end
 end
