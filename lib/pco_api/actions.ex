@@ -20,12 +20,9 @@ defmodule PcoApi.Actions do
       def get(id) when is_integer(id), do: get(Integer.to_string(id))
       def get(url) when is_binary(url), do: request(:get, url, []) |> new
       def get(params) when is_list(params), do: get(params, "")
+      def get(%PcoApi.Record{links: %{"self" => self}}), do: get self
+      def get(%PcoApi.Record{id: id}), do: get String.to_integer(id)
       def get(params, url) when is_list(params), do: request(:get, url, params) |> new
-
-      def get_list([%PcoApi.Record{} | rest] = records), do: do_get_list(records)
-      defp do_get_list([]), do: []
-      defp do_get_list(%PcoApi.Record{} = record), do: get record.links["self"]
-      defp do_get_list([%PcoApi.Record{} = first | rest]), do: [do_get_list(first) | do_get_list(rest)]
 
       def new(results) when is_list(results), do: results |> Enum.map(&(&1 |> new))
       def new(%{"id" => id, "links" => links, "attributes" => attrs, "type" => type}) do
