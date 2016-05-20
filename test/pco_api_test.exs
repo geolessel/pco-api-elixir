@@ -2,7 +2,9 @@ defmodule PcoApiTest do
   use ExUnit.Case
   doctest PcoApi
 
-  test "the truth" do
-    assert 1 + 1 == 2
-  end
+  # setup do
+  #   bypass = Bypass.open
+  #   Application.put_env(:pco_api, :endpoint_base, "http://localhost:#{bypass.port}/")
+  #   {:ok, bypass: bypass}
+  # end
 end
