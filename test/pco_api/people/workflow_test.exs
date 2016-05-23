@@ -25,7 +25,7 @@ defmodule PcoApi.People.WorkflowTest do
     Bypass.expect bypass, fn conn ->
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_list.json"))
     end
-    assert [%PcoApi.Record{} | rest] = Workflow.get
+    assert [%PcoApi.Record{} | _rest] = Workflow.get
   end
 
   test ".get(id) returns a single record", %{bypass: bypass} do
@@ -58,22 +58,22 @@ defmodule PcoApi.People.WorkflowTest do
     |> Workflow.get("foo")
   end
 
-  # test ".get retrieves the details of a Workflow when passed a single record", %{bypass: bypass} do
-  #   Bypass.expect bypass, fn conn ->
-  #     assert "/people/v2/workflows/1" == conn.request_path
-  #     Plug.Conn.resp(conn, 200, Fixture.read("workflow.json"))
-  #   end
-  #   workflow = %PcoApi.Record{links: %{"self" => "https://api.planningcenteronline.com/people/v2/workflows/1"}}
-  #   workflow |> Workflow.get
-  # end
+  test ".self retrieves the details of a Workflow when passed a single record", %{bypass: bypass} do
+    Bypass.expect bypass, fn conn ->
+      assert "/people/v2/workflows/1" == conn.request_path
+      Plug.Conn.resp(conn, 200, Fixture.read("workflow.json"))
+    end
+    workflow = %PcoApi.Record{links: %{"self" => "https://api.planningcenteronline.com/people/v2/workflows/1"}}
+    workflow |> Workflow.self
+  end
 
-  # test ".get gets Workflow details even if no self link", %{bypass: bypass} do
-  #   Bypass.expect bypass, fn conn ->
-  #     assert "/people/v2/workflows/1000" == conn.request_path
-  #     Plug.Conn.resp(conn, 200, Fixture.read("workflow.json"))
-  #   end
-  #   %PcoApi.Record{id: "1000", links: %{}} |> Workflow.get
-  # end
+  test ".self gets Workflow details even if no self link", %{bypass: bypass} do
+    Bypass.expect bypass, fn conn ->
+      assert "/people/v2/workflows/1000" == conn.request_path
+      Plug.Conn.resp(conn, 200, Fixture.read("workflow.json"))
+    end
+    %PcoApi.Record{id: "1000", links: %{}} |> Workflow.self
+  end
 
   test ".cards returns a list of workflow cards", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
