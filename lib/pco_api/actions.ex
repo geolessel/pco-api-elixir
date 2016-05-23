@@ -20,8 +20,6 @@ defmodule PcoApi.Actions do
       def get(id) when is_integer(id), do: get(Integer.to_string(id))
       def get(url) when is_binary(url), do: request(:get, url, []) |> new
       def get(params) when is_list(params), do: get(params, "")
-      def get(%PcoApi.Record{links: %{"self" => self}}), do: get self
-      def get(%PcoApi.Record{id: id}), do: get String.to_integer(id)
       def get(params, url) when is_list(params), do: request(:get, url, params) |> new
 
       def new(results) when is_list(results), do: results |> Enum.map(&(&1 |> new))
@@ -29,14 +27,19 @@ defmodule PcoApi.Actions do
         %PcoApi.Record{id: id, links: links, attributes: attrs, type: type}
       end
 
+      def self(%PcoApi.Record{links: %{"self" => self}}), do: get self
+      def self(%PcoApi.Record{id: id}), do: get String.to_integer(id)
+
       # HTTPoison.Base API
 
       # if this is a full URL, don't add the endpoint. This allows using direct links.
       def process_url(url) do
-        endpoint = __MODULE__.api_endpoint
-        case url |> String.starts_with?(endpoint) do
+        configured_endpoint = __MODULE__.api_endpoint
+        endpoint_base = Application.get_env(:pco_api, :endpoint_base)
+        case url |> String.starts_with?(endpoint_base) do
           true  -> url
-          false -> endpoint <> Regex.replace(~r{^https?://.+/}, url, "") # enforce the endpoint
+          false ->
+            endpoint_base <> configured_endpoint <> String.replace(url, ~r|^https?://[0-9a-zA-Z:.]+/#{configured_endpoint}|U, "") # enforce the endpoint
         end
       end
       def process_response_body(body), do: body |> Poison.decode!
@@ -46,7 +49,7 @@ defmodule PcoApi.Actions do
   defmacro endpoint(url) do
     quote do
       def unquote(:api_endpoint)() do
-        Application.get_env(:pco_api, :endpoint_base) <> unquote(url)
+        unquote(url)
       end
     end
   end
