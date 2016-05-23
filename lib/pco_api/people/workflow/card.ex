@@ -1,4 +1,3 @@
-# TODO: Fix all the docs
 defmodule PcoApi.People.Workflow.Card do
   @moduledoc """
   A set of functions to work with WorkflowCards belonging to a Workflow.

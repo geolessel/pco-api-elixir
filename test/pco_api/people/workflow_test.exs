@@ -1,4 +1,3 @@
-# TODO: Fix broken tests and match up with PersonTest
 defmodule PcoApi.People.WorkflowTest do
   use ExUnit.Case, async: false
   doctest PcoApi.People.Workflow
@@ -37,24 +36,23 @@ defmodule PcoApi.People.WorkflowTest do
     assert %PcoApi.Record{id: "1"} = workflow
   end
 
-  # TODO: This test is currently passing but it should fail because "Membership" is not a perfect match.
   test ".get queries from a params list", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/workflows/" == conn.request_path
-      assert "where%5Bname%5D=Membership" == conn.query_string
+      assert "where%5Bname%5D=Visitors" == conn.query_string
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_list.json"))
     end
-    PcoApi.Query.where(name: "Membership")
+    PcoApi.Query.where(name: "Visitors")
     |> Workflow.get
   end
 
   test ".get queries a params list and a specific path", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/workflows/foo" == conn.request_path
-      assert "where%5Bname%5D=Membership" == conn.query_string
+      assert "where%5Bname%5D=Visitors" == conn.query_string
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_list.json"))
     end
-    PcoApi.Query.where(name: "Membership")
+    PcoApi.Query.where(name: "Visitors")
     |> Workflow.get("foo")
   end
 
