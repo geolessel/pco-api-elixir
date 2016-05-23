@@ -67,6 +67,11 @@
       </h1>
 
       
+        <section id="moduledoc" class="docstring">
+          <p>Let’s you access Workflows, WorkflowCards, WorkflowCardActivities, WorkflowCardNotes, WorkflowSteps, and WorkflowTasks</p>
+
+        </section>
+      
 
       
         <section id="summary" class="details-list">
@@ -104,13 +109,19 @@
     </h2>
     <div class="summary-row">
   <div class="summary-signature">
+    <a href="#activities/2">activities(id, list)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#api_endpoint/0">api_endpoint()</a>
   </div>
   
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#cards/1">cards(record)</a>
+    <a href="#cards/1">cards(id)</a>
   </div>
   
 </div>
@@ -147,7 +158,7 @@ failure</p>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#get/2">get(params, url)</a>
+    <a href="#get/2">get(id, url)</a>
   </div>
   
 </div>
@@ -172,6 +183,12 @@ failure</p>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#get_list/1">get_list(records)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#head/3">head(url, headers \\ [], options \\ [])</a>
   </div>
   
@@ -192,6 +209,12 @@ failure</p>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#new/1">new(results)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#notes/2">notes(id, list)</a>
   </div>
   
 </div>
@@ -310,12 +333,6 @@ exception in case of failure</p>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#self/1">self(record)</a>
-  </div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
     <a href="#start/0">start()</a>
   </div>
   
@@ -325,7 +342,13 @@ exception in case of failure</p>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#steps/1">steps(record)</a>
+    <a href="#steps/1">steps(id)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#tasks/2">tasks(id, list)</a>
   </div>
   
 </div>
@@ -375,7 +398,20 @@ exception in case of failure</p>
             </a>
             Functions
           </h1>
-          <div class="detail" id="api_endpoint/0">
+          <div class="detail" id="activities/2">
+  <div class="detail-header">
+    <a href="#activities/2" class="detail-link" title="Link to this function">
+      <i class="icon-link"></i>
+    </a>
+    <span class="signature">activities(id, list)</span>
+      
+  </div>
+  
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="api_endpoint/0">
   <div class="detail-header">
     <a href="#api_endpoint/0" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
@@ -393,7 +429,7 @@ exception in case of failure</p>
     <a href="#cards/1" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
-    <span class="signature">cards(record)</span>
+    <span class="signature">cards(id)</span>
       
   </div>
   
@@ -488,7 +524,7 @@ failure.</p>
     <a href="#get/2" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
-    <span class="signature">get(params, url)</span>
+    <span class="signature">get(id, url)</span>
       
   </div>
   
@@ -550,6 +586,19 @@ failure.</p>
 <p>If the request does not fail, the response is returned.</p>
 <p>See <a href="#request!/5"><code class="inline">request!/5</code></a> for more detailed information.</p>
 
+  </section>
+</div>
+<div class="detail" id="get_list/1">
+  <div class="detail-header">
+    <a href="#get_list/1" class="detail-link" title="Link to this function">
+      <i class="icon-link"></i>
+    </a>
+    <span class="signature">get_list(records)</span>
+      
+  </div>
+  
+  <section class="docstring">
+    
   </section>
 </div>
 <div class="detail" id="head/3">
@@ -614,6 +663,19 @@ failure.</p>
       <i class="icon-link"></i>
     </a>
     <span class="signature">new(results)</span>
+      
+  </div>
+  
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="notes/2">
+  <div class="detail-header">
+    <a href="#notes/2" class="detail-link" title="Link to this function">
+      <i class="icon-link"></i>
+    </a>
+    <span class="signature">notes(id, list)</span>
       
   </div>
   
@@ -987,19 +1049,6 @@ request fails.</p>
 
   </section>
 </div>
-<div class="detail" id="self/1">
-  <div class="detail-header">
-    <a href="#self/1" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
-    </a>
-    <span class="signature">self(record)</span>
-      
-  </div>
-  
-  <section class="docstring">
-    
-  </section>
-</div>
 <div class="detail" id="start/0">
   <div class="detail-header">
     <a href="#start/0" class="detail-link" title="Link to this function">
@@ -1019,7 +1068,20 @@ request fails.</p>
     <a href="#steps/1" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
-    <span class="signature">steps(record)</span>
+    <span class="signature">steps(id)</span>
+      
+  </div>
+  
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="tasks/2">
+  <div class="detail-header">
+    <a href="#tasks/2" class="detail-link" title="Link to this function">
+      <i class="icon-link"></i>
+    </a>
+    <span class="signature">tasks(id, list)</span>
       
   </div>
   

@@ -67,14 +67,6 @@
       </h1>
 
       
-        <section id="moduledoc" class="docstring">
-          <p>A set of functions to work with Addresses belonging to a Person.</p>
-<p>Since an Address is always associated with a Person in Planning Center Online,
-a Record of type “Person” is required in order to retrieve that Person’s
-associated Addresses.</p>
-
-        </section>
-      
 
       
         <section id="summary" class="details-list">
@@ -112,12 +104,6 @@ associated Addresses.</p>
     </h2>
     <div class="summary-row">
   <div class="summary-signature">
-    <a href="#api_endpoint/0">api_endpoint()</a>
-  </div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
     <a href="#delete/3">delete(url, headers \\ [], options \\ [])</a>
   </div>
   
@@ -146,17 +132,11 @@ failure</p>
     <a href="#get/1">get(id)</a>
   </div>
   
-    <div class="summary-synopsis"><p>Gets associated Address records from a Person Record when no address link is found</p>
-</div>
-  
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#get/2">get(params, url)</a>
   </div>
-  
-    <div class="summary-synopsis"><p>Gets a single Address for a Person</p>
-</div>
   
 </div>
 <div class="summary-row">
@@ -176,6 +156,12 @@ failure</p>
     <div class="summary-synopsis"><p>Issues a GET request to the given url, raising an exception in case of
 failure</p>
 </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_list/1">get_list(records)</a>
+  </div>
   
 </div>
 <div class="summary-row">
@@ -318,12 +304,6 @@ exception in case of failure</p>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#self/1">self(record)</a>
-  </div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
     <a href="#start/0">start()</a>
   </div>
   
@@ -377,20 +357,7 @@ exception in case of failure</p>
             </a>
             Functions
           </h1>
-          <div class="detail" id="api_endpoint/0">
-  <div class="detail-header">
-    <a href="#api_endpoint/0" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
-    </a>
-    <span class="signature">api_endpoint()</span>
-      
-  </div>
-  
-  <section class="docstring">
-    
-  </section>
-</div>
-<div class="detail" id="delete/3">
+          <div class="detail" id="delete/3">
   <div class="detail-header">
     <a href="#delete/3" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
@@ -469,13 +436,7 @@ failure.</p>
   </div>
   
   <section class="docstring">
-    <p>Gets associated Address records from a Person Record when no address link is found.</p>
-<p>Sometimes a record my not include an address link. This function recreates a URL to
-get the associated records just based off of the Person id.</p>
-<h2>Example:</h2>
-<pre><code class="iex elixir">iex&gt; %PcoApi.Record{type: &quot;Person&quot;, id: 1} |&gt; PcoApi.People.Address.get
-%PcoApi.Record{type: &quot;Address&quot;, id: 1, ...}</code></pre>
-
+    
   </section>
 </div>
 <div class="detail" id="get/2">
@@ -488,12 +449,7 @@ get the associated records just based off of the Person id.</p>
   </div>
   
   <section class="docstring">
-    <p>Gets a single Address for a Person.</p>
-<p>Requires a Person with an ID and an Address Id.</p>
-<h2>Example:</h2>
-<pre><code class="iex elixir">iex&gt; %PcoApi.Record{type: &quot;Person&quot;, id: 1} |&gt; Address.get(2)
-%PcoApi.Record{type: &quot;Address&quot;, id: 2} # for Person.id == 1</code></pre>
-
+    
   </section>
 </div>
 <div class="detail" id="get/3">
@@ -550,6 +506,19 @@ failure.</p>
 <p>If the request does not fail, the response is returned.</p>
 <p>See <a href="#request!/5"><code class="inline">request!/5</code></a> for more detailed information.</p>
 
+  </section>
+</div>
+<div class="detail" id="get_list/1">
+  <div class="detail-header">
+    <a href="#get_list/1" class="detail-link" title="Link to this function">
+      <i class="icon-link"></i>
+    </a>
+    <span class="signature">get_list(records)</span>
+      
+  </div>
+  
+  <section class="docstring">
+    
   </section>
 </div>
 <div class="detail" id="head/3">
@@ -985,19 +954,6 @@ exception in case of failure.</p>
 response in case of a successful request, raising an exception in case the
 request fails.</p>
 
-  </section>
-</div>
-<div class="detail" id="self/1">
-  <div class="detail-header">
-    <a href="#self/1" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
-    </a>
-    <span class="signature">self(record)</span>
-      
-  </div>
-  
-  <section class="docstring">
-    
   </section>
 </div>
 <div class="detail" id="start/0">
