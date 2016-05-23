@@ -1,0 +1,1 @@
+{"data":{"type":"Address","id":"2","attributes":{"city":"Oceanside","location":"Home","state":"CA","street":"123 Main St","zip":"92056"},"links":{"self":"https://api.planningcenteronline.com/people/v2/people/1/addresses/2"}},"included":[],"meta":{"parent":{"id":"1","type":"Person"}}}
