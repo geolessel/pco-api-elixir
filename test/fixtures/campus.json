@@ -1,0 +1,1 @@
+{"data":{"type":"Campus","id":"1","attributes":{"latitude":"33.128456","longitude":"-117.246922","name":"Carlsbad Campus"},"links":{"self":"https://api.planningcenteronline.com/people/v2/campuses/1"}},"included":[],"meta":{"parent":{"id":"1","type":"Organization"}}}
