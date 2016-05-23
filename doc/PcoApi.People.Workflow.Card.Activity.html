@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.11.5">
-    <title>PcoApi.People.Address – pco_api v0.0.1</title>
+    <title>PcoApi.People.Workflow.Card.Activity – pco_api v0.0.1</title>
     <link rel="stylesheet" href="dist/app-ddd9717ad9.css" />
     
     <script src="dist/sidebar_items.js"></script>
@@ -61,17 +61,17 @@
 
       <h1>
         <small class="visible-xs">pco_api v0.0.1</small>
-        PcoApi.People.Address
+        PcoApi.People.Workflow.Card.Activity
         
         
       </h1>
 
       
         <section id="moduledoc" class="docstring">
-          <p>A set of functions to work with Addresses belonging to a Person.</p>
-<p>Since an Address is always associated with a Person in Planning Center Online,
-a Record of type “Person” is required in order to retrieve that Person’s
-associated Addresses.</p>
+          <p>A set of functions to work with WorkflowCardActivities belonging to a WorkflowCard.</p>
+<p>Since a WorkflowCardActivity is always associated with a WorkflowCard in Planning Center Online,
+a Record of type “WorkflowCard” is required in order to retrieve that WorkflowCard’s
+associated WorkflowCardActivities.</p>
 
         </section>
       
@@ -146,7 +146,7 @@ failure</p>
     <a href="#get/1">get(id)</a>
   </div>
   
-    <div class="summary-synopsis"><p>Gets associated Address records from a Person Record when no address link is found</p>
+    <div class="summary-synopsis"><p>Gets associated WorkflowCardActivities records from a WorkflowCard Record when no activities link is found</p>
 </div>
   
 </div>
@@ -155,7 +155,7 @@ failure</p>
     <a href="#get/2">get(params, url)</a>
   </div>
   
-    <div class="summary-synopsis"><p>Gets a single Address for a Person</p>
+    <div class="summary-synopsis"><p>Gets a single WorkflowCardActivity for a WorkflowCard</p>
 </div>
   
 </div>
@@ -469,12 +469,12 @@ failure.</p>
   </div>
   
   <section class="docstring">
-    <p>Gets associated Address records from a Person Record when no address link is found.</p>
-<p>Sometimes a record my not include an address link. This function recreates a URL to
-get the associated records just based off of the Person id.</p>
+    <p>Gets associated WorkflowCardActivities records from a WorkflowCard Record when no activities link is found.</p>
+<p>Sometimes a record my not include an activities link. This function takes a self link to
+get the associated records.</p>
 <h2>Example:</h2>
-<pre><code class="iex elixir">iex&gt; %PcoApi.Record{type: &quot;Person&quot;, id: 1} |&gt; PcoApi.People.Address.get
-%PcoApi.Record{type: &quot;Address&quot;, id: 1, ...}</code></pre>
+<pre><code class="iex elixir">iex&gt; %PcoApi.Record{type: &quot;WorkflowCard&quot;, links: %{&quot;self&quot; =&gt; &quot;http://example.com&quot;}} |&gt; Activity.get
+#%PcoApi.Record{type: &quot;WorkflowCardActivity&quot;, ...}</code></pre>
 
   </section>
 </div>
@@ -488,11 +488,11 @@ get the associated records just based off of the Person id.</p>
   </div>
   
   <section class="docstring">
-    <p>Gets a single Address for a Person.</p>
-<p>Requires a Person with an ID and an Address Id.</p>
+    <p>Gets a single WorkflowCardActivity for a WorkflowCard.</p>
+<p>Requires a WorkflowCard with a self link and a WorkflowCardActivity Id.</p>
 <h2>Example:</h2>
-<pre><code class="iex elixir">iex&gt; %PcoApi.Record{type: &quot;Person&quot;, id: 1} |&gt; Address.get(2)
-%PcoApi.Record{type: &quot;Address&quot;, id: 2} # for Person.id == 1</code></pre>
+<pre><code class="iex elixir">iex&gt; %PcoApi.Record{type: &quot;WorkflowCard&quot;, id: 1, links: %{&quot;self&quot; =&gt; &quot;http://example.com&quot;}} |&gt; Address.get(2)
+%PcoApi.Record{type: &quot;WorkflowCardActivity&quot;, id: 2} # for Person.id == 1</code></pre>
 
   </section>
 </div>

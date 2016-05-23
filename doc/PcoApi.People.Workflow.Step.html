@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.11.5">
-    <title>PcoApi.People.Address – pco_api v0.0.1</title>
+    <title>PcoApi.People.Workflow.Step – pco_api v0.0.1</title>
     <link rel="stylesheet" href="dist/app-ddd9717ad9.css" />
     
     <script src="dist/sidebar_items.js"></script>
@@ -61,17 +61,14 @@
 
       <h1>
         <small class="visible-xs">pco_api v0.0.1</small>
-        PcoApi.People.Address
+        PcoApi.People.Workflow.Step
         
         
       </h1>
 
       
         <section id="moduledoc" class="docstring">
-          <p>A set of functions to work with Addresses belonging to a Person.</p>
-<p>Since an Address is always associated with a Person in Planning Center Online,
-a Record of type “Person” is required in order to retrieve that Person’s
-associated Addresses.</p>
+          <p>GET WorkflowSteps</p>
 
         </section>
       
@@ -112,12 +109,6 @@ associated Addresses.</p>
     </h2>
     <div class="summary-row">
   <div class="summary-signature">
-    <a href="#api_endpoint/0">api_endpoint()</a>
-  </div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
     <a href="#delete/3">delete(url, headers \\ [], options \\ [])</a>
   </div>
   
@@ -146,17 +137,11 @@ failure</p>
     <a href="#get/1">get(id)</a>
   </div>
   
-    <div class="summary-synopsis"><p>Gets associated Address records from a Person Record when no address link is found</p>
-</div>
-  
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#get/2">get(params, url)</a>
   </div>
-  
-    <div class="summary-synopsis"><p>Gets a single Address for a Person</p>
-</div>
   
 </div>
 <div class="summary-row">
@@ -377,20 +362,7 @@ exception in case of failure</p>
             </a>
             Functions
           </h1>
-          <div class="detail" id="api_endpoint/0">
-  <div class="detail-header">
-    <a href="#api_endpoint/0" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
-    </a>
-    <span class="signature">api_endpoint()</span>
-      
-  </div>
-  
-  <section class="docstring">
-    
-  </section>
-</div>
-<div class="detail" id="delete/3">
+          <div class="detail" id="delete/3">
   <div class="detail-header">
     <a href="#delete/3" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
@@ -469,13 +441,7 @@ failure.</p>
   </div>
   
   <section class="docstring">
-    <p>Gets associated Address records from a Person Record when no address link is found.</p>
-<p>Sometimes a record my not include an address link. This function recreates a URL to
-get the associated records just based off of the Person id.</p>
-<h2>Example:</h2>
-<pre><code class="iex elixir">iex&gt; %PcoApi.Record{type: &quot;Person&quot;, id: 1} |&gt; PcoApi.People.Address.get
-%PcoApi.Record{type: &quot;Address&quot;, id: 1, ...}</code></pre>
-
+    
   </section>
 </div>
 <div class="detail" id="get/2">
@@ -488,12 +454,7 @@ get the associated records just based off of the Person id.</p>
   </div>
   
   <section class="docstring">
-    <p>Gets a single Address for a Person.</p>
-<p>Requires a Person with an ID and an Address Id.</p>
-<h2>Example:</h2>
-<pre><code class="iex elixir">iex&gt; %PcoApi.Record{type: &quot;Person&quot;, id: 1} |&gt; Address.get(2)
-%PcoApi.Record{type: &quot;Address&quot;, id: 2} # for Person.id == 1</code></pre>
-
+    
   </section>
 </div>
 <div class="detail" id="get/3">
