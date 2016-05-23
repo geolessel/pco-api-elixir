@@ -28,7 +28,7 @@ defmodule PcoApi.People.Workflow.Card do
   @doc """
   Gets associated WorkflowCard records from a Workflow Record when no cards link is found.
 
-  Sometimes a record my not include an cards link. This function recreates a URL to
+  Sometimes a record may not include a cards link. This function recreates a URL to
   get the associated records just based off of the Workflow Id.
 
   ## Example:
