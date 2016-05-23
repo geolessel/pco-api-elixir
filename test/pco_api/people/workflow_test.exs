@@ -1,3 +1,4 @@
+# TODO: Fix broken tests and match up with PersonTest
 defmodule PcoApi.People.WorkflowTest do
   use ExUnit.Case, async: false
   doctest PcoApi.People.Workflow
@@ -57,14 +58,37 @@ defmodule PcoApi.People.WorkflowTest do
     |> Workflow.get("foo")
   end
 
-  #.get_list
-  test ".get_list takes a list of Records and queries the details of each", %{bypass: bypass} do
+  # test ".get retrieves the details of a Workflow when passed a single record", %{bypass: bypass} do
+  #   Bypass.expect bypass, fn conn ->
+  #     assert "/people/v2/workflows/1" == conn.request_path
+  #     Plug.Conn.resp(conn, 200, Fixture.read("workflow.json"))
+  #   end
+  #   workflow = %PcoApi.Record{links: %{"self" => "https://api.planningcenteronline.com/people/v2/workflows/1"}}
+  #   workflow |> Workflow.get
+  # end
+
+  # test ".get gets Workflow details even if no self link", %{bypass: bypass} do
+  #   Bypass.expect bypass, fn conn ->
+  #     assert "/people/v2/workflows/1000" == conn.request_path
+  #     Plug.Conn.resp(conn, 200, Fixture.read("workflow.json"))
+  #   end
+  #   %PcoApi.Record{id: "1000", links: %{}} |> Workflow.get
+  # end
+
+  test ".cards returns a list of workflow cards", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
-      assert conn.request_path |> String.match?(~r{/people/v2/workflows/[12]})
-      Plug.Conn.resp(conn, 200, Fixture.read("workflow.json"))
+      Plug.Conn.resp(conn, 200, Fixture.read("workflow_card_list.json"))
     end
-    foo = %PcoApi.Record{links: %{"self" => "https://api.planningcenteronline.com/people/v2/workflows/1"}}
-    bar = %PcoApi.Record{links: %{"self" => "https://api.planningcenteronline.com/people/v2/workflows/2"}}
-    [foo, bar] |> Workflow.get_list
+    workflow = %PcoApi.Record{id: "1", links: %{"cards" => "https://api.planningcenteronline.com/people/v2/workflows/1/cards"}}
+    assert [%PcoApi.Record{type: "WorkflowCard"} | rest] = workflow |> Workflow.cards
   end
+
+  test ".steps returns a list of workflow steps", %{bypass: bypass} do
+    Bypass.expect bypass, fn conn ->
+      Plug.Conn.resp(conn, 200, Fixture.read("workflow_step_list.json"))
+    end
+    workflow = %PcoApi.Record{id: "1", links: %{"steps" => "https://api.planningcenteronline.com/people/v2/workflows/1/steps"}}
+    assert [%PcoApi.Record{type: "WorkflowStep"} | rest] = workflow |> Workflow.steps
+  end
+
 end

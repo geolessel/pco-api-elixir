@@ -1,6 +1,6 @@
 defmodule PcoApi.People.Address do
   @moduledoc """
-  A set of functions to work with Adresses belonging to a Person.
+  A set of functions to work with Addresses belonging to a Person.
 
   Since an Address is always associated with a Person in Planning Center Online,
   a Record of type "Person" is required in order to retrieve that Person's
