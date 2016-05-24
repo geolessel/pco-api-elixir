@@ -34,14 +34,6 @@ defmodule PcoApi.People.Workflow.CardTest do
     record_without_link |> Card.get
   end
 
-  test ".get gets cards by workflow id", %{bypass: bypass} do
-    Bypass.expect bypass, fn conn ->
-      assert "/people/v2/workflows/1/cards" == conn.request_path
-      Plug.Conn.resp(conn, 200, Fixture.read("workflow_card_list.json"))
-    end
-    record_without_link |> Card.get
-  end
-
   test ".get gets cards by card id", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/workflows/1/cards/1" == conn.request_path
