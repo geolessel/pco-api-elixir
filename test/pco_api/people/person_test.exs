@@ -22,7 +22,7 @@ defmodule PcoApi.People.PersonTest do
 
   test ".get returns a list of Record structs", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
-      Plug.Conn.resp(conn, 200, Fixture.read("people_list.json"))
+      Plug.Conn.resp(conn, 200, Fixture.read("people.json"))
     end
     assert [%PcoApi.Record{} | _rest] = Person.get
   end
@@ -40,7 +40,7 @@ defmodule PcoApi.People.PersonTest do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/people/" == conn.request_path
       assert "where%5Blast_name%5D=Lessel&where%5Bfirst_name%5D=Geoffrey" == conn.query_string
-      Plug.Conn.resp(conn, 200, Fixture.read("people_list.json"))
+      Plug.Conn.resp(conn, 200, Fixture.read("people.json"))
     end
     PcoApi.Query.where(first_name: "Geoffrey")
     |> PcoApi.Query.where(last_name: "Lessel")
@@ -51,7 +51,7 @@ defmodule PcoApi.People.PersonTest do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/people/foo" == conn.request_path
       assert "where%5Blast_name%5D=Lessel" == conn.query_string
-      Plug.Conn.resp(conn, 200, Fixture.read("people_list.json"))
+      Plug.Conn.resp(conn, 200, Fixture.read("people.json"))
     end
     PcoApi.Query.where(last_name: "Lessel")
     |> Person.get("foo")
