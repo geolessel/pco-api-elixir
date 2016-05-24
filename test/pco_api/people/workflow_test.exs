@@ -22,7 +22,7 @@ defmodule PcoApi.People.WorkflowTest do
 
   test ".get returns a list of Record structs", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
-      Plug.Conn.resp(conn, 200, Fixture.read("workflow_list.json"))
+      Plug.Conn.resp(conn, 200, Fixture.read("workflows.json"))
     end
     assert [%PcoApi.Record{} | _rest] = Workflow.get
   end
@@ -40,7 +40,7 @@ defmodule PcoApi.People.WorkflowTest do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/workflows/" == conn.request_path
       assert "where%5Bname%5D=Visitors" == conn.query_string
-      Plug.Conn.resp(conn, 200, Fixture.read("workflow_list.json"))
+      Plug.Conn.resp(conn, 200, Fixture.read("workflows.json"))
     end
     PcoApi.Query.where(name: "Visitors")
     |> Workflow.get
@@ -50,7 +50,7 @@ defmodule PcoApi.People.WorkflowTest do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/workflows/foo" == conn.request_path
       assert "where%5Bname%5D=Visitors" == conn.query_string
-      Plug.Conn.resp(conn, 200, Fixture.read("workflow_list.json"))
+      Plug.Conn.resp(conn, 200, Fixture.read("workflows.json"))
     end
     PcoApi.Query.where(name: "Visitors")
     |> Workflow.get("foo")
@@ -75,7 +75,7 @@ defmodule PcoApi.People.WorkflowTest do
 
   test ".cards returns a list of workflow cards", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
-      Plug.Conn.resp(conn, 200, Fixture.read("workflow_card_list.json"))
+      Plug.Conn.resp(conn, 200, Fixture.read("workflow_cards.json"))
     end
     workflow = %PcoApi.Record{id: "1", links: %{"cards" => "https://api.planningcenteronline.com/people/v2/workflows/1/cards"}}
     assert [%PcoApi.Record{type: "WorkflowCard"} | rest] = workflow |> Workflow.cards
@@ -83,7 +83,7 @@ defmodule PcoApi.People.WorkflowTest do
 
   test ".steps returns a list of workflow steps", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
-      Plug.Conn.resp(conn, 200, Fixture.read("workflow_step_list.json"))
+      Plug.Conn.resp(conn, 200, Fixture.read("workflow_steps.json"))
     end
     workflow = %PcoApi.Record{id: "1", links: %{"steps" => "https://api.planningcenteronline.com/people/v2/workflows/1/steps"}}
     assert [%PcoApi.Record{type: "WorkflowStep"} | rest] = workflow |> Workflow.steps
