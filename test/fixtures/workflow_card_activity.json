@@ -1,0 +1,29 @@
+{
+  "data": {
+    "type": "WorkflowCardActivity",
+    "id": "1",
+    "attributes": {
+      "comment": "created a new note",
+      "content": "A note.",
+      "created_at": "2000-01-01T01:00:00Z",
+      "person_avatar_url": "https:\/\/avatars.planningcenteronline.com\/uploads\/person\/1234567-1234567890\/avatar.1.png?g=68x68%23",
+      "person_name": "Luke Skywalker",
+      "reassigned_to_avatar_url": null,
+      "reassigned_to_name": null,
+      "subject": null,
+      "type": "note"
+    },
+    "links": {
+      "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/workflows\/1\/cards\/1\/activities\/1"
+    }
+  },
+  "included": [
+
+  ],
+  "meta": {
+    "parent": {
+      "id": "1",
+      "type": "WorkflowCard"
+    }
+  }
+}

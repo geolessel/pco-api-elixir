@@ -1,0 +1,57 @@
+{
+  "data": {
+    "type": "WorkflowCard",
+    "id": "1",
+    "attributes": {
+      "completed_at": null,
+      "created_at": "2000-01-01T01:00:00Z",
+      "snooze_until": null,
+      "updated_at": "2000-01-01T01:00:00Z"
+    },
+    "links": {
+      "activities": "https:\/\/api.planningcenteronline.com\/people\/v2\/workflows\/1\/cards\/1\/activities",
+      "assignee": "https:\/\/api.planningcenteronline.com\/people\/v2\/people\/1",
+      "current_task": "https:\/\/api.planningcenteronline.com\/people\/v2\/workflows\/1\/cards\/1\/current_task",
+      "go_back": "https:\/\/api.planningcenteronline.com\/people\/v2\/workflows\/1\/cards\/1\/go_back",
+      "notes": "https:\/\/api.planningcenteronline.com\/people\/v2\/workflows\/1\/cards\/1\/notes",
+      "person": "https:\/\/api.planningcenteronline.com\/people\/v2\/people\/1",
+      "promote": "https:\/\/api.planningcenteronline.com\/people\/v2\/workflows\/1\/cards\/1\/promote",
+      "remove": "https:\/\/api.planningcenteronline.com\/people\/v2\/workflows\/1\/cards\/1\/remove",
+      "restore": "https:\/\/api.planningcenteronline.com\/people\/v2\/workflows\/1\/cards\/1\/restore",
+      "send_email": "https:\/\/api.planningcenteronline.com\/people\/v2\/workflows\/1\/cards\/1\/send_email",
+      "skip_step": "https:\/\/api.planningcenteronline.com\/people\/v2\/workflows\/1\/cards\/1\/skip_step",
+      "snooze": "https:\/\/api.planningcenteronline.com\/people\/v2\/workflows\/1\/cards\/1\/snooze",
+      "tasks": "https:\/\/api.planningcenteronline.com\/people\/v2\/workflows\/1\/cards\/1\/tasks",
+      "unsnooze": "https:\/\/api.planningcenteronline.com\/people\/v2\/workflows\/1\/cards\/1\/unsnooze",
+      "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/workflows\/1\/cards\/1"
+    },
+    "relationships": {
+      "assignee": {
+        "data": {
+          "type": "Assignee",
+          "id": "1"
+        }
+      },
+      "current_step": {
+        "data": {
+          "type": "CurrentStep",
+          "id": "1"
+        }
+      }
+    }
+  },
+  "included": [
+
+  ],
+  "meta": {
+    "can_include": [
+      "person",
+      "assignee",
+      "tasks"
+    ],
+    "parent": {
+      "id": "1",
+      "type": "Workflow"
+    }
+  }
+}

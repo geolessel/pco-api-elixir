@@ -1,5 +1,5 @@
 defmodule PcoApi.People.PersonTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case, async: false
   doctest PcoApi.People.Person
   alias PcoApi.People.Person
   alias TestHelper.Fixture
