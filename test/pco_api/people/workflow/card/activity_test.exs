@@ -18,7 +18,7 @@ defmodule PcoApi.People.Workflow.Card.ActivityTest do
     record_with_link |> Activity.get
   end
 
-  test ".get gets activities with a activities link", %{bypass: bypass} do
+  test ".get gets activities with an activities link", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/workflows/1/cards/1/activities" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_card_activities.json"))

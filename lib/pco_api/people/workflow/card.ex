@@ -13,6 +13,7 @@ defmodule PcoApi.People.Workflow.Card do
 
   linked_association :activities
   linked_association :notes
+  linked_association :tasks
 
   @doc """
   Gets associated WorkflowCard records from a Workflow Record from links.
