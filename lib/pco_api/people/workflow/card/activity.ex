@@ -24,7 +24,7 @@ defmodule PcoApi.People.Workflow.Card.Activity do
   @doc """
   Gets associated WorkflowCardActivities records from a WorkflowCard Record when no activities link is found.
 
-  Sometimes a record my not include an activities link. This function takes a self link to
+  Sometimes a record may not include an activities link. This function takes a self link to
   get the associated records.
 
   ## Example:
