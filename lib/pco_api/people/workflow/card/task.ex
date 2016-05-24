@@ -24,7 +24,7 @@ defmodule PcoApi.People.Workflow.Card.Task do
   @doc """
   Gets associated WorkflowTasks records from a WorkflowCard Record when no tasks link is found.
 
-  Sometimes a record my not include a tasks link. This function takes a self link to
+  Sometimes a record may not include a tasks link. This function takes a self link to
   get the associated records.
 
   ## Example:

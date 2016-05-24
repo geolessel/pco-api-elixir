@@ -24,7 +24,7 @@ defmodule PcoApi.People.Workflow.Card.Note do
   @doc """
   Gets associated WorkflowCardNotes records from a WorkflowCard Record when no notes link is found.
 
-  Sometimes a record my not include an notes link. This function takes a self link to
+  Sometimes a record may not include a notes link. This function takes a self link to
   get the associated records.
 
   ## Example:
@@ -38,7 +38,7 @@ defmodule PcoApi.People.Workflow.Card.Note do
   @doc """
   Gets a single WorkflowCardNote for a WorkflowCard.
 
-  Requires a WorkflowCard with an notes link and a WorkflowCardNote Id.
+  Requires a WorkflowCard with a notes link and a WorkflowCardNote Id.
 
   ## Example:
 

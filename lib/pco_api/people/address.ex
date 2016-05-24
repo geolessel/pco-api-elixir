@@ -24,7 +24,7 @@ defmodule PcoApi.People.Address do
   @doc """
   Gets associated Address records from a Person Record when no address link is found.
 
-  Sometimes a record my not include an address link. This function recreates a URL to
+  Sometimes a record may not include an address link. This function recreates a URL to
   get the associated records just based off of the Person id.
 
   ## Example:
