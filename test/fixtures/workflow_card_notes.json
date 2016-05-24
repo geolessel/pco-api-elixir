@@ -1,0 +1,21 @@
+{
+  "data": {
+    "type": "WorkflowCardNote",
+    "id": "1",
+    "attributes": {
+      "note": "A note."
+    },
+    "links": {
+      "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/workflows\/1\/cards\/1\/notes\/1"
+    }
+  },
+  "included": [
+
+  ],
+  "meta": {
+    "parent": {
+      "id": "1",
+      "type": "WorkflowCard"
+    }
+  }
+}
