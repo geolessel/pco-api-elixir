@@ -8,7 +8,6 @@ defmodule PcoApi.People.Workflow.Step do
   """
 
   use PcoApi.Actions
-  import PcoApi.RecordAssociation
   endpoint "people/v2/workflows/"
 
   @doc """
