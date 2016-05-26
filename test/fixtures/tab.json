@@ -1,0 +1,27 @@
+{
+  "data": {
+    "type": "Tab",
+    "id": "1",
+    "attributes": {
+      "name": "Employment",
+      "sequence": 1,
+      "slug": "employment"
+    },
+    "links": {
+      "field_definitions": "https:\/\/api.planningcenteronline.com\/people\/v2\/tabs\/1\/field_definitions",
+      "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/tabs\/1"
+    }
+  },
+  "included": [
+
+  ],
+  "meta": {
+    "can_include": [
+      "field_definitions"
+    ],
+    "parent": {
+      "id": "1",
+      "type": "Organization"
+    }
+  }
+}
