@@ -56,7 +56,7 @@ defmodule PcoApi.People.Workflow.Card.Note do
 
   ## Example:
 
-      iex> %PcoApi.Record{type: "WorkflowCard", id: 1, links: %{"self" => "http://example.com"}} |> Address.get(2)
+      iex> %PcoApi.Record{type: "WorkflowCard", id: 1, links: %{"self" => "http://example.com"}} |> Note.get(2)
       %PcoApi.Record{type: "WorkflowCardNote", id: 2} # for Person.id == 1
 
   """

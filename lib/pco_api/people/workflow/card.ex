@@ -9,10 +9,12 @@ defmodule PcoApi.People.Workflow.Card do
 
   use PcoApi.Actions
   import PcoApi.RecordAssociation
-  endpoint "people/v2/workflows/"
+  endpoint "people/v2/"
 
   linked_association :activities
+  linked_association :assignee
   linked_association :notes
+  linked_association :person
 
   @doc """
   Gets associated WorkflowCard records from a Workflow Record from links.
@@ -37,7 +39,7 @@ defmodule PcoApi.People.Workflow.Card do
       %PcoApi.Record{type: "WorkflowCard", id: 1, ...}
 
   """
-  def get(%PcoApi.Record{type: "Workflow", id: id}), do: get("#{id}/cards")
+  def get(%PcoApi.Record{type: "Workflow", id: id}), do: get("workflows/#{id}/cards")
 
   @doc """
   Gets a single WorkflowCard for a Workflow.
@@ -50,5 +52,5 @@ defmodule PcoApi.People.Workflow.Card do
       %PcoApi.Record{type: "WorkflowCard", id: 2} # for Workflow.id == 1
 
   """
-  def get(%PcoApi.Record{type: "Workflow", id: workflow_id}, id), do: get("#{workflow_id}/cards/#{id}")
+  def get(%PcoApi.Record{type: "Workflow", id: workflow_id}, id), do: get("workflows/#{workflow_id}/cards/#{id}")
 end

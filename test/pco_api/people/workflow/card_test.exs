@@ -50,6 +50,56 @@ defmodule PcoApi.People.Workflow.CardTest do
     record_without_link |> Card.get(1)
   end
 
+  test ".activities gets a list of activities with an activities link", %{bypass: bypass} do
+    Bypass.expect bypass, fn conn ->
+      assert "/people/v2/workflows/1/cards/1/activities" == conn.request_path
+      Plug.Conn.resp(conn, 200, Fixture.read("workflow_card_activities.json"))
+    end
+    card_record_with_links |> Card.activities
+  end
+
+  test ".assignee gets an assignee record with an assignee link", %{bypass: bypass} do
+    Bypass.expect bypass, fn conn ->
+      assert "/people/v2/people/1" == conn.request_path
+      Plug.Conn.resp(conn, 200, Fixture.read("me.json"))
+    end
+    card_record_with_links |> Card.assignee
+  end
+
+  test ".notes gets a list of notes with a notes link", %{bypass: bypass} do
+    Bypass.expect bypass, fn conn ->
+      assert "/people/v2/workflows/1/cards/1/notes" == conn.request_path
+      Plug.Conn.resp(conn, 200, Fixture.read("workflow_card_notes.json"))
+    end
+    card_record_with_links |> Card.notes
+  end
+
+  test ".person gets a person record with a person link", %{bypass: bypass} do
+    Bypass.expect bypass, fn conn ->
+      assert "/people/v2/people/1" == conn.request_path
+      Plug.Conn.resp(conn, 200, Fixture.read("me.json"))
+    end
+    card_record_with_links |> Card.person
+  end
+
+  def card_record_with_links do
+    activities_url = "https://api.planningcenteronline.com/people/v2/workflows/1/cards/1/activities"
+    assignee_url = "https://api.planningcenteronline.com/people/v2/people/1"
+    notes_url = "https://api.planningcenteronline.com/people/v2/workflows/1/cards/1/notes"
+    person_url = "https://api.planningcenteronline.com/people/v2/people/1"
+    self_url = "https://api.planningcenteronline.com/people/v2/workflows/1/cards/1"
+    %PcoApi.Record{
+      links: %{
+        "activities" => activities_url,
+        "assignee" => assignee_url,
+        "notes" => notes_url,
+        "person" => person_url,
+        "self_url" => self_url
+      },
+      type: "WorkflowCard"
+    }
+  end
+
   def record_with_link do
     url = "https://api.planningcenteronline.com/people/v2/workflows/1/cards"
     %PcoApi.Record{

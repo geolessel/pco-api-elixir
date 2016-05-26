@@ -73,20 +73,28 @@ defmodule PcoApi.People.WorkflowTest do
     %PcoApi.Record{id: "1000", links: %{}} |> Workflow.self
   end
 
-  test ".cards returns a list of workflow cards", %{bypass: bypass} do
+  test ".cards gets a list of cards with a cards link", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
+      assert "/people/v2/workflows/1/cards" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_cards.json"))
     end
-    workflow = %PcoApi.Record{id: "1", links: %{"cards" => "https://api.planningcenteronline.com/people/v2/workflows/1/cards"}}
-    assert [%PcoApi.Record{type: "WorkflowCard"} | rest] = workflow |> Workflow.cards
+    record_with_link |> Workflow.cards
   end
 
-  test ".steps returns a list of workflow steps", %{bypass: bypass} do
+  test ".steps gets a list of steps with a steps link", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
+      assert "/people/v2/workflows/1/steps" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_steps.json"))
     end
-    workflow = %PcoApi.Record{id: "1", links: %{"steps" => "https://api.planningcenteronline.com/people/v2/workflows/1/steps"}}
-    assert [%PcoApi.Record{type: "WorkflowStep"} | rest] = workflow |> Workflow.steps
+    record_with_link |> Workflow.steps
   end
 
+  def record_with_link do
+    cards_url = "https://api.planningcenteronline.com/people/v2/workflows/1/cards"
+    steps_url = "https://api.planningcenteronline.com/people/v2/workflows/1/steps"
+    %PcoApi.Record{
+      links: %{"cards" => cards_url, "steps" => steps_url},
+      type: "Workflow"
+    }
+  end
 end
