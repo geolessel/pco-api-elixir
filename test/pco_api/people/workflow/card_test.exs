@@ -58,7 +58,7 @@ defmodule PcoApi.People.Workflow.CardTest do
     card_record_with_links |> Card.activities
   end
 
-  test ".assignee gets an assignee record with an assignee link", %{bypass: bypass} do
+  test ".assignee gets a person record with an assignee link", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/people/1" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("me.json"))

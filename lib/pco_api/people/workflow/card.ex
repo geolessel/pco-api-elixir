@@ -8,9 +8,9 @@ defmodule PcoApi.People.Workflow.Card do
   """
 
   use PcoApi.Actions
-  import PcoApi.RecordAssociation
   endpoint "people/v2/"
 
+  import PcoApi.RecordAssociation
   linked_association :activities
   linked_association :assignee
   linked_association :notes
