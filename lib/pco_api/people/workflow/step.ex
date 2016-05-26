@@ -8,7 +8,10 @@ defmodule PcoApi.People.Workflow.Step do
   """
 
   use PcoApi.Actions
-  endpoint "people/v2/workflows/"
+  endpoint "people/v2/"
+
+  import PcoApi.RecordAssociation
+  linked_association :default_assignee
 
   @doc """
   Gets associated WorkflowStep records from a Workflow Record from links.
@@ -33,7 +36,7 @@ defmodule PcoApi.People.Workflow.Step do
       %PcoApi.Record{type: "WorkflowStep", id: 1, ...}
 
   """
-  def get(%PcoApi.Record{type: "Workflow", id: id}), do: get("#{id}/steps")
+  def get(%PcoApi.Record{type: "Workflow", id: id}), do: get("workflows/#{id}/steps")
 
   @doc """
   Gets a single WorkflowStep for a Workflow.
@@ -46,5 +49,5 @@ defmodule PcoApi.People.Workflow.Step do
       %PcoApi.Record{type: "WorkflowStep", id: 2} # for Workflow.id == 1
 
   """
-  def get(%PcoApi.Record{type: "Workflow", id: workflow_id}, id), do: get("#{workflow_id}/steps/#{id}")
+  def get(%PcoApi.Record{type: "Workflow", id: workflow_id}, id), do: get("workflows/#{workflow_id}/steps/#{id}")
 end
