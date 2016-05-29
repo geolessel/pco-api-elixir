@@ -55,7 +55,7 @@ defmodule PcoApi.People.Workflow.CardTest do
       assert "/people/v2/workflows/1/cards/1/activities" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_card_activities.json"))
     end
-    card_record_with_links |> Card.activities
+    assert [%PcoApi.Record{type: "WorkflowCardActivity"} | _rest] = card_record_with_links |> Card.activities
   end
 
   test ".assignee gets a person record with an assignee link", %{bypass: bypass} do
@@ -63,7 +63,7 @@ defmodule PcoApi.People.Workflow.CardTest do
       assert "/people/v2/people/1" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("me.json"))
     end
-    card_record_with_links |> Card.assignee
+    assert %PcoApi.Record{type: "Person"} = card_record_with_links |> Card.assignee
   end
 
   test ".notes gets a list of notes with a notes link", %{bypass: bypass} do
@@ -71,7 +71,7 @@ defmodule PcoApi.People.Workflow.CardTest do
       assert "/people/v2/workflows/1/cards/1/notes" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_card_notes.json"))
     end
-    card_record_with_links |> Card.notes
+    assert [%PcoApi.Record{type: "WorkflowCardNote"} | _rest] = card_record_with_links |> Card.notes
   end
 
   test ".person gets a person record with a person link", %{bypass: bypass} do
@@ -79,7 +79,7 @@ defmodule PcoApi.People.Workflow.CardTest do
       assert "/people/v2/people/1" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("me.json"))
     end
-    card_record_with_links |> Card.person
+    assert %PcoApi.Record{type: "Person"} = card_record_with_links |> Card.person
   end
 
   def card_record_with_links do
