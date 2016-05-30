@@ -27,7 +27,7 @@ defmodule PcoApi.People do
 
   ## Examples
 
-      To get a workflow's card's activities:
+      To get a workflow card's activities:
       iex> PcoApi.People.resource(workflow: 1, card: 2, activities: 3)
       %PcoApi.Record{id: 3, type: "WorkflowCardActivity"}
 
