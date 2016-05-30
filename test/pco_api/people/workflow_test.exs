@@ -1,5 +1,5 @@
 defmodule PcoApi.People.WorkflowTest do
-  use ExUnit.Case, async: false
+  use ExUnit.Case
   doctest PcoApi.People.Workflow
   alias PcoApi.People.Workflow
   alias TestHelper.Fixture

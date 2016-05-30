@@ -1,5 +1,5 @@
 defmodule PcoApi.People.TabTest do
-  use ExUnit.Case, async: false
+  use ExUnit.Case
   doctest PcoApi.People.Tab
   alias PcoApi.People.Tab
   alias TestHelper.Fixture

@@ -31,3 +31,4 @@ import_config "#{Mix.env}.exs"
 
 config :pco_api, :api_key, System.get_env("PCO_API_KEY")
 config :pco_api, :api_secret, System.get_env("PCO_API_SECRET")
+# config :bypass, enable_debug_log: true
