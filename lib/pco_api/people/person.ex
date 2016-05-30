@@ -1,6 +1,7 @@
 defmodule PcoApi.People.Person do
   use PcoApi.Actions
   endpoint "people/v2/people/"
+  record_type "Person"
 
   import PcoApi.RecordAssociation
   linked_association :addresses

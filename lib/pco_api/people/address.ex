@@ -9,6 +9,7 @@ defmodule PcoApi.People.Address do
 
   use PcoApi.Actions
   endpoint "people/v2/"
+  record_type "Address"
 
   @doc """
   Gets associated Address records from a Person Record from links.
@@ -47,4 +48,8 @@ defmodule PcoApi.People.Address do
 
   """
   def get(%PcoApi.Record{type: "Person", id: person_id}, id), do: get("people/#{person_id}/addresses/#{id}")
+
+  def create(%PcoApi.Record{type: "Person", id: person_id}, %PcoApi.Record{} = record) do
+    record |> create("people/#{person_id}/addresses")
+  end
 end
