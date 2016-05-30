@@ -1,0 +1,67 @@
+{
+  "links": {
+    "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/tabs"
+  },
+  "data": [
+    {
+      "type": "Tab",
+      "id": "1",
+      "attributes": {
+        "name": "Employment",
+        "sequence": 1,
+        "slug": "employment"
+      },
+      "links": {
+        "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/tabs\/1"
+      }
+    },
+    {
+      "type": "Tab",
+      "id": "2",
+      "attributes": {
+        "name": "Additional Info",
+        "sequence": 2,
+        "slug": "additional_info"
+      },
+      "links": {
+        "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/tabs\/5081"
+      }
+    },
+    {
+      "type": "Tab",
+      "id": "3",
+      "attributes": {
+        "name": "Preferences",
+        "sequence": 3,
+        "slug": "preferences"
+      },
+      "links": {
+        "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/tabs\/3"
+      }
+    }
+  ],
+  "included": [
+
+  ],
+  "meta": {
+    "total_count": 3,
+    "count": 3,
+    "can_order_by": [
+      "name",
+      "sequence",
+      "slug"
+    ],
+    "can_query_by": [
+      "name",
+      "sequence",
+      "slug"
+    ],
+    "can_include": [
+      "field_definitions"
+    ],
+    "parent": {
+      "id": "1",
+      "type": "Organization"
+    }
+  }
+}

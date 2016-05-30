@@ -1,0 +1,78 @@
+{
+  "links": {
+    "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/tabs\/1\/field_definitions"
+  },
+  "data": [
+    {
+      "type": "FieldDefinition",
+      "id": "1",
+      "attributes": {
+        "data_type": "select",
+        "deleted_at": null,
+        "name": "City",
+        "sequence": 1,
+        "slug": "city"
+      },
+      "links": {
+        "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/field_definitions\/1"
+      }
+    },
+    {
+      "type": "FieldDefinition",
+      "id": "2",
+      "attributes": {
+        "data_type": "checkboxes",
+        "deleted_at": null,
+        "name": "Days Worked",
+        "sequence": 2,
+        "slug": "days_worked"
+      },
+      "links": {
+        "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/field_definitions\/2"
+      }
+    },
+    {
+      "type": "FieldDefinition",
+      "id": "3",
+      "attributes": {
+        "data_type": "date",
+        "deleted_at": null,
+        "name": "Start Date",
+        "sequence": 3,
+        "slug": "start_date"
+      },
+      "links": {
+        "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/field_definitions\/3"
+      }
+    }
+  ],
+  "included": [
+
+  ],
+  "meta": {
+    "total_count": 4,
+    "count": 4,
+    "can_order_by": [
+      "data_type",
+      "name",
+      "sequence",
+      "slug",
+      "deleted_at"
+    ],
+    "can_query_by": [
+      "data_type",
+      "name",
+      "sequence",
+      "slug",
+      "deleted_at"
+    ],
+    "can_include": [
+      "field_options",
+      "tab"
+    ],
+    "parent": {
+      "id": "1",
+      "type": "Tab"
+    }
+  }
+}
