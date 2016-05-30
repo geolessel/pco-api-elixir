@@ -18,7 +18,7 @@ defmodule PcoApi.People.Workflow.Step do
 
   ## Example:
 
-      iex> %PcoApi.Record{type: "Workflow", links: %{"steps" => "http://example.com"}} |> Step.get
+      iex> %PcoApi.Record{type: "Workflow", links: %{"steps" => "http://example.com"}} |> PcoApi.People.Workflow.Step.get
       %PcoApi.Record{type: "WorkflowStep", ...}
 
   """
@@ -32,7 +32,7 @@ defmodule PcoApi.People.Workflow.Step do
 
   ## Example:
 
-      iex> %PcoApi.Record{type: "Workflow", id: 1} |> Step.get
+      iex> %PcoApi.Record{type: "Workflow", id: 1} |> PcoApi.People.Workflow.Step.get
       %PcoApi.Record{type: "WorkflowStep", id: 1, ...}
 
   """
@@ -45,7 +45,7 @@ defmodule PcoApi.People.Workflow.Step do
 
   ## Example:
 
-      iex> %PcoApi.Record{type: "Workflow", id: 1} |> Step.get(2)
+      iex> %PcoApi.Record{type: "Workflow", id: 1} |> PcoApi.People.Workflow.Step.get(2)
       %PcoApi.Record{type: "WorkflowStep", id: 2} # for Workflow.id == 1
 
   """
