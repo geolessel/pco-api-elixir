@@ -1,0 +1,27 @@
+{
+  "data": {
+    "type": "SchoolOption",
+    "id": "1",
+    "attributes": {
+      "beginning_grade": "0",
+      "ending_grade": "5",
+      "school_types": [
+        "elementary"
+      ],
+      "value": "Carlsbad Elementary"
+    },
+    "links": {
+      "promotes_to_school": "https:\/\/api.planningcenteronline.com\/people\/v2\/school_options\/2",
+      "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/school_options\/1"
+    }
+  },
+  "included": [
+
+  ],
+  "meta": {
+    "parent": {
+      "id": "1",
+      "type": "Organization"
+    }
+  }
+}
