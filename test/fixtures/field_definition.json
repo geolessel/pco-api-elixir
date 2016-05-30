@@ -1,0 +1,31 @@
+{
+  "data": {
+    "type": "FieldDefinition",
+    "id": "1",
+    "attributes": {
+      "data_type": "select",
+      "deleted_at": null,
+      "name": "City",
+      "sequence": 1,
+      "slug": "city"
+    },
+    "links": {
+      "field_options": "https:\/\/api.planningcenteronline.com\/people\/v2\/field_definitions\/1\/field_options",
+      "tab": "https:\/\/api.planningcenteronline.com\/people\/v2\/tabs\/1",
+      "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/field_definitions\/1"
+    }
+  },
+  "included": [
+
+  ],
+  "meta": {
+    "can_include": [
+      "field_options",
+      "tab"
+    ],
+    "parent": {
+      "id": "1",
+      "type": "Tab"
+    }
+  }
+}

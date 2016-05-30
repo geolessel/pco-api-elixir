@@ -72,6 +72,14 @@ defmodule PcoApi.People.TabTest do
     %PcoApi.Record{id: "1000", links: %{}} |> Tab.self
   end
 
+  test ".field_definitions gets a list of associated FieldDefinition records with a field_definitions link", %{bypass: bypass} do
+    Bypass.expect bypass, fn conn ->
+      assert "/people/v2/tabs/1/field_definitions" == conn.request_path
+      Plug.Conn.resp(conn, 200, Fixture.read("field_definitions.json"))
+    end
+    assert [%PcoApi.Record{type: "FieldDefinition"} | _rest] = record_with_link |> Tab.field_definitions
+  end
+
   def record_with_link do
     field_definitions_url = "https://api.planningcenteronline.com/people/v2/tabs/1/field_definitions"
     self_url = "https://api.planningcenteronline.com/people/v2/tabs"
