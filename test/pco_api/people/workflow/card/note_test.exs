@@ -58,11 +58,4 @@ defmodule PcoApi.People.Workflow.Card.NoteTest do
       type: "WorkflowCard"
     }
   end
-
-  defp record_without_link do
-    %PcoApi.Record{
-      id: "1",
-      type: "WorkflowCard"
-    }
-  end
 end

@@ -1,9 +1,8 @@
 defmodule PcoApi.People.Person do
   use PcoApi.Actions
-  import PcoApi.RecordAssociation
-
   endpoint "people/v2/people/"
 
+  import PcoApi.RecordAssociation
   linked_association :addresses
   linked_association :apps
   linked_association :connnected_people

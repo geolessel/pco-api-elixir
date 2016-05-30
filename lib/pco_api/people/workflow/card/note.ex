@@ -15,7 +15,7 @@ defmodule PcoApi.People.Workflow.Card.Note do
 
   ## Example:
 
-      iex> %PcoApi.Record{type: "WorkflowCard", links: %{"notes" => "http://example.com"}} |> Note.get
+      iex> %PcoApi.Record{type: "WorkflowCard", links: %{"notes" => "http://example.com"}} |> PcoApi.People.Workflow.Card.Note.get
       %PcoApi.Record{type: "WorkflowCardNote", ...}
 
   """
@@ -29,7 +29,7 @@ defmodule PcoApi.People.Workflow.Card.Note do
 
   ## Example:
 
-      iex> %PcoApi.Record{type: "WorkflowCard", links: %{"self" => "http://example.com"}} |> Note.get
+      iex> %PcoApi.Record{type: "WorkflowCard", links: %{"self" => "http://example.com"}} |> PcoApi.People.Workflow.Card.Note.get
       #%PcoApi.Record{type: "WorkflowCardNote", ...}
 
   """
@@ -42,7 +42,7 @@ defmodule PcoApi.People.Workflow.Card.Note do
 
   ## Example:
 
-      iex> %PcoApi.Record{type: "WorkflowCard", id: 1, links: %{"notes" => "http://example.com"}} |> Note.get(2)
+      iex> %PcoApi.Record{type: "WorkflowCard", id: 1, links: %{"notes" => "http://example.com"}} |> PcoApi.People.Workflow.Card.Note.get(2)
       %PcoApi.Record{type: "WorkflowCardNote", id: 2} # for WorkflowCard.id == 1
 
   """
@@ -56,7 +56,7 @@ defmodule PcoApi.People.Workflow.Card.Note do
 
   ## Example:
 
-      iex> %PcoApi.Record{type: "WorkflowCard", id: 1, links: %{"self" => "http://example.com"}} |> Address.get(2)
+      iex> %PcoApi.Record{type: "WorkflowCard", id: 1, links: %{"self" => "http://example.com"}} |> PcoApi.People.Workflow.Card.Note.get(2)
       %PcoApi.Record{type: "WorkflowCardNote", id: 2} # for Person.id == 1
 
   """
