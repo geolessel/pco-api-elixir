@@ -1,0 +1,101 @@
+{
+  "links": {
+    "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/lists"
+  },
+  "data": [
+    {
+      "type": "List",
+      "id": "1",
+      "attributes": {
+        "batch_completed_at": "2000-01-01T01:00:00Z",
+        "created_at": "2000-01-01T01:00:00Z",
+        "description": "Inactive Membership Status is 'Inactive'",
+        "has_inactive_results": true,
+        "include_inactive": true,
+        "name": "Inactive Peeps",
+        "return_original_if_none": true,
+        "returns": "exact",
+        "status": "complete",
+        "subset": "all",
+        "total_people": 20,
+        "updated_at": "2000-01-01T01:00:00Z"
+      },
+      "links": {
+        "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/lists\/1"
+      }
+    },
+    {
+      "type": "List",
+      "id": "2",
+      "attributes": {
+        "batch_completed_at": "2000-01-01T01:00:00Z",
+        "created_at": "2000-01-01T01:00:00Z",
+        "description": "Life Track has been completed AND NOT Membership Type is 'Member'",
+        "has_inactive_results": false,
+        "include_inactive": false,
+        "name": "Workflow \"Life Track\" Complete (staging)",
+        "return_original_if_none": true,
+        "returns": "exact",
+        "status": "complete",
+        "subset": "all",
+        "total_people": 30,
+        "updated_at": "2000-01-01T01:00:00Z"
+      },
+      "links": {
+        "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/lists\/2"
+      }
+    },
+    {
+      "type": "List",
+      "id": "3",
+      "attributes": {
+        "batch_completed_at": "2000-01-01T01:00:00Z",
+        "created_at": "2000-01-01T01:00:00Z",
+        "description": "Membership Status is 'Active' AND Age between '18' and '25'",
+        "has_inactive_results": false,
+        "include_inactive": false,
+        "name": "Adult Class Roster",
+        "return_original_if_none": true,
+        "returns": "exact",
+        "status": "complete",
+        "subset": "all",
+        "total_people": 40,
+        "updated_at": "2000-01-01T01:00:00Z"
+      },
+      "links": {
+        "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/lists\/3"
+      }
+    }
+  ],
+  "included": [
+
+  ],
+  "meta": {
+    "total_count": 3,
+    "count": 3,
+    "can_order_by": [
+      "name",
+      "batch_completed_at",
+      "created_at",
+      "updated_at"
+    ],
+    "can_query_by": [
+      "name",
+      "batch_completed_at",
+      "created_at",
+      "updated_at"
+    ],
+    "can_include": [
+      "created_by",
+      "updated_by",
+      "owner",
+      "people",
+      "rules",
+      "shares"
+    ],
+    "parent": {
+      "id": "1",
+      "type": "Organization"
+    }
+  }
+}

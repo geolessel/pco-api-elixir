@@ -1,0 +1,47 @@
+{
+  "data": {
+    "type": "List",
+    "id": "1",
+    "attributes": {
+      "batch_completed_at": "2000-01-01T01:00:00Z",
+      "created_at": "2000-01-01T01:00:00Z",
+      "description": "Inactive Members",
+      "has_inactive_results": true,
+      "include_inactive": true,
+      "name": "Inactive Peeps",
+      "return_original_if_none": true,
+      "returns": "exact",
+      "status": "complete",
+      "subset": "all",
+      "total_people": 20,
+      "updated_at": "2000-01-01T01:00:00Z"
+    },
+    "links": {
+      "created_by": "https:\/\/api.planningcenteronline.com\/people\/v2\/people\/1",
+      "owner": "https:\/\/api.planningcenteronline.com\/people\/v2\/people\/1",
+      "people": "https:\/\/api.planningcenteronline.com\/people\/v2\/lists\/1\/people",
+      "rules": "https:\/\/api.planningcenteronline.com\/people\/v2\/lists\/1\/rules",
+      "run": "https:\/\/api.planningcenteronline.com\/people\/v2\/lists\/1\/run",
+      "shares": "https:\/\/api.planningcenteronline.com\/people\/v2\/lists\/1\/shares",
+      "updated_by": "https:\/\/api.planningcenteronline.com\/people\/v2\/people\/1",
+      "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/lists\/1"
+    }
+  },
+  "included": [
+
+  ],
+  "meta": {
+    "can_include": [
+      "created_by",
+      "updated_by",
+      "owner",
+      "people",
+      "rules",
+      "shares"
+    ],
+    "parent": {
+      "id": "1",
+      "type": "Organization"
+    }
+  }
+}
