@@ -78,7 +78,7 @@ defmodule PcoApi.People.WorkflowTest do
       assert "/people/v2/workflows/1/cards" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_cards.json"))
     end
-    record_with_link |> Workflow.cards
+    assert [%PcoApi.Record{type: "WorkflowCard"} | _rest] = record_with_link |> Workflow.cards
   end
 
   test ".steps gets a list of steps with a steps link", %{bypass: bypass} do
@@ -86,7 +86,7 @@ defmodule PcoApi.People.WorkflowTest do
       assert "/people/v2/workflows/1/steps" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_steps.json"))
     end
-    record_with_link |> Workflow.steps
+    assert [%PcoApi.Record{type: "WorkflowStep"} | _rest] = record_with_link |> Workflow.steps
   end
 
   def record_with_link do
