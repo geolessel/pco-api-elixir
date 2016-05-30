@@ -38,8 +38,7 @@ defmodule PcoApi.Actions do
         endpoint_base = Application.get_env(:pco_api, :endpoint_base)
         case url |> String.starts_with?(endpoint_base) do
           true  -> url
-          false ->
-            endpoint_base <> configured_endpoint <> String.replace(url, ~r|^https?://[0-9a-zA-Z:.]+/#{configured_endpoint}|U, "") # enforce the endpoint
+          false -> endpoint_base <> configured_endpoint <> String.replace(url, ~r|^https?://[0-9a-zA-Z:.]+/#{configured_endpoint}|U, "") # enforce the endpoint
         end
       end
       def process_response_body(body), do: body |> Poison.decode!
