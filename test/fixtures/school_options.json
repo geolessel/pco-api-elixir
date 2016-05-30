@@ -1,0 +1,75 @@
+{
+  "links": {
+    "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/school_options"
+  },
+  "data": [
+    {
+      "type": "SchoolOption",
+      "id": "1",
+      "attributes": {
+        "beginning_grade": "0",
+        "ending_grade": "5",
+        "school_types": [
+          "elementary"
+        ],
+        "value": "Carlsbad Elementary"
+      },
+      "links": {
+        "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/school_options\/1"
+      }
+    },
+    {
+      "type": "SchoolOption",
+      "id": "2",
+      "attributes": {
+        "beginning_grade": "6",
+        "ending_grade": "8",
+        "school_types": [
+          "middle_school"
+        ],
+        "value": "Carlsbad Middle School"
+      },
+      "links": {
+        "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/school_options\/2"
+      }
+    },
+    {
+      "type": "SchoolOption",
+      "id": "3",
+      "attributes": {
+        "beginning_grade": "9",
+        "ending_grade": "12",
+        "school_types": [
+          "high_school"
+        ],
+        "value": "Carlsbad High"
+      },
+      "links": {
+        "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/school_options\/3"
+      }
+    }
+  ],
+  "included": [
+
+  ],
+  "meta": {
+    "total_count": 3,
+    "count": 3,
+    "can_order_by": [
+      "value",
+      "school_types",
+      "beginning_grade",
+      "ending_grade"
+    ],
+    "can_query_by": [
+      "value",
+      "school_types",
+      "beginning_grade",
+      "ending_grade"
+    ],
+    "parent": {
+      "id": "1",
+      "type": "Organization"
+    }
+  }
+}
