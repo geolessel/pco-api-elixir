@@ -51,10 +51,13 @@ defmodule PcoApi.People.AddressTest do
   end
 
   test ".new builds a record", %{bypass: bypass} do
-    expected = %PcoApi.Record{attributes: %{
-                                 "street" => "123 Main",
-                                 "city" => "Carlsbad"},
-                              type: "Address"}
+    expected =
+      %PcoApi.Record{
+        attributes: %{
+          "street" => "123 Main",
+          "city" => "Carlsbad"
+        },
+        type: "Address"}
     assert Address.new(street: "123 Main", city: "Carlsbad") == expected
   end
 
