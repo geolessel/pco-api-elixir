@@ -10,7 +10,6 @@ defmodule PcoApi.People.ListTest do
     {:ok, bypass: bypass}
   end
 
-  # .get
   test ".get requests the v2 endpoint", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/lists/" == conn.request_path
@@ -41,7 +40,7 @@ defmodule PcoApi.People.ListTest do
       assert "/people/v2/people/1" == conn.request_path
       Plug.Conn.resp conn, 200, Fixture.read("list.json")
     end
-    bypass |> record_with_links |> List.created_by
+    assert %PcoApi.Record{} = bypass |> record_with_links |> List.created_by
   end
 
   test ".owner gets the list's owner", %{bypass: bypass} do
@@ -49,7 +48,7 @@ defmodule PcoApi.People.ListTest do
       assert "/people/v2/people/2" == conn.request_path
       Plug.Conn.resp conn, 200, Fixture.dummy
     end
-    bypass |> record_with_links |> List.owner
+    assert %PcoApi.Record{} = bypass |> record_with_links |> List.owner
   end
 
   test ".people gets people in the list", %{bypass: bypass} do
@@ -57,7 +56,7 @@ defmodule PcoApi.People.ListTest do
       assert "/people/v2/lists/1/people" == conn.request_path
       Plug.Conn.resp conn, 200, Fixture.dummy
     end
-    bypass |> record_with_links |> List.people
+    assert %PcoApi.Record{} = bypass |> record_with_links |> List.people
   end
 
   test ".rules gets list rules", %{bypass: bypass} do
@@ -65,7 +64,7 @@ defmodule PcoApi.People.ListTest do
       assert "/people/v2/lists/1/rules" == conn.request_path
       Plug.Conn.resp conn, 200, Fixture.dummy
     end
-    bypass |> record_with_links |> List.rules
+    assert %PcoApi.Record{} = bypass |> record_with_links |> List.rules
   end
 
   test ".shares gets list shares", %{bypass: bypass} do
@@ -73,7 +72,7 @@ defmodule PcoApi.People.ListTest do
       assert "/people/v2/lists/1/shares" == conn.request_path
       Plug.Conn.resp conn, 200, Fixture.dummy
     end
-    bypass |> record_with_links |> List.shares
+    assert %PcoApi.Record{} = bypass |> record_with_links |> List.shares
   end
 
   test ".updated_by gets list updated_by", %{bypass: bypass} do
@@ -81,7 +80,7 @@ defmodule PcoApi.People.ListTest do
       assert "/people/v2/lists/1/updated_by" == conn.request_path
       Plug.Conn.resp conn, 200, Fixture.dummy
     end
-    bypass |> record_with_links |> List.updated_by
+    assert %PcoApi.Record{} = bypass |> record_with_links |> List.updated_by
   end
 
   defp record_with_links(bypass) do
