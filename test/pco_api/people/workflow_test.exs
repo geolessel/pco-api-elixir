@@ -30,10 +30,10 @@ defmodule PcoApi.People.WorkflowTest do
   test ".get(id) returns a single record", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/workflows/1" == conn.request_path
-      Plug.Conn.resp conn, 200, Fixture.read("me.json")
+      Plug.Conn.resp conn, 200, Fixture.read("workflow.json")
     end
     workflow = Workflow.get(1)
-    assert %PcoApi.Record{id: "1"} = workflow
+    assert %PcoApi.Record{type: "Workflow", id: "1"} = workflow
   end
 
   test ".get queries from a params list", %{bypass: bypass} do
