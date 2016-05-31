@@ -73,4 +73,27 @@ defmodule PcoApi.People.PersonTest do
     end
     %PcoApi.Record{id: "1000", links: %{}} |> Person.self
   end
+
+  test ".new with attributes builds a PcoApi.Record" do
+    expected = %PcoApi.Record{attributes: %{
+                                 "first_name" => "geo",
+                                 "last_name" => "lessel"},
+                              type: "Person"}
+    assert Person.new(first_name: "geo", last_name: "lessel") == expected
+  end
+
+  test ".create with a record link and no url creates a record", %{bypass: bypass} do
+    Bypass.expect bypass, fn conn ->
+      assert "/people/v2/people/" == conn.request_path
+      assert "POST" == conn.method
+      Plug.Conn.resp(conn, 200, Fixture.dummy)
+    end
+    new_person |> Person.create
+  end
+
+  def new_person do
+    %PcoApi.Record{attributes: %{"first_name" => "geo",
+                                 "last_name" => "lessel"},
+                   type: "Person"}
+  end
 end
