@@ -1,4 +1,4 @@
-defmodule PcoApi.People.Rule do
+defmodule PcoApi.People.List.Rule do
   @moduledoc """
   A set of functions to work with Rules belonging to a List.
 
@@ -19,25 +19,25 @@ defmodule PcoApi.People.Rule do
 
   ## Example:
 
-      iex> %PcoApi.Record{type: "List", links: %{"cards" => "http://example.com"}} |> PcoApi.People.List.Card.get
+      iex> %PcoApi.Record{type: "List", links: %{"rules" => "http://example.com"}} |> PcoApi.People.Rule.get
       %PcoApi.Record{type: "Rule", ...}
 
   """
-  def get(%PcoApi.Record{type: "List", links: %{"cards" => url}}), do: get url
+  def get(%PcoApi.Record{type: "List", links: %{"rules" => url}}), do: get url
 
   @doc """
-  Gets associated Rule records from a List Record when no cards link is found.
+  Gets associated Rule records from a List Record when no rules link is found.
 
-  Sometimes a record may not include a cards link. This function recreates a URL to
+  Sometimes a record may not include a rules link. This function recreates a URL to
   get the associated records just based off of the List Id.
 
   ## Example:
 
-      iex> %PcoApi.Record{type: "List", id: 1} |> PcoApi.People.List.Card.get
+      iex> %PcoApi.Record{type: "List", id: 1} |> PcoApi.People.Rule.get
       %PcoApi.Record{type: "Rule", id: 1, ...}
 
   """
-  def get(%PcoApi.Record{type: "List", id: id}), do: get("lists/#{id}/cards")
+  def get(%PcoApi.Record{type: "List", id: id}), do: get("lists/#{id}/rules")
 
   @doc """
   Gets a single Rule for a List.
@@ -46,9 +46,9 @@ defmodule PcoApi.People.Rule do
 
   ## Example:
 
-      iex> %PcoApi.Record{type: "List", id: 1} |> PcoApi.People.List.Card.get(2)
+      iex> %PcoApi.Record{type: "List", id: 1} |> PcoApi.People.Rule.get(2)
       %PcoApi.Record{type: "Rule", id: 2} # for List.id == 1
 
   """
-  def get(%PcoApi.Record{type: "List", id: list_id}, id), do: get("lists/#{list_id}/cards/#{id}")
+  def get(%PcoApi.Record{type: "List", id: list_id}, id), do: get("lists/#{list_id}/rules/#{id}")
 end
