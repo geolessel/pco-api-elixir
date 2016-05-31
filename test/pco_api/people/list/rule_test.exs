@@ -15,7 +15,7 @@ defmodule PcoApi.People.List.RuleTest do
       assert "GET" == conn.method
       Plug.Conn.resp(conn, 200, Fixture.read("rules.json"))
     end
-    record_with_link |> Rule.get
+    bypass |> record_with_link |> Rule.get
   end
 
   test ".get gets rules with a rules link", %{bypass: bypass} do
@@ -23,7 +23,7 @@ defmodule PcoApi.People.List.RuleTest do
       assert "/people/v2/lists/1/rules" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("rules.json"))
     end
-    record_with_link |> Rule.get
+    bypass |> record_with_link |> Rule.get
   end
 
   test ".get gets rules without a rules link", %{bypass: bypass} do
@@ -57,27 +57,19 @@ defmodule PcoApi.People.List.RuleTest do
     end
     assert %PcoApi.Record{} = bypass |> rule_record_with_links |> Rule.conditions
   end
-  #
-  # test ".notes gets a list of notes with a notes link", %{bypass: bypass} do
-  #   Bypass.expect bypass, fn conn ->
-  #     assert "/people/v2/lists/1/rules/1/notes" == conn.request_path
-  #     Plug.Conn.resp(conn, 200, Fixture.read("rule_notes.json"))
-  #   end
-  #   assert [%PcoApi.Record{type: "WorkflowRuleNote"} | _rest] = rule_record_with_links |> Rule.notes
-  # end
-  #
-  # test ".person gets a person record with a person link", %{bypass: bypass} do
-  #   Bypass.expect bypass, fn conn ->
-  #     assert "/people/v2/people/1" == conn.request_path
-  #     Plug.Conn.resp(conn, 200, Fixture.read("me.json"))
-  #   end
-  #   assert %PcoApi.Record{type: "Person"} = rule_record_with_links |> Rule.person
-  # end
 
-  def rule_record_with_links do
-    conditions_url = "https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions"
-    results_url = "https://api.planningcenteronline.com/people/v2/lists/1/rules/1/results"
-    self_url = "https://api.planningcenteronline.com/people/v2/lists/1/rules/1"
+  test ".results gets a list of results with a results link", %{bypass: bypass} do
+    Bypass.expect bypass, fn conn ->
+      assert "/people/v2/lists/1/rules/1/results" == conn.request_path
+      Plug.Conn.resp(conn, 200, Fixture.read("dummy.json"))
+    end
+    assert %PcoApi.Record{} = bypass |> rule_record_with_links |> Rule.results
+  end
+
+  def rule_record_with_links(bypass) do
+    conditions_url = "http://localhost:#{bypass.port}/people/v2/lists/1/rules/1/conditions"
+    results_url = "http://localhost:#{bypass.port}/people/v2/lists/1/rules/1/results"
+    self_url = "http://localhost:#{bypass.port}/people/v2/lists/1/rules/1"
     %PcoApi.Record{
       links: %{
         "conditions" => conditions_url,
@@ -88,8 +80,8 @@ defmodule PcoApi.People.List.RuleTest do
     }
   end
 
-  def record_with_link do
-    url = "https://api.planningcenteronline.com/people/v2/lists/1/rules"
+  def record_with_link(bypass) do
+    url = "http://localhost:#{bypass.port}/people/v2/lists/1/rules"
     %PcoApi.Record{
       links: %{"rules" => url},
       type: "List"
