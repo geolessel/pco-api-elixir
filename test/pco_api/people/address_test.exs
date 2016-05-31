@@ -34,14 +34,6 @@ defmodule PcoApi.People.AddressTest do
     record_without_link |> Address.get
   end
 
-  test ".get gets addresses by person id", %{bypass: bypass} do
-    Bypass.expect bypass, fn conn ->
-      assert "/people/v2/people/1/addresses" == conn.request_path
-      Plug.Conn.resp(conn, 200, Fixture.read("addresses.json"))
-    end
-    record_without_link |> Address.get
-  end
-
   test ".get gets addresses by address id", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/people/1/addresses/1" == conn.request_path
