@@ -1,5 +1,5 @@
 defmodule PcoApi.People.SocialProfileTest do
-  use ExUnit.Case, async: false
+  use ExUnit.Case
   alias PcoApi.People.SocialProfile
   alias TestHelper.Fixture
 
@@ -18,7 +18,7 @@ defmodule PcoApi.People.SocialProfileTest do
     record_with_link |> SocialProfile.get
   end
 
-  test ".get gets addresses with an addresses link", %{bypass: bypass} do
+  test ".get gets social_profiles with an social_profiles link", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/people/1/social_profiles" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("social_profiles.json"))
@@ -26,7 +26,7 @@ defmodule PcoApi.People.SocialProfileTest do
     record_with_link |> SocialProfile.get
   end
 
-  test ".get gets addresses without an address link", %{bypass: bypass} do
+  test ".get gets social_profiles without an address link", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/people/1/social_profiles" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("social_profiles.json"))
@@ -34,7 +34,7 @@ defmodule PcoApi.People.SocialProfileTest do
     record_with_link |> SocialProfile.get
   end
 
-  test ".get gets addresses by person id", %{bypass: bypass} do
+  test ".get gets social_profiles by person id", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/people/1/social_profiles" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("social_profiles.json"))
@@ -42,12 +42,12 @@ defmodule PcoApi.People.SocialProfileTest do
     record_with_link |> SocialProfile.get
   end
 
-  test ".get gets addresses by person id", %{bypass: bypass} do
+  test ".get(id) gets social_profiles by person id", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/people/1/social_profiles/1" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("social_profile.json"))
     end
-    record_with_link |> SocialProfile.get(1)
+    record_without_link |> SocialProfile.get(1)
   end
 
   test ".person gets a person record with a person link", %{bypass: bypass} do
