@@ -50,7 +50,7 @@ defmodule PcoApi.People.List.RuleTest do
     record_without_link |> Rule.get(1)
   end
 
-  test ".conditions gets a list of conditions with an conditions link", %{bypass: bypass} do
+  test ".conditions gets a list of conditions with a conditions link", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/lists/1/rules/1/conditions" == conn.request_path
       Plug.Conn.resp conn, 200, Fixture.dummy
