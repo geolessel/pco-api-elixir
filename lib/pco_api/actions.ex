@@ -31,21 +31,17 @@ defmodule PcoApi.Actions do
         record |> PcoApi.Record.to_json |> create(url)
       end
       def create(json, url) when is_binary(json) do
-        case post(url, json, [], hackney: [basic_auth: {PcoApi.key, PcoApi.secret}]) do
-          {:ok, %HTTPoison.Response{status_code: code, body: body}} when (code in 200..299) ->
-            cond do
-              %{"data" => data} = body -> data |> to_record
-              true -> body
-            end
-          {:ok, %HTTPoison.Response{body: body}} ->
-            raise "PcoApi ok, but not ok: #{IO.inspect body}"
-          {:error, err} ->
-            raise "PcoApi error: #{IO.inspect err}"
-          _ ->
-            # TODO: better error handling
-            raise "PcoApi error: post"
-        end
+        url
+        |> post(json, [], hackney: [basic_auth: {PcoApi.key, PcoApi.secret}])
+        |> do_create
       end
+
+      defp do_create({:ok, %HTTPoison.Response{status_code: code, body: %{"data" => data}}}) when (code in 200..299) do
+        data |> to_record
+      end
+      defp do_create({:ok, %HTTPoison.Response{status_code: code, body: body}}) when (code in 200..299), do: body
+      defp do_create({:ok, %HTTPoison.Response{body: body}}), do: raise "PcoApi ok, but not ok: #{IO.inspect body}"
+      defp do_create({:error, err}), do: raise "PcoApi error: #{IO.inspect err}"
 
       defp to_record(results) when is_list(results), do: results |> Enum.map(&(&1 |> to_record))
       defp to_record(%{"id" => id, "links" => links, "attributes" => attrs, "type" => type}) do

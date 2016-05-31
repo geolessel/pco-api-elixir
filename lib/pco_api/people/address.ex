@@ -49,6 +49,12 @@ defmodule PcoApi.People.Address do
   """
   def get(%PcoApi.Record{type: "Person", id: person_id}, id), do: get("people/#{person_id}/addresses/#{id}")
 
+  @doc """
+  Creates a new Address Record for a Person.
+
+  With a Person Record and a new Address record passed in, this function will
+  POST the new record to the api. It returns the created Address.
+  """
   def create(%PcoApi.Record{type: "Person", id: person_id}, %PcoApi.Record{} = record) do
     record |> create("people/#{person_id}/addresses")
   end
