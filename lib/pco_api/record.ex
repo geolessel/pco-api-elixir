@@ -5,4 +5,11 @@ defmodule PcoApi.Record do
     %{"data" => %{"attributes" => attributes, "type" => type}}
     |> Poison.encode!
   end
+
+  def to_record(results) when is_list(results) do
+    results |> Enum.map(&(&1 |> to_record))
+  end
+  def to_record(%{"id" => id, "links" => links, "attributes" => attrs, "type" => type}) do
+    %PcoApi.Record{id: id, links: links, attributes: attrs, type: type}
+  end
 end

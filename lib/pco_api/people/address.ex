@@ -8,8 +8,8 @@ defmodule PcoApi.People.Address do
   """
 
   use PcoApi.Actions
-  endpoint "people/v2/"
-  record_type "Address"
+  # endpoint "people/v2/"
+  # record_type "Address"
 
   @doc """
   Gets associated Address records from a Person Record from links.
