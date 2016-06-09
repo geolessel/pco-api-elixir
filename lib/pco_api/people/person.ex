@@ -20,23 +20,14 @@ defmodule PcoApi.People.Person do
   linked_association :school
   linked_association :social_profiles
 
-  def get, do: get("people/v2/people")
+  def list, do: get("people/v2/people")
+  def list(params) when is_list(params), do: get(params, "people/v2/people")
+
   def get(id) when is_integer(id), do: get("people/v2/people/#{id}")
-  def get(params) when is_list(params), do: get(params, "people/v2/people")
-  def get(url), do: get(url, [])
 
-  def get(params, url) when is_list(params) and is_binary(url), do: get(url, params)
-  def get(url, params) when is_binary(url) and is_list(params), do: request(:get, url, params) |> to_record
-
-  #use PcoApi.Actions.Create
-  ##### NEEDED HERE
   def create(%PcoApi.Record{attributes: _, type: _} = record), do: create(record, "people/v2/people")
-  #####
-  def self(%PcoApi.Record{links: %{"self" => self}}), do: get self
+
   def self(%PcoApi.Record{id: id}), do: get "people/v2/people/#{id}"
 
-  def new(attrs) when is_list(attrs) do
-    attrs_map = Enum.into(attrs, %{}, fn({k,v}) -> {Atom.to_string(k), v} end)
-    %PcoApi.Record{attributes: attrs_map, type: "Person"}
-  end
+  def new(attrs) when is_list(attrs), do: new(attrs, "Person")
 end

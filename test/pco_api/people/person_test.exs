@@ -10,21 +10,32 @@ defmodule PcoApi.People.PersonTest do
     {:ok, bypass: bypass}
   end
 
-  test ".get requests the v2 endpoint", %{bypass: bypass} do
+  test ".list requests the v2 endpoint", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/people" == conn.request_path
       assert "GET" == conn.method
       Plug.Conn.resp(conn, 200, Fixture.read("me.json"))
     end
-    Person.get
+    Person.list
   end
 
-  test ".get returns a list of Record structs", %{bypass: bypass} do
+  test ".list queries from a params list", %{bypass: bypass} do
+    Bypass.expect bypass, fn conn ->
+      assert "/people/v2/people" == conn.request_path
+      assert "where%5Blast_name%5D=Lessel&where%5Bfirst_name%5D=Geoffrey" == conn.query_string
+      Plug.Conn.resp(conn, 200, Fixture.read("people.json"))
+    end
+    PcoApi.Query.where(first_name: "Geoffrey")
+    |> PcoApi.Query.where(last_name: "Lessel")
+    |> Person.list
+  end
+
+  test ".list returns a list of Record structs", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/people" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("people.json"))
     end
-    assert [%PcoApi.Record{} | _rest] = Person.get
+    assert [%PcoApi.Record{} | _rest] = Person.list
   end
 
   test ".get(id) returns a single record", %{bypass: bypass} do
@@ -34,17 +45,6 @@ defmodule PcoApi.People.PersonTest do
     end
     person = Person.get(1)
     assert %PcoApi.Record{id: "1"} = person
-  end
-
-  test ".get queries from a params list", %{bypass: bypass} do
-    Bypass.expect bypass, fn conn ->
-      assert "/people/v2/people" == conn.request_path
-      assert "where%5Blast_name%5D=Lessel&where%5Bfirst_name%5D=Geoffrey" == conn.query_string
-      Plug.Conn.resp(conn, 200, Fixture.read("people.json"))
-    end
-    PcoApi.Query.where(first_name: "Geoffrey")
-    |> PcoApi.Query.where(last_name: "Lessel")
-    |> Person.get
   end
 
   test ".self retrieves the details of a Person when passed a single record", %{bypass: bypass} do
