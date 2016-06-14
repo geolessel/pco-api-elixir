@@ -18,7 +18,6 @@ defmodule PcoApi.Actions.Get do
             %{"errors" => [%{"detail" => detail, "title" => title}]} = body
             raise "Request returned non-200 response. Error: #{title}: #{detail}"
           {:error, error} ->
-            IO.inspect error
             raise "PcoApi.People error"
         end
       end

@@ -1,7 +1,4 @@
 defmodule PcoApi.People.Person do
-  import PcoApi.Record
-  use PcoApi.Actions
-
   import PcoApi.RecordAssociation
   linked_association :addresses
   linked_association :apps
@@ -20,14 +17,16 @@ defmodule PcoApi.People.Person do
   linked_association :school
   linked_association :social_profiles
 
-  def list, do: get("people/v2/people")
-  def list(params) when is_list(params), do: get(params, "people/v2/people")
+  use PcoApi.Actions
 
-  def get(id) when is_integer(id), do: get("people/v2/people/#{id}")
+  def list, do: list([])
+  def list(params) when is_list(params), do: get(params, "people")
 
-  def create(%PcoApi.Record{attributes: _, type: _} = record), do: create(record, "people/v2/people")
+  def get(id) when is_integer(id), do: get("people/#{id}")
 
-  def self(%PcoApi.Record{id: id}), do: get "people/v2/people/#{id}"
+  def create(%PcoApi.Record{attributes: _, type: _} = record), do: create(record, "people")
+
+  def self(%PcoApi.Record{id: id}), do: get "people/#{id}"
 
   def new(attrs) when is_list(attrs), do: new(attrs, "Person")
 end

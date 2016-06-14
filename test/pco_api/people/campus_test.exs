@@ -9,21 +9,21 @@ defmodule PcoApi.People.CampusTest do
     {:ok, bypass: bypass}
   end
 
-  test ".get requests the v2 endpoint", %{bypass: bypass} do
+  test ".list requests the v2 endpoint", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert conn.request_path |> String.match?(~r|people/v2|)
       assert "GET" == conn.method
       Plug.Conn.resp(conn, 200, Fixture.read("campuses.json"))
     end
-    Campus.get
+    Campus.list
   end
 
-  test ".get gets campuses", %{bypass: bypass} do
+  test ".list gets campuses", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
-      assert "/people/v2/campuses/" == conn.request_path
+      assert "/people/v2/campuses" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("campuses.json"))
     end
-    campus = Campus.get
+    campus = Campus.list
     assert [%PcoApi.Record{type: "Campus"} | _rest] = campus
   end
 

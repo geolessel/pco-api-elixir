@@ -9,37 +9,37 @@ defmodule PcoApi.People.Workflow.CardTest do
     {:ok, bypass: bypass}
   end
 
-  test ".get requests the v2 endpoint", %{bypass: bypass} do
+  test ".list requests the v2 endpoint", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert conn.request_path |> String.match?(~r|people/v2|)
       assert "GET" == conn.method
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_cards.json"))
     end
-    record_with_link |> Card.get
+    record_with_link |> Card.list
   end
 
-  test ".get gets cards with a cards link", %{bypass: bypass} do
+  test ".list gets cards with a cards link", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/workflows/1/cards" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_cards.json"))
     end
-    record_with_link |> Card.get
+    record_with_link |> Card.list
   end
 
-  test ".get gets cards without a cards link", %{bypass: bypass} do
+  test ".list gets cards without a cards link", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/workflows/1/cards" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_cards.json"))
     end
-    record_without_link |> Card.get
+    record_without_link |> Card.list
   end
 
-  test ".get gets cards by workflow id", %{bypass: bypass} do
+  test ".list gets cards by workflow id", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/workflows/1/cards" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_cards.json"))
     end
-    record_without_link |> Card.get
+    record_without_link |> Card.list
   end
 
   test ".get gets cards by card id", %{bypass: bypass} do

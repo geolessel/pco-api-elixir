@@ -21,8 +21,9 @@ defmodule PcoApi.Client do
 
       defp process_url(url) do
         endpoint_base = Application.get_env(:pco_api, :endpoint_base)
-        processed = Regex.replace(~r|^https?://.+/|U, url, "")
-        endpoint_base <> processed
+        processed = Regex.replace(~r|^https?://.+/(people/v2/)?|U, url, "")
+        processed = Regex.replace(~r|people/v2/|, processed, "")
+        endpoint_base <> "people/v2/" <> processed
       end
 
       defp process_response_body(body) do

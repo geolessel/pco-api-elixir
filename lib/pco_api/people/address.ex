@@ -8,33 +8,31 @@ defmodule PcoApi.People.Address do
   """
 
   use PcoApi.Actions
-  # endpoint "people/v2/"
-  # record_type "Address"
 
   @doc """
-  Gets associated Address records from a Person Record from links.
+  Lists associated Address records from a Person Record from links.
 
   ## Example:
 
-      iex> %PcoApi.Record{type: "Person", links: %{"addresses" => "http://example.com"}} |> PcoApi.People.Address.get
+      iex> %PcoApi.Record{type: "Person", links: %{"addresses" => "http://example.com"}} |> PcoApi.People.Address.list
       %PcoApi.Record{type: "Address", ...}
 
   """
-  def get(%PcoApi.Record{type: "Person", links: %{"addresses" => url}}), do: get url
+  def list(%PcoApi.Record{type: "Person", links: %{"addresses" => url}}), do: get(url)
 
   @doc """
-  Gets associated Address records from a Person Record when no address link is found.
+  Lists associated Address records from a Person Record when no address link is found.
 
   Sometimes a record may not include an address link. This function recreates a URL to
-  get the associated records just based off of the Person id.
+  list the associated records just based off of the Person id.
 
   ## Example:
 
-      iex> %PcoApi.Record{type: "Person", id: 1} |> PcoApi.People.Address.get
+      iex> %PcoApi.Record{type: "Person", id: 1} |> PcoApi.People.Address.list
       %PcoApi.Record{type: "Address", id: 1, ...}
 
   """
-  def get(%PcoApi.Record{type: "Person", id: id}), do: get("people/#{id}/addresses")
+  def list(%PcoApi.Record{type: "Person", id: id}), do: get("people/#{id}/addresses")
 
   @doc """
   Gets a single Address for a Person.
@@ -58,4 +56,6 @@ defmodule PcoApi.People.Address do
   def create(%PcoApi.Record{type: "Person", id: person_id}, %PcoApi.Record{} = record) do
     record |> create("people/#{person_id}/addresses")
   end
+
+  def new(attrs) when is_list(attrs), do: new(attrs, "Address")
 end

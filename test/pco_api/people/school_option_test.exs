@@ -10,20 +10,20 @@ defmodule PcoApi.People.SchoolOptionTest do
     {:ok, bypass: bypass}
   end
 
-  test ".get requests the v2 endpoint", %{bypass: bypass} do
+  test ".list requests the v2 endpoint", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
-      assert "/people/v2/school_options/" == conn.request_path
+      assert "/people/v2/school_options" == conn.request_path
       assert "GET" == conn.method
       Plug.Conn.resp(conn, 200, Fixture.read("school_option.json"))
     end
-    SchoolOption.get
+    SchoolOption.list
   end
 
-  test ".get returns a list of Record structs", %{bypass: bypass} do
+  test ".list returns a list of Record structs", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       Plug.Conn.resp(conn, 200, Fixture.read("school_options.json"))
     end
-    assert [%PcoApi.Record{} | _rest] = SchoolOption.get
+    assert [%PcoApi.Record{} | _rest] = SchoolOption.list
   end
 
   test ".get(id) returns a single record", %{bypass: bypass} do
@@ -35,24 +35,14 @@ defmodule PcoApi.People.SchoolOptionTest do
     assert %PcoApi.Record{id: "1"} = school_option
   end
 
-  test ".get queries from a params list", %{bypass: bypass} do
+  test ".list queries from a params list", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
-      assert "/people/v2/school_options/" == conn.request_path
+      assert "/people/v2/school_options" == conn.request_path
       assert "where%5Bvalue%5D=Carlsbad+Elementary" == conn.query_string
       Plug.Conn.resp(conn, 200, Fixture.read("school_options.json"))
     end
     PcoApi.Query.where(value: "Carlsbad Elementary")
-    |> SchoolOption.get
-  end
-
-  test ".get queries a params list and a specific path", %{bypass: bypass} do
-    Bypass.expect bypass, fn conn ->
-      assert "/people/v2/school_options/foo" == conn.request_path
-      assert "where%5Bvalue%5D=Carlsbad+Elementary" == conn.query_string
-      Plug.Conn.resp(conn, 200, Fixture.read("school_options.json"))
-    end
-    PcoApi.Query.where(value: "Carlsbad Elementary")
-    |> SchoolOption.get("foo")
+    |> SchoolOption.list
   end
 
   test ".self retrieves the details of a Workflow when passed a single record", %{bypass: bypass} do
@@ -80,7 +70,24 @@ defmodule PcoApi.People.SchoolOptionTest do
     assert %PcoApi.Record{type: "SchoolOption"} = record_with_link |> SchoolOption.promotes_to_school
   end
 
-  def record_with_link do
+  test ".create POSTs to the endpoint", %{bypass: bypass} do
+    Bypass.expect bypass, fn conn ->
+      assert "/people/v2/school_options" == conn.request_path
+      assert "POST" == conn.method
+      Plug.Conn.resp(conn, 200, Fixture.dummy)
+    end
+    elementary_school |> SchoolOption.create
+  end
+
+  test ".new returns a List Record" do
+    assert %PcoApi.Record{type: "SchoolOption"} = elementary_school
+  end
+
+  defp elementary_school do
+    SchoolOption.new(school_types: ["elementary"], beginning_grade: "1", ending_grade: "2")
+  end
+
+  defp record_with_link do
     url = "https://api.planningcenteronline.com/people/v2/school_options/2"
     %PcoApi.Record{
       links: %{"promotes_to_school" => url},

@@ -3,9 +3,7 @@ defmodule PcoApi.People do
   A set of functions operating on the root path of the People API.
   """
 
-  use PcoApi.Actions
-
-  endpoint "people/v2/"
+  use PcoApi.Actions, only: [:get]
 
   @doc """
   Gets the Person record for the logged in user.

@@ -7,8 +7,7 @@ defmodule PcoApi.People.Workflow.Step do
   associated WorkflowSteps.
   """
 
-  use PcoApi.Actions
-  endpoint "people/v2/"
+  use PcoApi.Actions, only: [:get]
 
   import PcoApi.RecordAssociation
   linked_association :default_assignee

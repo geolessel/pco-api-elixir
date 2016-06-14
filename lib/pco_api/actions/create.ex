@@ -4,6 +4,8 @@ defmodule PcoApi.Actions.Create do
       import PcoApi.Actions.Create
       import PcoApi.Record
 
+      def post(url) when is_binary(url), do: create("", url)
+
       def create(%PcoApi.Record{attributes: _, type: _} = record, url) when is_binary(url) do
         # TODO: Error handling for when the record isn't created
         record |> PcoApi.Record.to_json |> create(url)

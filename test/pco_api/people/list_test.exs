@@ -10,20 +10,20 @@ defmodule PcoApi.People.ListTest do
     {:ok, bypass: bypass}
   end
 
-  test ".get requests the v2 endpoint", %{bypass: bypass} do
+  test ".list requests the v2 endpoint", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
-      assert "/people/v2/lists/" == conn.request_path
+      assert "/people/v2/lists" == conn.request_path
       assert "GET" == conn.method
       Plug.Conn.resp(conn, 200, Fixture.read("list.json"))
     end
-    List.get
+    List.list
   end
 
-  test ".get returns a list of Record structs", %{bypass: bypass} do
+  test ".list returns a list of Record structs", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       Plug.Conn.resp(conn, 200, Fixture.read("lists.json"))
     end
-    assert [%PcoApi.Record{} | _rest] = List.get
+    assert [%PcoApi.Record{} | _rest] = List.list
   end
 
   test ".get(id) returns a single record", %{bypass: bypass} do
@@ -83,15 +83,26 @@ defmodule PcoApi.People.ListTest do
     assert %PcoApi.Record{} = bypass |> record_with_links |> List.updated_by
   end
 
+  test ".run POSTs to the list's URL", %{bypass: bypass} do
+    Bypass.expect bypass, fn conn ->
+      assert "/people/v2/lists/1/run" == conn.request_path
+      assert "POST" == conn.method
+      Plug.Conn.resp conn, 200, Fixture.dummy
+    end
+    record_with_links(bypass) |> List.run
+  end
+
   defp record_with_links(bypass) do
     %PcoApi.Record{
+      type: "List",
       links: %{
         "created_by" => "http://localhost:#{bypass.port}/people/v2/people/1",
         "owner" => "http://localhost:#{bypass.port}/people/v2/people/2",
         "people" => "http://locahost:#{bypass.port}/people/v2/lists/1/people",
         "rules" => "http://localhost:#{bypass.port}/people/v2/lists/1/rules",
         "shares" => "http://localhost:#{bypass.port}/people/v2/lists/1/shares",
-        "updated_by" => "http://localhost:#{bypass.port}/people/v2/lists/1/updated_by"
+        "updated_by" => "http://localhost:#{bypass.port}/people/v2/lists/1/updated_by",
+        "self" => "http://localhost:#{bypass.port}/people/v2/lists/1"
       }
     }
   end

@@ -11,20 +11,20 @@ defmodule PcoApi.People.WorkflowTest do
   end
 
   # .get
-  test ".get requests the v2 endpoint", %{bypass: bypass} do
+  test ".list requests the v2 endpoint", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
-      assert "/people/v2/workflows/" == conn.request_path
+      assert "/people/v2/workflows" == conn.request_path
       assert "GET" == conn.method
       Plug.Conn.resp(conn, 200, Fixture.read("workflow.json"))
     end
-    Workflow.get
+    Workflow.list
   end
 
-  test ".get returns a list of Record structs", %{bypass: bypass} do
+  test ".list returns a list of Record structs", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       Plug.Conn.resp(conn, 200, Fixture.read("workflows.json"))
     end
-    assert [%PcoApi.Record{} | _rest] = Workflow.get
+    assert [%PcoApi.Record{} | _rest] = Workflow.list
   end
 
   test ".get(id) returns a single record", %{bypass: bypass} do
@@ -36,24 +36,14 @@ defmodule PcoApi.People.WorkflowTest do
     assert %PcoApi.Record{id: "1"} = workflow
   end
 
-  test ".get queries from a params list", %{bypass: bypass} do
+  test ".list queries from a params list", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
-      assert "/people/v2/workflows/" == conn.request_path
+      assert "/people/v2/workflows" == conn.request_path
       assert "where%5Bname%5D=Visitors" == conn.query_string
       Plug.Conn.resp(conn, 200, Fixture.read("workflows.json"))
     end
     PcoApi.Query.where(name: "Visitors")
-    |> Workflow.get
-  end
-
-  test ".get queries a params list and a specific path", %{bypass: bypass} do
-    Bypass.expect bypass, fn conn ->
-      assert "/people/v2/workflows/foo" == conn.request_path
-      assert "where%5Bname%5D=Visitors" == conn.query_string
-      Plug.Conn.resp(conn, 200, Fixture.read("workflows.json"))
-    end
-    PcoApi.Query.where(name: "Visitors")
-    |> Workflow.get("foo")
+    |> Workflow.list
   end
 
   test ".self retrieves the details of a Workflow when passed a single record", %{bypass: bypass} do

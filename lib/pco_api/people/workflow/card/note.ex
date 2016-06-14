@@ -8,18 +8,17 @@ defmodule PcoApi.People.Workflow.Card.Note do
   """
 
   use PcoApi.Actions
-  endpoint "people/v2/workflows/"
 
   @doc """
   Gets associated WorkflowCard records from a Workflow Record from links.
 
   ## Example:
 
-      iex> %PcoApi.Record{type: "WorkflowCard", links: %{"notes" => "http://example.com"}} |> PcoApi.People.Workflow.Card.Note.get
+      iex> %PcoApi.Record{type: "WorkflowCard", links: %{"notes" => "http://example.com"}} |> PcoApi.People.Workflow.Card.Note.list
       %PcoApi.Record{type: "WorkflowCardNote", ...}
 
   """
-  def get(%PcoApi.Record{type: "WorkflowCard", links: %{"notes" => url}}), do: get url
+  def list(%PcoApi.Record{type: "WorkflowCard", links: %{"notes" => url}}), do: get url
 
   @doc """
   Gets associated WorkflowCardNotes records from a WorkflowCard Record when no notes link is found.
@@ -29,11 +28,11 @@ defmodule PcoApi.People.Workflow.Card.Note do
 
   ## Example:
 
-      iex> %PcoApi.Record{type: "WorkflowCard", links: %{"self" => "http://example.com"}} |> PcoApi.People.Workflow.Card.Note.get
+      iex> %PcoApi.Record{type: "WorkflowCard", links: %{"self" => "http://example.com"}} |> PcoApi.People.Workflow.Card.Note.list
       #%PcoApi.Record{type: "WorkflowCardNote", ...}
 
   """
-  def get(%PcoApi.Record{type: "WorkflowCard", links: %{"self" => url}}), do: get("#{url}/notes")
+  def list(%PcoApi.Record{type: "WorkflowCard", links: %{"self" => url}}), do: get("#{url}/notes")
 
   @doc """
   Gets a single WorkflowCardNote for a WorkflowCard.
@@ -61,4 +60,8 @@ defmodule PcoApi.People.Workflow.Card.Note do
 
   """
   def get(%PcoApi.Record{type: "WorkflowCard", links: %{"self" => url}}, id), do: get(url <> "/notes/" <> id)
+
+  def new(attrs), do: new(attrs, "WorkflowCardNote")
+
+  def create(%PcoApi.Record{type: "WorkflowCard", links: %{"self" => url}} = card, %PcoApi.Record{type: "WorkflowCardNote"} = record), do: create(record, url <> "/notes")
 end
