@@ -1,0 +1,28 @@
+{
+  "data": {
+    "type": "Rule",
+    "id": "1",
+    "attributes": {
+      "created_at": "2000-01-01T01:00:00Z",
+      "subset": "all",
+      "updated_at": "2000-01-01T01:00:00Z"
+    },
+    "links": {
+      "conditions": "https:\/\/api.planningcenteronline.com\/people\/v2\/lists\/1\/rules\/1\/conditions",
+      "results": "https:\/\/api.planningcenteronline.com\/people\/v2\/lists\/1\/rules\/1\/results",
+      "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/lists\/1\/rules\/1"
+    }
+  },
+  "included": [
+
+  ],
+  "meta": {
+    "can_include": [
+      "conditions"
+    ],
+    "parent": {
+      "id": "1",
+      "type": "List"
+    }
+  }
+}

@@ -1,1 +1,101 @@
-{"links":{"self":"https://api.planningcenteronline.com/people/v2/lists"},"data":[{"type":"List","id":"7746","attributes":{"batch_completed_at":"2016-05-29T09:00:39Z","created_at":"2015-04-27T17:59:50Z","description":"Birthdate month is 'June'","has_inactive_results":false,"include_inactive":false,"name":"Birthday list","return_original_if_none":true,"returns":"exact","status":"complete","subset":"all","total_people":18,"updated_at":"2016-05-29T09:00:39Z"},"links":{"self":"https://api.planningcenteronline.com/people/v2/lists/7746"}},{"type":"List","id":"9205","attributes":{"batch_completed_at":"2016-05-12T23:02:53Z","created_at":"2015-05-13T02:01:28Z","description":"Very Full Workflow never added","has_inactive_results":true,"include_inactive":false,"name":null,"return_original_if_none":true,"returns":"exact","status":"complete","subset":"all","total_people":360,"updated_at":"2016-05-12T23:02:53Z"},"links":{"self":"https://api.planningcenteronline.com/people/v2/lists/9205"}},{"type":"List","id":"9299","attributes":{"batch_completed_at":"2016-05-29T09:04:19Z","created_at":"2015-05-13T19:58:11Z","description":"Membership Status is 'Active' AND Age between '18' and '25' AND Gender is 'Male'","has_inactive_results":false,"include_inactive":false,"name":"Adult Class Roster","return_original_if_none":true,"returns":"exact","status":"complete","subset":"all","total_people":11,"updated_at":"2016-05-29T09:04:19Z"},"links":{"self":"https://api.planningcenteronline.com/people/v2/lists/9299"}},{"type":"List","id":"10075","attributes":{"batch_completed_at":"2015-06-29T19:54:11Z","created_at":"2015-05-20T13:54:21Z","description":"Applications in 'Services'","has_inactive_results":null,"include_inactive":false,"name":"In Services","return_original_if_none":true,"returns":"exact","status":"complete","subset":"all","total_people":278,"updated_at":"2015-06-29T19:54:11Z"},"links":{"self":"https://api.planningcenteronline.com/people/v2/lists/10075"}},{"type":"List","id":"12559","attributes":{"batch_completed_at":"2016-05-13T16:43:25Z","created_at":"2015-06-17T18:45:35Z","description":"Last Scheduled in the last 2 months","has_inactive_results":false,"include_inactive":false,"name":"Newly created","return_original_if_none":true,"returns":"exact","status":"complete","subset":"all","total_people":115,"updated_at":"2016-05-13T16:43:25Z"},"links":{"self":"https://api.planningcenteronline.com/people/v2/lists/12559"}},{"type":"List","id":"12905","attributes":{"batch_completed_at":"2015-09-09T18:31:04Z","created_at":"2015-06-22T20:27:25Z","description":"First Name starts with 'A'  Last Name starts with 'C'  Middle Name starts with 'J'","has_inactive_results":null,"include_inactive":false,"name":"Cool List Bro","return_original_if_none":true,"returns":"exact","status":"complete","subset":"all","total_people":56,"updated_at":"2015-09-09T18:31:04Z"},"links":{"self":"https://api.planningcenteronline.com/people/v2/lists/12905"}},{"type":"List","id":"13033","attributes":{"batch_completed_at":"2015-06-23T18:44:34Z","created_at":"2015-06-23T18:44:32Z","description":"Checkboxes includes all","has_inactive_results":null,"include_inactive":false,"name":"Test https://trello.com/c/CJ4eHiqQ","return_original_if_none":true,"returns":"exact","status":"complete","subset":"all","total_people":0,"updated_at":"2015-06-23T18:44:34Z"},"links":{"self":"https://api.planningcenteronline.com/people/v2/lists/13033"}},{"type":"List","id":"13955","attributes":{"batch_completed_at":"2016-01-25T01:17:35Z","created_at":"2015-07-02T15:14:17Z","description":"First Name is 'Shane'","has_inactive_results":false,"include_inactive":false,"name":"Shared with Editors","return_original_if_none":true,"returns":"exact","status":"complete","subset":"all","total_people":9,"updated_at":"2016-01-25T01:17:35Z"},"links":{"self":"https://api.planningcenteronline.com/people/v2/lists/13955"}},{"type":"List","id":"13957","attributes":{"batch_completed_at":"2015-07-02T15:14:50Z","created_at":"2015-07-02T15:14:47Z","description":"First Name starts with 'Shane'","has_inactive_results":null,"include_inactive":false,"name":"Shared with Managers","return_original_if_none":true,"returns":"exact","status":"complete","subset":"all","total_people":9,"updated_at":"2015-07-02T15:14:50Z"},"links":{"self":"https://api.planningcenteronline.com/people/v2/lists/13957"}},{"type":"List","id":"15858","attributes":{"batch_completed_at":"2016-05-19T18:50:37Z","created_at":"2015-07-22T19:29:33Z","description":"Last Scheduled Plan in the last 24 weeks","has_inactive_results":true,"include_inactive":false,"name":null,"return_original_if_none":true,"returns":"exact","status":"complete","subset":"all","total_people":78,"updated_at":"2016-05-19T18:50:37Z"},"links":{"self":"https://api.planningcenteronline.com/people/v2/lists/15858"}},{"type":"List","id":"29597","attributes":{"batch_completed_at":"2015-10-13T16:31:31Z","created_at":"2015-10-13T16:09:05Z","description":"First Time Visitors has been completed","has_inactive_results":null,"include_inactive":false,"name":null,"return_original_if_none":true,"returns":"exact","status":"complete","subset":"all","total_people":1,"updated_at":"2015-10-13T16:31:31Z"},"links":{"self":"https://api.planningcenteronline.com/people/v2/lists/29597"}},{"type":"List","id":"31589","attributes":{"batch_completed_at":"2016-04-12T22:43:24Z","created_at":"2015-10-22T20:05:32Z","description":"Facebook exists OR Twitter exists OR LinkedIn exists OR Instagram exists","has_inactive_results":true,"include_inactive":false,"name":null,"return_original_if_none":true,"returns":"exact","status":"complete","subset":"all","total_people":73,"updated_at":"2016-04-12T22:43:24Z"},"links":{"self":"https://api.planningcenteronline.com/people/v2/lists/31589"}},{"type":"List","id":"34677","attributes":{"batch_completed_at":"2016-05-29T09:04:06Z","created_at":"2015-11-05T14:12:00Z","description":"Membership Status is 'Inactive'","has_inactive_results":true,"include_inactive":true,"name":"Inactive Peeps","return_original_if_none":true,"returns":"exact","status":"complete","subset":"all","total_people":19,"updated_at":"2016-05-29T09:04:06Z"},"links":{"self":"https://api.planningcenteronline.com/people/v2/lists/34677"}},{"type":"List","id":"37147","attributes":{"batch_completed_at":"2016-05-29T09:04:06Z","created_at":"2015-11-18T13:51:42Z","description":"Baptism Date on '03/29/2016'","has_inactive_results":false,"include_inactive":false,"name":"7pm Welcome Team - ","return_original_if_none":true,"returns":"exact","status":"complete","subset":"all","total_people":0,"updated_at":"2016-05-29T09:04:06Z"},"links":{"self":"https://api.planningcenteronline.com/people/v2/lists/37147"}},{"type":"List","id":"51159","attributes":{"batch_completed_at":"2016-04-04T15:35:55Z","created_at":"2016-01-22T14:00:23Z","description":"First Name starts with 'Scott'","has_inactive_results":false,"include_inactive":false,"name":"The Scotts","return_original_if_none":true,"returns":"exact","status":"complete","subset":"all","total_people":8,"updated_at":"2016-04-04T15:35:55Z"},"links":{"self":"https://api.planningcenteronline.com/people/v2/lists/51159"}},{"type":"List","id":"54133","attributes":{"batch_completed_at":"2016-05-29T09:05:18Z","created_at":"2016-02-01T18:38:58Z","description":"Life Track has been completed AND NOT Membership Type is 'Member'","has_inactive_results":false,"include_inactive":false,"name":"Workflow \"Life Track\" Complete (staging)","return_original_if_none":true,"returns":"exact","status":"complete","subset":"all","total_people":0,"updated_at":"2016-05-29T09:05:18Z"},"links":{"self":"https://api.planningcenteronline.com/people/v2/lists/54133"}},{"type":"List","id":"78723","attributes":{"batch_completed_at":"2016-05-18T18:30:49Z","created_at":"2016-04-12T23:01:52Z","description":"Kids Who Need Grades on step 'Give them a grade' AND Updated after '11/25/2014'","has_inactive_results":false,"include_inactive":false,"name":"Kids who need grades Workflow","return_original_if_none":true,"returns":"exact","status":"complete","subset":"all","total_people":1,"updated_at":"2016-05-18T18:30:49Z"},"links":{"self":"https://api.planningcenteronline.com/people/v2/lists/78723"}},{"type":"List","id":"90577","attributes":{"batch_completed_at":"2016-05-25T21:59:05Z","created_at":"2016-05-17T22:28:51Z","description":"Life Track Steps has been completed any time","has_inactive_results":false,"include_inactive":true,"name":"Newbies in the last 6 mos","return_original_if_none":true,"returns":"exact","status":"complete","subset":"all","total_people":1,"updated_at":"2016-05-25T21:59:05Z"},"links":{"self":"https://api.planningcenteronline.com/people/v2/lists/90577"}},{"type":"List","id":"90595","attributes":{"batch_completed_at":"2016-05-17T22:44:05Z","created_at":"2016-05-17T22:41:52Z","description":"Life Track Steps has been completed any time","has_inactive_results":true,"include_inactive":true,"name":null,"return_original_if_none":true,"returns":"exact","status":"complete","subset":"all","total_people":0,"updated_at":"2016-05-17T22:44:05Z"},"links":{"self":"https://api.planningcenteronline.com/people/v2/lists/90595"}},{"type":"List","id":"91723","attributes":{"batch_completed_at":"2016-05-21T00:02:32Z","created_at":"2016-05-20T15:38:37Z","description":"Created after '05/18/2016'","has_inactive_results":false,"include_inactive":false,"name":null,"return_original_if_none":true,"returns":"exact","status":"complete","subset":"all","total_people":11,"updated_at":"2016-05-21T00:02:32Z"},"links":{"self":"https://api.planningcenteronline.com/people/v2/lists/91723"}}],"included":[],"meta":{"total_count":20,"count":20,"can_order_by":["name","batch_completed_at","created_at","updated_at"],"can_query_by":["name","batch_completed_at","created_at","updated_at"],"can_include":["created_by","updated_by","owner","people","rules","shares"],"parent":{"id":"127","type":"Organization"}}}
+{
+  "links": {
+    "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/lists"
+  },
+  "data": [
+    {
+      "type": "List",
+      "id": "1",
+      "attributes": {
+        "batch_completed_at": "2000-01-01T01:00:00Z",
+        "created_at": "2000-01-01T01:00:00Z",
+        "description": "Inactive Membership Status is 'Inactive'",
+        "has_inactive_results": true,
+        "include_inactive": true,
+        "name": "Inactive Peeps",
+        "return_original_if_none": true,
+        "returns": "exact",
+        "status": "complete",
+        "subset": "all",
+        "total_people": 20,
+        "updated_at": "2000-01-01T01:00:00Z"
+      },
+      "links": {
+        "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/lists\/1"
+      }
+    },
+    {
+      "type": "List",
+      "id": "2",
+      "attributes": {
+        "batch_completed_at": "2000-01-01T01:00:00Z",
+        "created_at": "2000-01-01T01:00:00Z",
+        "description": "Life Track has been completed AND NOT Membership Type is 'Member'",
+        "has_inactive_results": false,
+        "include_inactive": false,
+        "name": "Workflow \"Life Track\" Complete (staging)",
+        "return_original_if_none": true,
+        "returns": "exact",
+        "status": "complete",
+        "subset": "all",
+        "total_people": 30,
+        "updated_at": "2000-01-01T01:00:00Z"
+      },
+      "links": {
+        "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/lists\/2"
+      }
+    },
+    {
+      "type": "List",
+      "id": "3",
+      "attributes": {
+        "batch_completed_at": "2000-01-01T01:00:00Z",
+        "created_at": "2000-01-01T01:00:00Z",
+        "description": "Membership Status is 'Active' AND Age between '18' and '25'",
+        "has_inactive_results": false,
+        "include_inactive": false,
+        "name": "Adult Class Roster",
+        "return_original_if_none": true,
+        "returns": "exact",
+        "status": "complete",
+        "subset": "all",
+        "total_people": 40,
+        "updated_at": "2000-01-01T01:00:00Z"
+      },
+      "links": {
+        "self": "https:\/\/api.planningcenteronline.com\/people\/v2\/lists\/3"
+      }
+    }
+  ],
+  "included": [
+
+  ],
+  "meta": {
+    "total_count": 3,
+    "count": 3,
+    "can_order_by": [
+      "name",
+      "batch_completed_at",
+      "created_at",
+      "updated_at"
+    ],
+    "can_query_by": [
+      "name",
+      "batch_completed_at",
+      "created_at",
+      "updated_at"
+    ],
+    "can_include": [
+      "created_by",
+      "updated_by",
+      "owner",
+      "people",
+      "rules",
+      "shares"
+    ],
+    "parent": {
+      "id": "1",
+      "type": "Organization"
+    }
+  }
+}
