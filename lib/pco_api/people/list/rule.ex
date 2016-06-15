@@ -8,7 +8,6 @@ defmodule PcoApi.People.List.Rule do
   """
 
   use PcoApi.Actions
-  endpoint "people/v2/"
 
   import PcoApi.RecordAssociation
   linked_association :conditions
@@ -23,7 +22,7 @@ defmodule PcoApi.People.List.Rule do
       %PcoApi.Record{type: "Rule", ...}
 
   """
-  def get(%PcoApi.Record{type: "List", links: %{"rules" => url}}), do: get url
+  def list(%PcoApi.Record{type: "List", links: %{"rules" => url}}), do: get url
 
   @doc """
   Gets associated Rule records from a List Record when no rules link is found.
@@ -37,7 +36,7 @@ defmodule PcoApi.People.List.Rule do
       %PcoApi.Record{type: "Rule", id: 1, ...}
 
   """
-  def get(%PcoApi.Record{type: "List", id: id}), do: get("lists/#{id}/rules")
+  def list(%PcoApi.Record{type: "List", id: id}), do: get("lists/#{id}/rules")
 
   @doc """
   Gets a single Rule for a List.
