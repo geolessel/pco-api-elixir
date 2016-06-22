@@ -7,8 +7,7 @@ defmodule PcoApi.People.Workflow.Card do
   associated WorkflowCards.
   """
 
-  use PcoApi.Actions
-  endpoint "people/v2/"
+  use PcoApi.Actions, only: [:get, :list]
 
   import PcoApi.RecordAssociation
   linked_association :activities
@@ -25,7 +24,7 @@ defmodule PcoApi.People.Workflow.Card do
       %PcoApi.Record{type: "WorkflowCard", ...}
 
   """
-  def get(%PcoApi.Record{type: "Workflow", links: %{"cards" => url}}), do: get url
+  def list(%PcoApi.Record{type: "Workflow", links: %{"cards" => url}}), do: get url
 
   @doc """
   Gets associated WorkflowCard records from a Workflow Record when no cards link is found.
@@ -39,7 +38,7 @@ defmodule PcoApi.People.Workflow.Card do
       %PcoApi.Record{type: "WorkflowCard", id: 1, ...}
 
   """
-  def get(%PcoApi.Record{type: "Workflow", id: id}), do: get("workflows/#{id}/cards")
+  def list(%PcoApi.Record{type: "Workflow", id: id}), do: get("workflows/#{id}/cards")
 
   @doc """
   Gets a single WorkflowCard for a Workflow.

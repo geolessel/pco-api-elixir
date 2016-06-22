@@ -10,20 +10,20 @@ defmodule PcoApi.People.TabTest do
     {:ok, bypass: bypass}
   end
 
-  test ".get requests the v2 endpoint", %{bypass: bypass} do
+  test ".list requests the v2 endpoint", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
-      assert "/people/v2/tabs/" == conn.request_path
+      assert "/people/v2/tabs" == conn.request_path
       assert "GET" == conn.method
       Plug.Conn.resp(conn, 200, Fixture.read("tab.json"))
     end
-    Tab.get
+    Tab.list
   end
 
-  test ".get returns a list of Record structs", %{bypass: bypass} do
+  test ".list returns a list of Record structs", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       Plug.Conn.resp(conn, 200, Fixture.read("tabs.json"))
     end
-    assert [%PcoApi.Record{} | _rest] = Tab.get
+    assert [%PcoApi.Record{} | _rest] = Tab.list
   end
 
   test ".get(id) returns a single record", %{bypass: bypass} do
@@ -35,24 +35,14 @@ defmodule PcoApi.People.TabTest do
     assert %PcoApi.Record{id: "1"} = tab
   end
 
-  test ".get queries from a params list", %{bypass: bypass} do
+  test ".list queries from a params list", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
-      assert "/people/v2/tabs/" == conn.request_path
+      assert "/people/v2/tabs" == conn.request_path
       assert "where%5Bname%5D=Employment" == conn.query_string
       Plug.Conn.resp(conn, 200, Fixture.read("tabs.json"))
     end
     PcoApi.Query.where(name: "Employment")
-    |> Tab.get
-  end
-
-  test ".get queries a params list and a specific path", %{bypass: bypass} do
-    Bypass.expect bypass, fn conn ->
-      assert "/people/v2/tabs/foo" == conn.request_path
-      assert "where%5Bname%5D=Employment" == conn.query_string
-      Plug.Conn.resp(conn, 200, Fixture.read("tabs.json"))
-    end
-    PcoApi.Query.where(name: "Employment")
-    |> Tab.get("foo")
+    |> Tab.list
   end
 
   test ".self retrieves the details of a Tab when passed a single record", %{bypass: bypass} do
@@ -80,6 +70,19 @@ defmodule PcoApi.People.TabTest do
     assert [%PcoApi.Record{type: "FieldDefinition"} | _rest] = record_with_link |> Tab.field_definitions
   end
 
+  test ".new returns a Tab Record" do
+    assert %PcoApi.Record{type: "Tab"} = new_tab
+  end
+
+  test ".create POSTs to the tab endpoint", %{bypass: bypass} do
+    Bypass.expect bypass, fn conn ->
+      assert "/people/v2/tabs" == conn.request_path
+      assert "POST" == conn.method
+      Plug.Conn.resp(conn, 200, Fixture.dummy)
+    end
+    new_tab |> Tab.create
+  end
+
   def record_with_link do
     field_definitions_url = "https://api.planningcenteronline.com/people/v2/tabs/1/field_definitions"
     self_url = "https://api.planningcenteronline.com/people/v2/tabs"
@@ -87,5 +90,9 @@ defmodule PcoApi.People.TabTest do
       links: %{"field_definitions" => field_definitions_url, "self" => self_url},
       type: "Tab"
     }
+  end
+
+  def new_tab do
+    Tab.new(name: "My Tab", sequence: 1, slug: "my-tab")
   end
 end

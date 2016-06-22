@@ -8,7 +8,6 @@ defmodule PcoApi.People.SocialProfile do
   """
 
   use PcoApi.Actions
-  endpoint "people/v2/"
 
   import PcoApi.RecordAssociation
   linked_association :person
@@ -22,7 +21,7 @@ defmodule PcoApi.People.SocialProfile do
       %PcoApi.Record{type: "SocialProfile", ...}
 
   """
-  def get(%PcoApi.Record{type: "Person", links: %{"social_profiles" => url}}), do: get url
+  def list(%PcoApi.Record{type: "Person", links: %{"social_profiles" => url}}), do: get url
 
   @doc """
   Gets associated SocialProfile records from a Person record when no cards link is found.
@@ -36,7 +35,7 @@ defmodule PcoApi.People.SocialProfile do
       %PcoApi.Record{type: "SocialProfile", id: 1, ...}
 
   """
-  def get(%PcoApi.Record{type: "Person", id: id}), do: get("people/#{id}/social_profiles")
+  def list(%PcoApi.Record{type: "Person", id: id}), do: get("people/#{id}/social_profiles")
 
   @doc """
   Gets a single SocialProfile for a Person.
@@ -50,4 +49,10 @@ defmodule PcoApi.People.SocialProfile do
 
   """
   def get(%PcoApi.Record{type: "Person", id: person_id}, id), do: get("people/#{person_id}/social_profiles/#{id}")
+
+  def create(%PcoApi.Record{type: "Person"} = person, %PcoApi.Record{type: "SocialProfile"} = record), do: create(record, "people/#{person.id}/social_profiles")
+
+  def self(%PcoApi.Record{type: "SocialProfile", links: %{"self" => url}}), do: get url
+
+  def new(attrs) when is_list(attrs), do: new(attrs, "SocialProfile")
 end

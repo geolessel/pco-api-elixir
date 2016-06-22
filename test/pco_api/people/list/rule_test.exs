@@ -9,29 +9,29 @@ defmodule PcoApi.People.List.RuleTest do
     {:ok, bypass: bypass}
   end
 
-  test ".get requests the v2 endpoint", %{bypass: bypass} do
+  test ".list requests the v2 endpoint", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert conn.request_path |> String.match?(~r|people/v2|)
       assert "GET" == conn.method
       Plug.Conn.resp(conn, 200, Fixture.read("rules.json"))
     end
-    bypass |> record_with_link |> Rule.get
+    bypass |> record_with_link |> Rule.list
   end
 
-  test ".get gets rules with a rules link", %{bypass: bypass} do
+  test ".list gets rules with a rules link", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/lists/1/rules" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("rules.json"))
     end
-    bypass |> record_with_link |> Rule.get
+    bypass |> record_with_link |> Rule.list
   end
 
-  test ".get gets rules without a rules link", %{bypass: bypass} do
+  test ".list gets rules without a rules link", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/lists/1/rules" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("rules.json"))
     end
-    record_without_link |> Rule.get
+    record_without_link |> Rule.list
   end
 
   test ".get gets rules by rule id", %{bypass: bypass} do

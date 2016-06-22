@@ -9,29 +9,37 @@ defmodule PcoApi.People.AddressTest do
     {:ok, bypass: bypass}
   end
 
-  test ".get requests the v2 endpoint", %{bypass: bypass} do
+  test ".list requests the v2 endpoint", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert conn.request_path |> String.match?(~r|people/v2|)
       assert "GET" == conn.method
       Plug.Conn.resp(conn, 200, Fixture.read("addresses.json"))
     end
-    record_with_link |> Address.get
+    record_with_link |> Address.list
   end
 
-  test ".get gets addresses with an addresses link", %{bypass: bypass} do
+  test ".list lists addresses with an addresses link", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/people/1/addresses" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("addresses.json"))
     end
-    record_with_link |> Address.get
+    record_with_link |> Address.list
   end
 
-  test ".get gets addresses without an address link", %{bypass: bypass} do
+  test ".list lists addresses without an address link", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/people/1/addresses" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("addresses.json"))
     end
-    record_without_link |> Address.get
+    record_without_link |> Address.list
+  end
+
+  test ".list lists addresses by person id", %{bypass: bypass} do
+    Bypass.expect bypass, fn conn ->
+      assert "/people/v2/people/1/addresses" == conn.request_path
+      Plug.Conn.resp(conn, 200, Fixture.read("addresses.json"))
+    end
+    record_without_link |> Address.list
   end
 
   test ".get gets addresses by address id", %{bypass: bypass} do

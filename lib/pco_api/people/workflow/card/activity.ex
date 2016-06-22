@@ -7,19 +7,18 @@ defmodule PcoApi.People.Workflow.Card.Activity do
   associated WorkflowCardActivities.
   """
 
-  use PcoApi.Actions
-  endpoint "people/v2/workflows/"
+  use PcoApi.Actions, only: [:get, :list]
 
   @doc """
   Gets associated WorkflowCard records from a Workflow Record from links.
 
   ## Example:
 
-      iex> %PcoApi.Record{type: "WorkflowCard", links: %{"activities" => "http://example.com"}} |> PcoApi.People.Workflow.Card.Activity.get
+      iex> %PcoApi.Record{type: "WorkflowCard", links: %{"activities" => "http://example.com"}} |> PcoApi.People.Workflow.Card.Activity.list
       %PcoApi.Record{type: "WorkflowCardActivity", ...}
 
   """
-  def get(%PcoApi.Record{type: "WorkflowCard", links: %{"activities" => url}}), do: get url
+  def list(%PcoApi.Record{type: "WorkflowCard", links: %{"activities" => url}}), do: get url
 
   @doc """
   Gets associated WorkflowCardActivities records from a WorkflowCard Record when no activities link is found.
@@ -29,11 +28,11 @@ defmodule PcoApi.People.Workflow.Card.Activity do
 
   ## Example:
 
-      iex> %PcoApi.Record{type: "WorkflowCard", links: %{"self" => "http://example.com"}} |> PcoApi.People.Workflow.Card.Activity.get
+      iex> %PcoApi.Record{type: "WorkflowCard", links: %{"self" => "http://example.com"}} |> PcoApi.People.Workflow.Card.Activity.list
       #%PcoApi.Record{type: "WorkflowCardActivity", ...}
 
   """
-  def get(%PcoApi.Record{type: "WorkflowCard", links: %{"self" => url}}), do: get("#{url}/activities")
+  def list(%PcoApi.Record{type: "WorkflowCard", links: %{"self" => url}}), do: get("#{url}/activities")
 
   @doc """
   Gets a single WorkflowCardActivity for a WorkflowCard.

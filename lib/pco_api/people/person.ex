@@ -1,8 +1,4 @@
 defmodule PcoApi.People.Person do
-  use PcoApi.Actions
-  endpoint "people/v2/people/"
-  record_type "Person"
-
   import PcoApi.RecordAssociation
   linked_association :addresses
   linked_association :apps
@@ -20,4 +16,17 @@ defmodule PcoApi.People.Person do
   linked_association :phone_numbers
   linked_association :school
   linked_association :social_profiles
+
+  use PcoApi.Actions
+
+  def list, do: list([])
+  def list(params) when is_list(params), do: get(params, "people")
+
+  def get(id) when is_integer(id), do: get("people/#{id}")
+
+  def create(%PcoApi.Record{attributes: _, type: _} = record), do: create(record, "people")
+
+  def self(%PcoApi.Record{id: id}), do: get "people/#{id}"
+
+  def new(attrs) when is_list(attrs), do: new(attrs, "Person")
 end
