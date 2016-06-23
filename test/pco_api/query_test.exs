@@ -30,8 +30,8 @@ defmodule PcoApi.QueryTest do
   end
 
   test "per_page allows piping" do
-    expected = [{"where[b]", "bb"}, {"per_page", "30"}]
-    assert Query.where(b: "bb") |> Query.per_page(30)
+    expected = [{"per_page", "30"}, {"where[b]", "bb"}]
+    assert (Query.where(b: "bb") |> Query.per_page(30)) == expected
   end
 
   test "after_record with an integer returns a param tuple" do
@@ -46,6 +46,6 @@ defmodule PcoApi.QueryTest do
 
   test "after_record allows piping" do
     expected = [{"after", "100"}, {"per_page", "100"}]
-    assert Query.per_page(100) |> Query.after_record(100)
+    assert (Query.per_page(100) |> Query.after_record(100)) == expected
   end
 end

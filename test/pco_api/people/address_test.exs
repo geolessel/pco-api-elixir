@@ -1,5 +1,5 @@
 defmodule PcoApi.People.AddressTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: false
   alias PcoApi.People.Address
   alias TestHelper.Fixture
 
@@ -50,7 +50,7 @@ defmodule PcoApi.People.AddressTest do
     record_without_link |> Address.get(1)
   end
 
-  test ".new builds a record", %{bypass: bypass} do
+  test ".new builds a record" do
     expected =
       %PcoApi.Record{
         attributes: %{

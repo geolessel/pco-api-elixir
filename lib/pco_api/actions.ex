@@ -8,11 +8,11 @@ defmodule PcoApi.Actions do
         true ->
           unquote(opts) |> Keyword.fetch!(:only) |> Enum.each(fn(option) ->
             case option do
-              :list -> use PcoApi.Actions.List
-              :get  -> use PcoApi.Actions.Get
+              :list   -> use PcoApi.Actions.List
+              :get    -> use PcoApi.Actions.Get
               :create -> use PcoApi.Actions.Create
-              :self -> use PcoApi.Actions.Self
-              :new -> use PcoApi.Actions.New
+              :self   -> use PcoApi.Actions.Self
+              :new    -> use PcoApi.Actions.New
             end
           end)
         _ ->

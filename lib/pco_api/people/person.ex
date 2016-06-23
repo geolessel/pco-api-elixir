@@ -2,7 +2,7 @@ defmodule PcoApi.People.Person do
   import PcoApi.RecordAssociation
   linked_association :addresses
   linked_association :apps
-  linked_association :connnected_people
+  linked_association :connected_people
   linked_association :emails
   linked_association :field_data
   linked_association :household_memberships
