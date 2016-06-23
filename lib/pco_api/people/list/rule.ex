@@ -22,7 +22,7 @@ defmodule PcoApi.People.List.Rule do
       %PcoApi.Record{type: "Rule", ...}
 
   """
-  def list(%PcoApi.Record{type: "List", links: %{"rules" => url}}), do: get url
+  def list(%PcoApi.Record{type: "List", links: %{"rules" => url}}), do: get(url)
 
   @doc """
   Gets associated Rule records from a List Record when no rules link is found.
