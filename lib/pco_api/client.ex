@@ -27,7 +27,10 @@ defmodule PcoApi.Client do
       end
 
       defp process_response_body(body) do
-        body |> Poison.decode!
+        cond do
+          body |> String.match?(~r|access denied|i) -> raise "Access denied. You may not have permission to view this resource."
+          true -> body |> Poison.decode!
+        end
       end
     end
   end

@@ -1,6 +1,6 @@
 defmodule PcoApi.People.List.Rule.Result do
 
-  use PcoApi.Actions, only: [:list, :get, :self]
+  use PcoApi.Actions, only: [:list, :get]
   import PcoApi.RecordAssociation
   linked_association :person
 

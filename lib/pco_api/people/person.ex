@@ -19,7 +19,6 @@ defmodule PcoApi.People.Person do
 
   use PcoApi.Actions
 
-  def list, do: list([])
   def list(params) when is_list(params), do: get(params, "people")
 
   def get(id) when is_integer(id), do: get("people/#{id}")

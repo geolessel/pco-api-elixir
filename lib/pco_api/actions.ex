@@ -11,10 +11,10 @@ defmodule PcoApi.Actions do
               :list   -> use PcoApi.Actions.List
               :get    -> use PcoApi.Actions.Get
               :create -> use PcoApi.Actions.Create
-              :self   -> use PcoApi.Actions.Self
               :new    -> use PcoApi.Actions.New
             end
           end)
+          use PcoApi.Actions.Self
         _ ->
           use PcoApi.Actions.List
           use PcoApi.Actions.Get
