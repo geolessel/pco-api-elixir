@@ -15,7 +15,7 @@ defmodule PcoApi.People.Report do
 
   def create(%PcoApi.Record{attributes: _, type: "Report"} = record), do: create(record, "reports")
 
-  def self(%PcoApi.Record{id: id}), do: get "reports/#{id}"
+  def self(%PcoApi.Record{type: "Report", id: id}), do: get "reports/#{id}"
 
   def new(attrs) when is_list(attrs), do: new(attrs, "Report")
 end

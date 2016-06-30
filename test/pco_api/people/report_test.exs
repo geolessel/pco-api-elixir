@@ -37,7 +37,7 @@ defmodule PcoApi.People.ReportTest do
 
   test ".created_by gets the list's creator", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
-      assert "/people/v2/people/1" == conn.request_path
+      assert "/people/v2/people/2" == conn.request_path
       Plug.Conn.resp conn, 200, Fixture.read("report.json")
     end
     assert %PcoApi.Record{} = bypass |> record_with_links |> Report.created_by
@@ -45,7 +45,7 @@ defmodule PcoApi.People.ReportTest do
 
   test ".updated_by gets list updated_by", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
-      assert "/people/v2/people/1" == conn.request_path
+      assert "/people/v2/people/3" == conn.request_path
       Plug.Conn.resp conn, 200, Fixture.dummy
     end
     assert %PcoApi.Record{} = bypass |> record_with_links |> Report.updated_by
@@ -56,7 +56,7 @@ defmodule PcoApi.People.ReportTest do
       assert "/people/v2/reports/1000" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("report.json"))
     end
-    %PcoApi.Record{id: "1000", links: %{}} |> Report.self
+    %PcoApi.Record{id: "1000", type: "Report", links: %{}} |> Report.self
   end
 
 
@@ -83,8 +83,8 @@ defmodule PcoApi.People.ReportTest do
     %PcoApi.Record{
       type: "Report",
       links: %{
-        "created_by" => "http://localhost:#{bypass.port}/people/v2/people/1",
-        "updated_by" => "http://localhost:#{bypass.port}/people/v2/people/1",
+        "created_by" => "http://localhost:#{bypass.port}/people/v2/people/2",
+        "updated_by" => "http://localhost:#{bypass.port}/people/v2/people/3",
         "self" => "http://localhost:#{bypass.port}/people/v2/reports/1"
       }
     }
