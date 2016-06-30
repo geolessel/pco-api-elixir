@@ -59,6 +59,13 @@ defmodule PcoApi.People.ReportTest do
     %PcoApi.Record{id: "1000", type: "Report", links: %{}} |> Report.self
   end
 
+  test ".new with attributes builds a PcoApi.Record" do
+    expected = %PcoApi.Record{attributes: %{
+                                 "name" => "Jesse's Report",
+                                 "body" => "<h1>Jesse's Report</h1>"},
+                              type: "Report"}
+    assert Report.new(name: "Jesse's Report", body: "<h1>Jesse's Report</h1>") == expected
+  end
 
   test ".create with a record link and no url creates a record", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
