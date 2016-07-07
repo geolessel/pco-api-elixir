@@ -45,14 +45,14 @@ defmodule PcoApi.People.MessageTest do
     message |> Message.to
   end
 
-  def message do
-    url_root = "https://api.planningcenteronline.com/people/v2/messages/1"
+  defp message do
+    url_root = "https://api.planningcenteronline.com/people/v2/messages/1/"
     %PcoApi.Record{
       type: "Message",
       id: "1",
       links: %{
-        "message_group" => url_root <> "/message_group",
-        "to" => url_root <> "/to"
+        "message_group" => url_root <> "message_group",
+        "to" => url_root <> "to"
       }
     }
   end
