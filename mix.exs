@@ -51,7 +51,7 @@ defmodule PcoApi.Mixfile do
     [
       name: :pco_api,
       maintainers: ["Geoffrey Lessel", "Jesse Anderson"],
-      licenses: ["Apache 2.0"],
+      licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/geolessel/pco-api-elixir"}
     ]
   end

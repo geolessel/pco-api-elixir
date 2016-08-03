@@ -10,7 +10,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
      ```elixir
      def deps do
-       [{:pco_api, "~> 0.0.1"}]
+       [{:pco_api, "~> 0.1.0"}]
      end
      ```
 
