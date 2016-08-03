@@ -3,10 +3,12 @@ defmodule PcoApi.Mixfile do
 
   def project do
     [app: :pco_api,
-     version: "0.0.1",
+     version: "0.1.0",
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     description: description,
+     package: package,
      deps: deps]
   end
 
@@ -36,6 +38,21 @@ defmodule PcoApi.Mixfile do
       {:credo, "~> 0.3", only: [:dev, :test]},
       {:bypass, git: "https://github.com/PSPDFKit-labs/bypass", only: :test},
       {:mix_test_watch, "~> 0.2", only: :dev}
+    ]
+  end
+
+  defp description do
+    """
+    An Elixir wrapper for the Planning Center API
+    """
+  end
+
+  defp package do
+    [
+      name: :pco_api,
+      maintainers: ["Geoffrey Lessel", "Jesse Anderson"],
+      licenses: ["Apache 2.0"],
+      links: %{"GitHub" => "https://github.com/geolessel/pco-api-elixir"}
     ]
   end
 end
