@@ -5,8 +5,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.11.5">
-    <title>PcoApi.Query – pco_api v0.0.1</title>
+    <title>PcoApi.Query – pco_api v0.1.0</title>
     <link rel="stylesheet" href="dist/app-ddd9717ad9.css" />
+    
+      <link rel="canonical" href="https://hexdocs.pm/pco_api/PcoApi.Query.html" />
     
     <script src="dist/sidebar_items.js"></script>
   </head>
@@ -28,7 +30,7 @@
         pco_api
       </h1>
       <h2 class="sidebar-projectVersion">
-        v0.0.1
+        v0.1.0
       </h2>
     </div>
     
@@ -60,7 +62,7 @@
 
 
       <h1>
-        <small class="visible-xs">pco_api v0.0.1</small>
+        <small class="visible-xs">pco_api v0.1.0</small>
         PcoApi.Query
         
         
@@ -89,6 +91,36 @@
       <a href="#functions">Functions</a>
     </h2>
     <div class="summary-row">
+  <div class="summary-signature">
+    <a href="#after_record/1">after_record(value)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Creates a List of after params to pass on to the api call</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#after_record/2">after_record(params, value)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#per_page/1">per_page(value)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Creates a list of per_page params to pass on to the api call</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#per_page/2">per_page(params, value)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
   <div class="summary-signature">
     <a href="#where/1">where(param)</a>
   </div>
@@ -125,7 +157,69 @@ Returns a List of Tuples</p>
             </a>
             Functions
           </h1>
-          <div class="detail" id="where/1">
+          <div class="detail" id="after_record/1">
+  <div class="detail-header">
+    <a href="#after_record/1" class="detail-link" title="Link to this function">
+      <i class="icon-link"></i>
+    </a>
+    <span class="signature">after_record(value)</span>
+      
+  </div>
+  
+  <section class="docstring">
+    <p>Creates a List of after params to pass on to the api call.</p>
+<p>Returns a List of Tuples.</p>
+<h2>Examples:</h2>
+<pre><code class="iex elixir">iex&gt; PcoApi.Query.per_page(4) |&gt; PcoApi.Query.after_record(4)
+[{&quot;after&quot;, &quot;4&quot;}, {&quot;per_page&quot;, &quot;4&quot;}]</code></pre>
+
+  </section>
+</div>
+<div class="detail" id="after_record/2">
+  <div class="detail-header">
+    <a href="#after_record/2" class="detail-link" title="Link to this function">
+      <i class="icon-link"></i>
+    </a>
+    <span class="signature">after_record(params, value)</span>
+      
+  </div>
+  
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="per_page/1">
+  <div class="detail-header">
+    <a href="#per_page/1" class="detail-link" title="Link to this function">
+      <i class="icon-link"></i>
+    </a>
+    <span class="signature">per_page(value)</span>
+      
+  </div>
+  
+  <section class="docstring">
+    <p>Creates a list of per_page params to pass on to the api call.</p>
+<p>Returns a List of Tuples.</p>
+<h2>Examples:</h2>
+<pre><code class="iex elixir">iex&gt; PcoApi.Query.where(first_name: &quot;John&quot;) |&gt; PcoApi.Query.per_page(3)
+[{&quot;per_page&quot;, &quot;3&quot;}, {&quot;where[first_name]&quot;, &quot;John&quot;}]</code></pre>
+
+  </section>
+</div>
+<div class="detail" id="per_page/2">
+  <div class="detail-header">
+    <a href="#per_page/2" class="detail-link" title="Link to this function">
+      <i class="icon-link"></i>
+    </a>
+    <span class="signature">per_page(params, value)</span>
+      
+  </div>
+  
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="where/1">
   <div class="detail-header">
     <a href="#where/1" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>

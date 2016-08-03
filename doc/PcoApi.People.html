@@ -5,8 +5,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.11.5">
-    <title>PcoApi.People – pco_api v0.0.1</title>
+    <title>PcoApi.People – pco_api v0.1.0</title>
     <link rel="stylesheet" href="dist/app-ddd9717ad9.css" />
+    
+      <link rel="canonical" href="https://hexdocs.pm/pco_api/PcoApi.People.html" />
     
     <script src="dist/sidebar_items.js"></script>
   </head>
@@ -28,7 +30,7 @@
         pco_api
       </h1>
       <h2 class="sidebar-projectVersion">
-        v0.0.1
+        v0.1.0
       </h2>
     </div>
     
@@ -60,7 +62,7 @@
 
 
       <h1>
-        <small class="visible-xs">pco_api v0.0.1</small>
+        <small class="visible-xs">pco_api v0.1.0</small>
         PcoApi.People
         
         
@@ -109,12 +111,6 @@
     </h2>
     <div class="summary-row">
   <div class="summary-signature">
-    <a href="#api_endpoint/0">api_endpoint()</a>
-  </div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
     <a href="#delete/3">delete(url, headers \\ [], options \\ [])</a>
   </div>
   
@@ -134,13 +130,7 @@ failure</p>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#get/0">get()</a>
-  </div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#get/1">get(id)</a>
+    <a href="#get/1">get(url)</a>
   </div>
   
 </div>
@@ -171,12 +161,6 @@ failure</p>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#get_list/1">get_list(records)</a>
-  </div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
     <a href="#head/3">head(url, headers \\ [], options \\ [])</a>
   </div>
   
@@ -201,12 +185,6 @@ failure</p>
   
     <div class="summary-synopsis"><p>Gets the Person record for the logged in user</p>
 </div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#new/1">new(results)</a>
-  </div>
   
 </div>
 <div class="summary-row">
@@ -268,18 +246,6 @@ failure</p>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#process_response_body/1">process_response_body(body)</a>
-  </div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#process_url/1">process_url(url)</a>
-  </div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
     <a href="#put/4">put(url, body, headers \\ [], options \\ [])</a>
   </div>
   
@@ -335,6 +301,12 @@ of the API but don’t necessarily have an already constructed link</p>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#self/1">self(record)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#start/0">start()</a>
   </div>
   
@@ -372,7 +344,7 @@ of the API but don’t necessarily have an already constructed link</p>
 <div id="t:headers/0" class="type-detail">
   <pre><code class="elixir"><a href="#t:headers/0">headers</a> ::
   [{binary, binary}] |
-  %{binary => binary}</code></pre>
+  %{optional(binary) => binary}</code></pre>
   
 </div>
 
@@ -388,20 +360,7 @@ of the API but don’t necessarily have an already constructed link</p>
             </a>
             Functions
           </h1>
-          <div class="detail" id="api_endpoint/0">
-  <div class="detail-header">
-    <a href="#api_endpoint/0" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
-    </a>
-    <span class="signature">api_endpoint()</span>
-      
-  </div>
-  
-  <section class="docstring">
-    
-  </section>
-</div>
-<div class="detail" id="delete/3">
+          <div class="detail" id="delete/3">
   <div class="detail-header">
     <a href="#delete/3" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
@@ -457,25 +416,12 @@ failure.</p>
 
   </section>
 </div>
-<div class="detail" id="get/0">
-  <div class="detail-header">
-    <a href="#get/0" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
-    </a>
-    <span class="signature">get()</span>
-      
-  </div>
-  
-  <section class="docstring">
-    
-  </section>
-</div>
 <div class="detail" id="get/1">
   <div class="detail-header">
     <a href="#get/1" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
-    <span class="signature">get(id)</span>
+    <span class="signature">get(url)</span>
       
   </div>
   
@@ -552,19 +498,6 @@ failure.</p>
 
   </section>
 </div>
-<div class="detail" id="get_list/1">
-  <div class="detail-header">
-    <a href="#get_list/1" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
-    </a>
-    <span class="signature">get_list(records)</span>
-      
-  </div>
-  
-  <section class="docstring">
-    
-  </section>
-</div>
 <div class="detail" id="head/3">
   <div class="detail-header">
     <a href="#head/3" class="detail-link" title="Link to this function">
@@ -636,19 +569,6 @@ failure.</p>
 <pre><code class="iex elixir">iex&gt; PcoApi.People.me
 %PcoApi.Record{}</code></pre>
 
-  </section>
-</div>
-<div class="detail" id="new/1">
-  <div class="detail-header">
-    <a href="#new/1" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
-    </a>
-    <span class="signature">new(results)</span>
-      
-  </div>
-  
-  <section class="docstring">
-    
   </section>
 </div>
 <div class="detail" id="options/3">
@@ -817,32 +737,6 @@ failure.</p>
 <p>If the request does not fail, the response is returned.</p>
 <p>See <a href="#request!/5"><code class="inline">request!/5</code></a> for more detailed information.</p>
 
-  </section>
-</div>
-<div class="detail" id="process_response_body/1">
-  <div class="detail-header">
-    <a href="#process_response_body/1" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
-    </a>
-    <span class="signature">process_response_body(body)</span>
-      
-  </div>
-  
-  <section class="docstring">
-    
-  </section>
-</div>
-<div class="detail" id="process_url/1">
-  <div class="detail-header">
-    <a href="#process_url/1" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
-    </a>
-    <span class="signature">process_url(url)</span>
-      
-  </div>
-  
-  <section class="docstring">
-    
   </section>
 </div>
 <div class="detail" id="put/4">
@@ -1031,10 +925,23 @@ request fails.</p>
 This is useful when you know the specific ids of a deeply nested resource
 of the API but don’t necessarily have an already constructed link.</p>
 <h2>Examples</h2>
-<pre><code class="elixir">To get a workflow&#39;s card&#39;s activities:
+<pre><code class="elixir">To get a workflow card&#39;s activities:
 iex&gt; PcoApi.People.resource(workflow: 1, card: 2, activities: 3)
 %PcoApi.Record{id: 3, type: &quot;WorkflowCardActivity&quot;}</code></pre>
 
+  </section>
+</div>
+<div class="detail" id="self/1">
+  <div class="detail-header">
+    <a href="#self/1" class="detail-link" title="Link to this function">
+      <i class="icon-link"></i>
+    </a>
+    <span class="signature">self(record)</span>
+      
+  </div>
+  
+  <section class="docstring">
+    
   </section>
 </div>
 <div class="detail" id="start/0">
