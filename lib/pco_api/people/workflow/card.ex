@@ -7,7 +7,7 @@ defmodule PcoApi.People.Workflow.Card do
   associated WorkflowCards.
   """
 
-  use PcoApi.Actions, only: [:get, :list]
+  use PcoApi.Actions
 
   import PcoApi.RecordAssociation
   linked_association :activities
@@ -52,4 +52,10 @@ defmodule PcoApi.People.Workflow.Card do
 
   """
   def get(%PcoApi.Record{type: "Workflow", id: workflow_id}, id), do: get("workflows/#{workflow_id}/cards/#{id}")
+
+  def new(attrs) when is_list(attrs), do: new(attrs, "WorkflowCard")
+
+  def create(%PcoApi.Record{type: "Workflow", id: id}, %PcoApi.Record{type: "WorkflowCard"} = record) do
+    create(record, "workflows/#{id}/cards")
+  end
 end
