@@ -50,6 +50,15 @@ defmodule PcoApi.People.Workflow.CardTest do
     record_without_link |> Card.get(1)
   end
 
+  test ".create posts to create a card", %{bypass: bypass} do
+    Bypass.expect bypass, fn conn ->
+      assert "/people/v2/workflows/1/cards" == conn.request_path
+      assert "POST" == conn.method
+      Plug.Conn.resp(conn, 200, Fixture.dummy)
+    end
+    Card.create(%PcoApi.Record{type: "Workflow", id: 1}, %PcoApi.Record{type: "WorkflowCard"})
+  end
+
   test ".activities gets a list of activities with an activities link", %{bypass: bypass} do
     Bypass.expect bypass, fn conn ->
       assert "/people/v2/workflows/1/cards/1/activities" == conn.request_path
