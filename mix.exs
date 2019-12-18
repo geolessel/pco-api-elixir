@@ -38,7 +38,7 @@ defmodule PcoApi.Mixfile do
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
       {:httpoison, "~> 1.6"},
       {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
-      {:poison, "~> 2.0"}
+      {:poison, "~> 3.1"}
     ]
   end
 
