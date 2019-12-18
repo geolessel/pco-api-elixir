@@ -36,7 +36,7 @@ defmodule PcoApi.Mixfile do
       {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false},
       {:earmark, "~> 1.4.3", only: :dev},
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
-      {:httpoison, "~> 0.8"},
+      {:httpoison, "~> 1.6"},
       {:mix_test_watch, "~> 0.2", only: :dev},
       {:poison, "~> 2.0"}
     ]
