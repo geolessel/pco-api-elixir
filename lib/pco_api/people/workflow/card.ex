@@ -10,10 +10,10 @@ defmodule PcoApi.People.Workflow.Card do
   use PcoApi.Actions
 
   import PcoApi.RecordAssociation
-  linked_association :activities
-  linked_association :assignee
-  linked_association :notes
-  linked_association :person
+  linked_association(:activities)
+  linked_association(:assignee)
+  linked_association(:notes)
+  linked_association(:person)
 
   @doc """
   Gets associated WorkflowCard records from a Workflow Record from links.
@@ -24,7 +24,7 @@ defmodule PcoApi.People.Workflow.Card do
       %PcoApi.Record{type: "WorkflowCard", ...}
 
   """
-  def list(%PcoApi.Record{type: "Workflow", links: %{"cards" => url}}), do: get url
+  def list(%PcoApi.Record{type: "Workflow", links: %{"cards" => url}}), do: get(url)
 
   @doc """
   Gets associated WorkflowCard records from a Workflow Record when no cards link is found.
@@ -51,11 +51,15 @@ defmodule PcoApi.People.Workflow.Card do
       %PcoApi.Record{type: "WorkflowCard", id: 2} # for Workflow.id == 1
 
   """
-  def get(%PcoApi.Record{type: "Workflow", id: workflow_id}, id), do: get("workflows/#{workflow_id}/cards/#{id}")
+  def get(%PcoApi.Record{type: "Workflow", id: workflow_id}, id),
+    do: get("workflows/#{workflow_id}/cards/#{id}")
 
   def new(attrs) when is_list(attrs), do: new(attrs, "WorkflowCard")
 
-  def create(%PcoApi.Record{type: "Workflow", id: id}, %PcoApi.Record{type: "WorkflowCard"} = record) do
+  def create(
+        %PcoApi.Record{type: "Workflow", id: id},
+        %PcoApi.Record{type: "WorkflowCard"} = record
+      ) do
     create(record, "workflows/#{id}/cards")
   end
 end

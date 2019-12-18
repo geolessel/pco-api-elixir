@@ -2,8 +2,8 @@ defmodule PcoApi.People.Household do
   use PcoApi.Actions
 
   import PcoApi.RecordAssociation
-  linked_association :household_memberships
-  linked_association :people
+  linked_association(:household_memberships)
+  linked_association(:people)
 
   def list(params) when is_list(params), do: get(params, "households")
 

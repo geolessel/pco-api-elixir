@@ -1,6 +1,6 @@
 defmodule PcoApi.People.Tab do
   import PcoApi.RecordAssociation
-  linked_association :field_definitions
+  linked_association(:field_definitions)
 
   use PcoApi.Actions
 

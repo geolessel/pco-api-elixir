@@ -1,6 +1,6 @@
 defmodule PcoApi.People.SchoolOption do
   import PcoApi.RecordAssociation
-  linked_association :promotes_to_school
+  linked_association(:promotes_to_school)
 
   use PcoApi.Actions
   # endpoint "people/v2/school_options/"

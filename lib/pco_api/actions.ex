@@ -6,15 +6,19 @@ defmodule PcoApi.Actions do
 
       case unquote(opts) |> Keyword.has_key?(:only) do
         true ->
-          unquote(opts) |> Keyword.fetch!(:only) |> Enum.each(fn(option) ->
+          unquote(opts)
+          |> Keyword.fetch!(:only)
+          |> Enum.each(fn option ->
             case option do
-              :list   -> use PcoApi.Actions.List
-              :get    -> use PcoApi.Actions.Get
+              :list -> use PcoApi.Actions.List
+              :get -> use PcoApi.Actions.Get
               :create -> use PcoApi.Actions.Create
-              :new    -> use PcoApi.Actions.New
+              :new -> use PcoApi.Actions.New
             end
           end)
+
           use PcoApi.Actions.Self
+
         _ ->
           use PcoApi.Actions.List
           use PcoApi.Actions.Get

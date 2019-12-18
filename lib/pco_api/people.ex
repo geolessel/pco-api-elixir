@@ -32,7 +32,7 @@ defmodule PcoApi.People do
   """
   def resource(params) do
     params
-    |> Enum.map(fn({k,v}) -> "#{k}/#{v}" end)
+    |> Enum.map(fn {k, v} -> "#{k}/#{v}" end)
     |> Enum.join("/")
     |> get
   end

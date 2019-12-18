@@ -15,10 +15,13 @@ defmodule PcoApi.People.Email do
     %PcoApi.Record{type: "Email"}
 
   """
-  def create(%PcoApi.Record{attributes: _, type: _} = person, %PcoApi.Record{type: "Email"} = record), do: create(record, "people/#{person.id}/emails")
+  def create(
+        %PcoApi.Record{attributes: _, type: _} = person,
+        %PcoApi.Record{type: "Email"} = record
+      ),
+      do: create(record, "people/#{person.id}/emails")
 
   def self(%PcoApi.Record{type: "Email", id: id}), do: get("emails/#{id}")
 
   def new(attrs) when is_list(attrs), do: new(attrs, "Email")
 end
-

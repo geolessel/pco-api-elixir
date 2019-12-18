@@ -1,11 +1,11 @@
 defmodule PcoApi.People.List do
   import PcoApi.RecordAssociation
-  linked_association :created_by
-  linked_association :owner
-  linked_association :people
-  linked_association :rules
-  linked_association :shares
-  linked_association :updated_by
+  linked_association(:created_by)
+  linked_association(:owner)
+  linked_association(:people)
+  linked_association(:rules)
+  linked_association(:shares)
+  linked_association(:updated_by)
 
   use PcoApi.Actions
 

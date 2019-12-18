@@ -10,7 +10,7 @@ defmodule PcoApi.People.Workflow.Step do
   use PcoApi.Actions, only: [:get]
 
   import PcoApi.RecordAssociation
-  linked_association :default_assignee
+  linked_association(:default_assignee)
 
   @doc """
   Gets associated WorkflowStep records from a Workflow Record from links.
@@ -21,7 +21,7 @@ defmodule PcoApi.People.Workflow.Step do
       %PcoApi.Record{type: "WorkflowStep", ...}
 
   """
-  def get(%PcoApi.Record{type: "Workflow", links: %{"steps" => url}}), do: get url
+  def get(%PcoApi.Record{type: "Workflow", links: %{"steps" => url}}), do: get(url)
 
   @doc """
   Gets associated WorkflowStep records from a Workflow Record when no steps link is found.
@@ -48,5 +48,6 @@ defmodule PcoApi.People.Workflow.Step do
       %PcoApi.Record{type: "WorkflowStep", id: 2} # for Workflow.id == 1
 
   """
-  def get(%PcoApi.Record{type: "Workflow", id: workflow_id}, id), do: get("workflows/#{workflow_id}/steps/#{id}")
+  def get(%PcoApi.Record{type: "Workflow", id: workflow_id}, id),
+    do: get("workflows/#{workflow_id}/steps/#{id}")
 end

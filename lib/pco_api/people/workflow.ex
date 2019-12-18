@@ -1,7 +1,7 @@
 defmodule PcoApi.People.Workflow do
   import PcoApi.RecordAssociation
-  linked_association :cards
-  linked_association :steps
+  linked_association(:cards)
+  linked_association(:steps)
 
   use PcoApi.Actions
 

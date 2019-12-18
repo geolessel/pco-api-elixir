@@ -45,7 +45,8 @@ defmodule PcoApi.People.Address do
       %PcoApi.Record{type: "Address", id: 2} # for Person.id == 1
 
   """
-  def get(%PcoApi.Record{type: "Person", id: person_id}, id), do: get("people/#{person_id}/addresses/#{id}")
+  def get(%PcoApi.Record{type: "Person", id: person_id}, id),
+    do: get("people/#{person_id}/addresses/#{id}")
 
   @doc """
   Creates a new Address Record for a Person.

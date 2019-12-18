@@ -8,7 +8,7 @@ defmodule PcoApi.Actions.New do
       end
 
       def new(attrs, type) when is_list(attrs) and is_binary(type) do
-        attrs_map = Enum.into(attrs, %{}, fn({k,v}) -> {Atom.to_string(k), v} end)
+        attrs_map = Enum.into(attrs, %{}, fn {k, v} -> {Atom.to_string(k), v} end)
         %PcoApi.Record{attributes: attrs_map, type: type}
       end
     end

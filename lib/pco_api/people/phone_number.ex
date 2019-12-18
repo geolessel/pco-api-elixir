@@ -4,7 +4,8 @@ defmodule PcoApi.People.PhoneNumber do
   def list(%PcoApi.Record{type: "Person", links: %{"phone_numbers" => url}}), do: get(url)
   def list(%PcoApi.Record{type: "Person", id: id}), do: get("people/#{id}/phone_numbers")
 
-  def get(%PcoApi.Record{type: "Person", id: person_id}, id), do: get("people/#{person_id}/phone_numbers/#{id}")
+  def get(%PcoApi.Record{type: "Person", id: person_id}, id),
+    do: get("people/#{person_id}/phone_numbers/#{id}")
 
   def new(attrs) when is_list(attrs), do: new(attrs, "PhoneNumber")
 

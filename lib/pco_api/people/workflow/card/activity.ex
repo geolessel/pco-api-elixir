@@ -18,7 +18,7 @@ defmodule PcoApi.People.Workflow.Card.Activity do
       %PcoApi.Record{type: "WorkflowCardActivity", ...}
 
   """
-  def list(%PcoApi.Record{type: "WorkflowCard", links: %{"activities" => url}}), do: get url
+  def list(%PcoApi.Record{type: "WorkflowCard", links: %{"activities" => url}}), do: get(url)
 
   @doc """
   Gets associated WorkflowCardActivities records from a WorkflowCard Record when no activities link is found.
@@ -32,7 +32,8 @@ defmodule PcoApi.People.Workflow.Card.Activity do
       #%PcoApi.Record{type: "WorkflowCardActivity", ...}
 
   """
-  def list(%PcoApi.Record{type: "WorkflowCard", links: %{"self" => url}}), do: get("#{url}/activities")
+  def list(%PcoApi.Record{type: "WorkflowCard", links: %{"self" => url}}),
+    do: get("#{url}/activities")
 
   @doc """
   Gets a single WorkflowCardActivity for a WorkflowCard.
@@ -45,8 +46,11 @@ defmodule PcoApi.People.Workflow.Card.Activity do
       %PcoApi.Record{type: "WorkflowCardActivity", id: 2} # for WorkflowCard.id == 1
 
   """
-  def get(%PcoApi.Record{type: "WorkflowCard"} = card, id) when is_integer(id), do: get(card, Integer.to_string(id))
-  def get(%PcoApi.Record{type: "WorkflowCard", links: %{"activities" => url}}, id), do: get(url <> "/" <> id)
+  def get(%PcoApi.Record{type: "WorkflowCard"} = card, id) when is_integer(id),
+    do: get(card, Integer.to_string(id))
+
+  def get(%PcoApi.Record{type: "WorkflowCard", links: %{"activities" => url}}, id),
+    do: get(url <> "/" <> id)
 
   @doc """
   Gets a single WorkflowCardActivity for a WorkflowCard.
@@ -59,5 +63,6 @@ defmodule PcoApi.People.Workflow.Card.Activity do
       %PcoApi.Record{type: "WorkflowCardActivity", id: 2} # for Person.id == 1
 
   """
-  def get(%PcoApi.Record{type: "WorkflowCard", links: %{"self" => url}}, id), do: get(url <> "/activities/" <> id)
+  def get(%PcoApi.Record{type: "WorkflowCard", links: %{"self" => url}}, id),
+    do: get(url <> "/activities/" <> id)
 end

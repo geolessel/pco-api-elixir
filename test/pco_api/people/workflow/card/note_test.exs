@@ -4,41 +4,45 @@ defmodule PcoApi.People.Workflow.Card.NoteTest do
   alias TestHelper.Fixture
 
   setup do
-    bypass = Bypass.open
+    bypass = Bypass.open()
     Application.put_env(:pco_api, :endpoint_base, "http://localhost:#{bypass.port}/")
     {:ok, bypass: bypass}
   end
 
   test ".list requests the v2 endpoint", %{bypass: bypass} do
-    Bypass.expect bypass, fn conn ->
+    Bypass.expect(bypass, fn conn ->
       assert conn.request_path |> String.match?(~r|people/v2|)
       assert "GET" == conn.method
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_card_notes.json"))
-    end
-    record_with_link |> Note.list
+    end)
+
+    record_with_link |> Note.list()
   end
 
   test ".list gets notes with a notes link", %{bypass: bypass} do
-    Bypass.expect bypass, fn conn ->
+    Bypass.expect(bypass, fn conn ->
       assert "/people/v2/workflows/1/cards/1/notes" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_card_notes.json"))
-    end
-    record_with_link |> Note.list
+    end)
+
+    record_with_link |> Note.list()
   end
 
   test ".list gets notes with only a self link", %{bypass: bypass} do
-    Bypass.expect bypass, fn conn ->
+    Bypass.expect(bypass, fn conn ->
       assert "/people/v2/workflows/1/cards/1/notes" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_card_notes.json"))
-    end
-    record_with_self_link |> Note.list
+    end)
+
+    record_with_self_link |> Note.list()
   end
 
   test ".get gets note by notes id", %{bypass: bypass} do
-    Bypass.expect bypass, fn conn ->
+    Bypass.expect(bypass, fn conn ->
       assert "/people/v2/workflows/1/cards/1/notes/1" == conn.request_path
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_card_note.json"))
-    end
+    end)
+
     record_with_self_link |> Note.get(1)
   end
 
@@ -47,11 +51,12 @@ defmodule PcoApi.People.Workflow.Card.NoteTest do
   end
 
   test ".create POSTs to the workflow card endpoint", %{bypass: bypass} do
-    Bypass.expect bypass, fn conn ->
+    Bypass.expect(bypass, fn conn ->
       assert "/people/v2/workflows/1/cards/1/notes" == conn.request_path
       assert "POST" == conn.method
-      Plug.Conn.resp(conn, 200, Fixture.dummy)
-    end
+      Plug.Conn.resp(conn, 200, Fixture.dummy())
+    end)
+
     record_with_self_link |> Note.create(new_note)
   end
 
@@ -61,6 +66,7 @@ defmodule PcoApi.People.Workflow.Card.NoteTest do
 
   defp record_with_link do
     url = "https://api.planningcenteronline.com/people/v2/workflows/1/cards/1/notes"
+
     %PcoApi.Record{
       links: %{"notes" => url},
       type: "WorkflowCard"
@@ -69,6 +75,7 @@ defmodule PcoApi.People.Workflow.Card.NoteTest do
 
   defp record_with_self_link do
     url = "https://api.planningcenteronline.com/people/v2/workflows/1/cards/1"
+
     %PcoApi.Record{
       id: "1",
       links: %{"self" => url},
