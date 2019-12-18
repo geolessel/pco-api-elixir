@@ -68,7 +68,7 @@ defmodule PcoApi.People.Workflow.Card.Note do
   def new(attrs), do: new(attrs, "WorkflowCardNote")
 
   def create(
-        %PcoApi.Record{type: "WorkflowCard", links: %{"self" => url}} = card,
+        %PcoApi.Record{type: "WorkflowCard", links: %{"self" => url}},
         %PcoApi.Record{type: "WorkflowCardNote"} = record
       ),
       do: create(record, url <> "/notes")
