@@ -34,8 +34,8 @@ defmodule PcoApi.Mixfile do
     [
       {:bypass, git: "https://github.com/PSPDFKit-labs/bypass", only: :test},
       {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false},
-      {:earmark, "~> 0.1", only: :dev},
-      {:ex_doc, "~> 0.11", only: :dev},
+      {:earmark, "~> 1.4.3", only: :dev},
+      {:ex_doc, "~> 0.21", only: :dev, runtime: false},
       {:httpoison, "~> 0.8"},
       {:mix_test_watch, "~> 0.2", only: :dev},
       {:poison, "~> 2.0"}
