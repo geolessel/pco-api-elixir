@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="pco_api v0.2.0">
-    <title>PcoApi.People.Household — pco_api v0.2.0</title>
+    <title>PcoApi.People.List.Rule — pco_api v0.2.0</title>
     <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
     <script src="dist/sidebar_items-7c6f3495d2.js"></script>
       <script src="docs_config.js"></script>
@@ -65,9 +65,15 @@ pco_api      </a>
 
       <h1>
         <small class="app-vsn">pco_api v0.2.0</small>
-PcoApi.People.Household      </h1>
+PcoApi.People.List.Rule      </h1>
 
 
+        <section id="moduledoc">
+<p>A set of functions to work with Rules belonging to a List.</p>
+<p>Since a Rule is always associated with a List in Planning Center Online,
+a Record of type &quot;List&quot; is required in order to retrieve that List&#39;s
+associated Rules.</p>
+        </section>
 
         <section id="summary" class="details-list">
           <h1 class="section-heading">
@@ -123,7 +129,7 @@ PcoApi.People.Household      </h1>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#create/1">create(record)</a>
+    <a href="#conditions/1">conditions(record)</a>
   </div>
 </div>
 <div class="summary-row">
@@ -154,7 +160,7 @@ failure.</p></div>
   <div class="summary-signature">
     <a href="#get/2">get(params, url)</a>
   </div>
-    <div class="summary-synopsis"><p>Callback implementation for <a href="https://hexdocs.pm/httpoison/1.6.2/HTTPoison.Base.html#c:get/2"><code class="inline">HTTPoison.Base.get/2</code></a>.</p></div>
+    <div class="summary-synopsis"><p>Gets a single Rule for a List.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -184,23 +190,14 @@ failure.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#household_memberships/1">household_memberships(record)</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
     <a href="#list/0">list()</a>
   </div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#list/1">list(params)</a>
+    <a href="#list/1">list(record)</a>
   </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#new/1">new(attrs)</a>
-  </div>
+    <div class="summary-synopsis"><p>Gets associated Rule records from a List Record when no rules link is found.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -232,11 +229,6 @@ failure.</p></div>
   </div>
     <div class="summary-synopsis"><p>Issues a PATCH request to the given url, raising an exception in case of
 failure.</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#people/1">people(record)</a>
-  </div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -377,6 +369,11 @@ exception in case of failure.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#results/1">results(record)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#self/1">self(record)</a>
   </div>
 </div>
@@ -511,13 +508,13 @@ Types          </h1>
             </a>
 Functions          </h1>
           <div class="functions-list">
-<section class="detail" id="create/1">
+<section class="detail" id="conditions/1">
   <div class="detail-header">
-    <a href="#create/1" class="detail-link" title="Link to this function">
+    <a href="#conditions/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">create(record)</h1>
+    <h1 class="signature">conditions(record)</h1>
   </div>
   <section class="docstring">
   </section>
@@ -597,7 +594,15 @@ failure.</p>
     <h1 class="signature">get(params, url)</h1>
   </div>
   <section class="docstring">
-<p>Callback implementation for <a href="https://hexdocs.pm/httpoison/1.6.2/HTTPoison.Base.html#c:get/2"><code class="inline">HTTPoison.Base.get/2</code></a>.</p>
+<p>Gets a single Rule for a List.</p>
+<p>Requires a List Record with an ID and a Rule Id.</p>
+<h2 id="get/2-example" class="section-heading">
+  <a href="#get/2-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Example:
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="2752125198-1">%</span><span class="nc" data-group-id="2752125198-1">PcoApi.Record</span><span class="p" data-group-id="2752125198-1">{</span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;List&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="2752125198-1">}</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">PcoApi.People.Rule</span><span class="o">.</span><span class="n">get</span><span class="p" data-group-id="2752125198-2">(</span><span class="mi">2</span><span class="p" data-group-id="2752125198-2">)</span><span class="w">
+</span><span class="p" data-group-id="2752125198-3">%</span><span class="nc" data-group-id="2752125198-3">PcoApi.Record</span><span class="p" data-group-id="2752125198-3">{</span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Rule&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="2752125198-3">}</span><span class="w"> </span><span class="c1"># for List.id == 1</span></code></pre>
   </section>
 </section>
 <section class="detail" id="get/3">
@@ -686,17 +691,6 @@ failure.</p>
 <p>See <a href="#request!/5"><code class="inline">request!/5</code></a> for more detailed information.</p>
   </section>
 </section>
-<section class="detail" id="household_memberships/1">
-  <div class="detail-header">
-    <a href="#household_memberships/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">household_memberships(record)</h1>
-  </div>
-  <section class="docstring">
-  </section>
-</section>
 <section class="detail" id="list/0">
   <div class="detail-header">
     <a href="#list/0" class="detail-link" title="Link to this function">
@@ -714,20 +708,19 @@ failure.</p>
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">list(params)</h1>
+    <h1 class="signature">list(record)</h1>
   </div>
   <section class="docstring">
-  </section>
-</section>
-<section class="detail" id="new/1">
-  <div class="detail-header">
-    <a href="#new/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">new(attrs)</h1>
-  </div>
-  <section class="docstring">
+<p>Gets associated Rule records from a List Record when no rules link is found.</p>
+<p>Sometimes a record may not include a rules link. This function recreates a URL to
+get the associated records just based off of the List Id.</p>
+<h2 id="list/1-example" class="section-heading">
+  <a href="#list/1-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Example:
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="1002626143-1">%</span><span class="nc" data-group-id="1002626143-1">PcoApi.Record</span><span class="p" data-group-id="1002626143-1">{</span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;List&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="1002626143-1">}</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">PcoApi.People.Rule</span><span class="o">.</span><span class="n">get</span><span class="w">
+</span><span class="p" data-group-id="1002626143-2">%</span><span class="nc" data-group-id="1002626143-2">PcoApi.Record</span><span class="p" data-group-id="1002626143-2">{</span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Rule&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="1002626143-2">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="new/2">
@@ -825,17 +818,6 @@ otherwise.</p>
 failure.</p>
 <p>If the request does not fail, the response is returned.</p>
 <p>See <a href="#request!/5"><code class="inline">request!/5</code></a> for more detailed information.</p>
-  </section>
-</section>
-<section class="detail" id="people/1">
-  <div class="detail-header">
-    <a href="#people/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">people(record)</h1>
-  </div>
-  <section class="docstring">
   </section>
 </section>
 <section class="detail" id="post/1">
@@ -1163,14 +1145,14 @@ request is successful, <code class="inline">{:error, reason}</code> otherwise.</
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7088207725-1">%</span><span class="nc" data-group-id="7088207725-1">HTTPoison.Request</span><span class="p" data-group-id="7088207725-1">{</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="6843962107-1">%</span><span class="nc" data-group-id="6843962107-1">HTTPoison.Request</span><span class="p" data-group-id="6843962107-1">{</span><span class="w">
   </span><span class="ss">method</span><span class="p">:</span><span class="w"> </span><span class="ss">:post</span><span class="p">,</span><span class="w">
   </span><span class="ss">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://my.website.com&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">body</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{</span><span class="se">\&quot;</span><span class="s">foo</span><span class="se">\&quot;</span><span class="s">: 3}&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="ss">headers</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7088207725-2">[</span><span class="p" data-group-id="7088207725-3">{</span><span class="s">&quot;Accept&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p" data-group-id="7088207725-3">}</span><span class="p" data-group-id="7088207725-2">]</span><span class="w">
-</span><span class="p" data-group-id="7088207725-1">}</span><span class="w">
+  </span><span class="ss">headers</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6843962107-2">[</span><span class="p" data-group-id="6843962107-3">{</span><span class="s">&quot;Accept&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p" data-group-id="6843962107-3">}</span><span class="p" data-group-id="6843962107-2">]</span><span class="w">
+</span><span class="p" data-group-id="6843962107-1">}</span><span class="w">
 
-</span><span class="n">request</span><span class="p" data-group-id="7088207725-4">(</span><span class="n">request</span><span class="p" data-group-id="7088207725-4">)</span></code></pre>
+</span><span class="n">request</span><span class="p" data-group-id="6843962107-4">(</span><span class="n">request</span><span class="p" data-group-id="6843962107-4">)</span></code></pre>
   </section>
 </section>
 <section class="detail" id="request/3">
@@ -1227,7 +1209,7 @@ request is successful, <code class="inline">{:error, reason}</code> otherwise.</
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="n">request</span><span class="p" data-group-id="9871081038-1">(</span><span class="ss">:post</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;https://my.website.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;{</span><span class="se">\&quot;</span><span class="s">foo</span><span class="se">\&quot;</span><span class="s">: 3}&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9871081038-2">[</span><span class="p" data-group-id="9871081038-3">{</span><span class="s">&quot;Accept&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p" data-group-id="9871081038-3">}</span><span class="p" data-group-id="9871081038-2">]</span><span class="p" data-group-id="9871081038-1">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">request</span><span class="p" data-group-id="8543810061-1">(</span><span class="ss">:post</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;https://my.website.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;{</span><span class="se">\&quot;</span><span class="s">foo</span><span class="se">\&quot;</span><span class="s">: 3}&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8543810061-2">[</span><span class="p" data-group-id="8543810061-3">{</span><span class="s">&quot;Accept&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p" data-group-id="8543810061-3">}</span><span class="p" data-group-id="8543810061-2">]</span><span class="p" data-group-id="8543810061-1">)</span></code></pre>
   </section>
 </section>
 <section class="detail" id="request!/5">
@@ -1251,6 +1233,17 @@ exception in case of failure.</p>
 <p><a href="#request!/5"><code class="inline">request!/5</code></a> works exactly like <a href="#request/5"><code class="inline">request/5</code></a> but it returns just the
 response in case of a successful request, raising an exception in case the
 request fails.</p>
+  </section>
+</section>
+<section class="detail" id="results/1">
+  <div class="detail-header">
+    <a href="#results/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">results(record)</h1>
+  </div>
+  <section class="docstring">
   </section>
 </section>
 <section class="detail" id="self/1">

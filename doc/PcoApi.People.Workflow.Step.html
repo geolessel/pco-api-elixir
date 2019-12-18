@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.21.2">
     <meta name="project" content="pco_api v0.2.0">
-    <title>PcoApi.People.Household — pco_api v0.2.0</title>
+    <title>PcoApi.People.Workflow.Step — pco_api v0.2.0</title>
     <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
     <script src="dist/sidebar_items-7c6f3495d2.js"></script>
       <script src="docs_config.js"></script>
@@ -65,9 +65,15 @@ pco_api      </a>
 
       <h1>
         <small class="app-vsn">pco_api v0.2.0</small>
-PcoApi.People.Household      </h1>
+PcoApi.People.Workflow.Step      </h1>
 
 
+        <section id="moduledoc">
+<p>A set of functions to work with WorkflowSteps belonging to a Workflow.</p>
+<p>Since a WorkflowStep is always associated with a Workflow in Planning Center Online,
+a Record of type &quot;Workflow&quot; is required in order to retrieve that Workflow&#39;s
+associated WorkflowSteps.</p>
+        </section>
 
         <section id="summary" class="details-list">
           <h1 class="section-heading">
@@ -123,12 +129,7 @@ PcoApi.People.Household      </h1>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#create/1">create(record)</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#create/2">create(record, url)</a>
+    <a href="#default_assignee/1">default_assignee(record)</a>
   </div>
 </div>
 <div class="summary-row">
@@ -148,13 +149,13 @@ failure.</p></div>
   <div class="summary-signature">
     <a href="#get/1">get(url)</a>
   </div>
-    <div class="summary-synopsis"><p>Callback implementation for <a href="https://hexdocs.pm/httpoison/1.6.2/HTTPoison.Base.html#c:get/1"><code class="inline">HTTPoison.Base.get/1</code></a>.</p></div>
+    <div class="summary-synopsis"><p>Gets associated WorkflowStep records from a Workflow Record when no steps link is found.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#get/2">get(params, url)</a>
   </div>
-    <div class="summary-synopsis"><p>Callback implementation for <a href="https://hexdocs.pm/httpoison/1.6.2/HTTPoison.Base.html#c:get/2"><code class="inline">HTTPoison.Base.get/2</code></a>.</p></div>
+    <div class="summary-synopsis"><p>Gets a single WorkflowStep for a Workflow.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -184,31 +185,6 @@ failure.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#household_memberships/1">household_memberships(record)</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#list/0">list()</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#list/1">list(params)</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#new/1">new(attrs)</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#new/2">new(attrs, type)</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
     <a href="#options/3">options(url, headers \\ [], options \\ [])</a>
   </div>
     <div class="summary-synopsis"><p>Issues an OPTIONS request to the given url.</p></div>
@@ -232,16 +208,6 @@ failure.</p></div>
   </div>
     <div class="summary-synopsis"><p>Issues a PATCH request to the given url, raising an exception in case of
 failure.</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#people/1">people(record)</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#post/1">post(url)</a>
-  </div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -511,24 +477,13 @@ Types          </h1>
             </a>
 Functions          </h1>
           <div class="functions-list">
-<section class="detail" id="create/1">
+<section class="detail" id="default_assignee/1">
   <div class="detail-header">
-    <a href="#create/1" class="detail-link" title="Link to this function">
+    <a href="#default_assignee/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">create(record)</h1>
-  </div>
-  <section class="docstring">
-  </section>
-</section>
-<section class="detail" id="create/2">
-  <div class="detail-header">
-    <a href="#create/2" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">create(record, url)</h1>
+    <h1 class="signature">default_assignee(record)</h1>
   </div>
   <section class="docstring">
   </section>
@@ -585,7 +540,16 @@ failure.</p>
     <h1 class="signature">get(url)</h1>
   </div>
   <section class="docstring">
-<p>Callback implementation for <a href="https://hexdocs.pm/httpoison/1.6.2/HTTPoison.Base.html#c:get/1"><code class="inline">HTTPoison.Base.get/1</code></a>.</p>
+<p>Gets associated WorkflowStep records from a Workflow Record when no steps link is found.</p>
+<p>Sometimes a record may not include a steps link. This function recreates a URL to
+get the associated records just based off of the Workflow Id.</p>
+<h2 id="get/1-example" class="section-heading">
+  <a href="#get/1-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Example:
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="7002968562-1">%</span><span class="nc" data-group-id="7002968562-1">PcoApi.Record</span><span class="p" data-group-id="7002968562-1">{</span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Workflow&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="7002968562-1">}</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">PcoApi.People.Workflow.Step</span><span class="o">.</span><span class="n">get</span><span class="w">
+</span><span class="p" data-group-id="7002968562-2">%</span><span class="nc" data-group-id="7002968562-2">PcoApi.Record</span><span class="p" data-group-id="7002968562-2">{</span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;WorkflowStep&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p" data-group-id="7002968562-2">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="get/2">
@@ -597,7 +561,15 @@ failure.</p>
     <h1 class="signature">get(params, url)</h1>
   </div>
   <section class="docstring">
-<p>Callback implementation for <a href="https://hexdocs.pm/httpoison/1.6.2/HTTPoison.Base.html#c:get/2"><code class="inline">HTTPoison.Base.get/2</code></a>.</p>
+<p>Gets a single WorkflowStep for a Workflow.</p>
+<p>Requires a Workflow Record with an ID and a WorkflowStep Id.</p>
+<h2 id="get/2-example" class="section-heading">
+  <a href="#get/2-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Example:
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="5337314188-1">%</span><span class="nc" data-group-id="5337314188-1">PcoApi.Record</span><span class="p" data-group-id="5337314188-1">{</span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Workflow&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="5337314188-1">}</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">PcoApi.People.Workflow.Step</span><span class="o">.</span><span class="n">get</span><span class="p" data-group-id="5337314188-2">(</span><span class="mi">2</span><span class="p" data-group-id="5337314188-2">)</span><span class="w">
+</span><span class="p" data-group-id="5337314188-3">%</span><span class="nc" data-group-id="5337314188-3">PcoApi.Record</span><span class="p" data-group-id="5337314188-3">{</span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;WorkflowStep&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">id</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="5337314188-3">}</span><span class="w"> </span><span class="c1"># for Workflow.id == 1</span></code></pre>
   </section>
 </section>
 <section class="detail" id="get/3">
@@ -686,61 +658,6 @@ failure.</p>
 <p>See <a href="#request!/5"><code class="inline">request!/5</code></a> for more detailed information.</p>
   </section>
 </section>
-<section class="detail" id="household_memberships/1">
-  <div class="detail-header">
-    <a href="#household_memberships/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">household_memberships(record)</h1>
-  </div>
-  <section class="docstring">
-  </section>
-</section>
-<section class="detail" id="list/0">
-  <div class="detail-header">
-    <a href="#list/0" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">list()</h1>
-  </div>
-  <section class="docstring">
-  </section>
-</section>
-<section class="detail" id="list/1">
-  <div class="detail-header">
-    <a href="#list/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">list(params)</h1>
-  </div>
-  <section class="docstring">
-  </section>
-</section>
-<section class="detail" id="new/1">
-  <div class="detail-header">
-    <a href="#new/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">new(attrs)</h1>
-  </div>
-  <section class="docstring">
-  </section>
-</section>
-<section class="detail" id="new/2">
-  <div class="detail-header">
-    <a href="#new/2" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">new(attrs, type)</h1>
-  </div>
-  <section class="docstring">
-  </section>
-</section>
 <section class="detail" id="options/3">
     <span id="options/1"></span>
     <span id="options/2"></span>
@@ -825,28 +742,6 @@ otherwise.</p>
 failure.</p>
 <p>If the request does not fail, the response is returned.</p>
 <p>See <a href="#request!/5"><code class="inline">request!/5</code></a> for more detailed information.</p>
-  </section>
-</section>
-<section class="detail" id="people/1">
-  <div class="detail-header">
-    <a href="#people/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">people(record)</h1>
-  </div>
-  <section class="docstring">
-  </section>
-</section>
-<section class="detail" id="post/1">
-  <div class="detail-header">
-    <a href="#post/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">post(url)</h1>
-  </div>
-  <section class="docstring">
   </section>
 </section>
 <section class="detail" id="post/4">
@@ -1163,14 +1058,14 @@ request is successful, <code class="inline">{:error, reason}</code> otherwise.</
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7088207725-1">%</span><span class="nc" data-group-id="7088207725-1">HTTPoison.Request</span><span class="p" data-group-id="7088207725-1">{</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="8683809609-1">%</span><span class="nc" data-group-id="8683809609-1">HTTPoison.Request</span><span class="p" data-group-id="8683809609-1">{</span><span class="w">
   </span><span class="ss">method</span><span class="p">:</span><span class="w"> </span><span class="ss">:post</span><span class="p">,</span><span class="w">
   </span><span class="ss">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://my.website.com&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">body</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{</span><span class="se">\&quot;</span><span class="s">foo</span><span class="se">\&quot;</span><span class="s">: 3}&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="ss">headers</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7088207725-2">[</span><span class="p" data-group-id="7088207725-3">{</span><span class="s">&quot;Accept&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p" data-group-id="7088207725-3">}</span><span class="p" data-group-id="7088207725-2">]</span><span class="w">
-</span><span class="p" data-group-id="7088207725-1">}</span><span class="w">
+  </span><span class="ss">headers</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8683809609-2">[</span><span class="p" data-group-id="8683809609-3">{</span><span class="s">&quot;Accept&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p" data-group-id="8683809609-3">}</span><span class="p" data-group-id="8683809609-2">]</span><span class="w">
+</span><span class="p" data-group-id="8683809609-1">}</span><span class="w">
 
-</span><span class="n">request</span><span class="p" data-group-id="7088207725-4">(</span><span class="n">request</span><span class="p" data-group-id="7088207725-4">)</span></code></pre>
+</span><span class="n">request</span><span class="p" data-group-id="8683809609-4">(</span><span class="n">request</span><span class="p" data-group-id="8683809609-4">)</span></code></pre>
   </section>
 </section>
 <section class="detail" id="request/3">
@@ -1227,7 +1122,7 @@ request is successful, <code class="inline">{:error, reason}</code> otherwise.</
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="n">request</span><span class="p" data-group-id="9871081038-1">(</span><span class="ss">:post</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;https://my.website.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;{</span><span class="se">\&quot;</span><span class="s">foo</span><span class="se">\&quot;</span><span class="s">: 3}&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9871081038-2">[</span><span class="p" data-group-id="9871081038-3">{</span><span class="s">&quot;Accept&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p" data-group-id="9871081038-3">}</span><span class="p" data-group-id="9871081038-2">]</span><span class="p" data-group-id="9871081038-1">)</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">request</span><span class="p" data-group-id="5943863587-1">(</span><span class="ss">:post</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;https://my.website.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;{</span><span class="se">\&quot;</span><span class="s">foo</span><span class="se">\&quot;</span><span class="s">: 3}&quot;</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5943863587-2">[</span><span class="p" data-group-id="5943863587-3">{</span><span class="s">&quot;Accept&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p" data-group-id="5943863587-3">}</span><span class="p" data-group-id="5943863587-2">]</span><span class="p" data-group-id="5943863587-1">)</span></code></pre>
   </section>
 </section>
 <section class="detail" id="request!/5">

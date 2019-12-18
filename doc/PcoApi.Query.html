@@ -1,282 +1,262 @@
-    <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.11.5">
-    <title>PcoApi.Query – pco_api v0.1.0</title>
-    <link rel="stylesheet" href="dist/app-ddd9717ad9.css" />
-    
-      <link rel="canonical" href="https://hexdocs.pm/pco_api/PcoApi.Query.html" />
-    
-    <script src="dist/sidebar_items.js"></script>
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="pco_api v0.2.0">
+    <title>PcoApi.Query — pco_api v0.2.0</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+    <script src="dist/sidebar_items-7c6f3495d2.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
   </head>
   <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
 
-    <div class="main">
-<button class="sidebar-toggle">
-  <i class="icon-menu"></i>
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
 </button>
-<section class="sidebar">
-  <button class="sidebar-toggle">
-    <i class="icon-menu"></i>
-  </button>
 
-  
-  <a href="api-reference.html" class="sidebar-projectLink">
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
     <div class="sidebar-projectDetails">
-      <h1 class="sidebar-projectName">
-        pco_api
-      </h1>
+      <a href="api-reference.html" class="sidebar-projectName">
+pco_api      </a>
       <h2 class="sidebar-projectVersion">
-        v0.1.0
+        v0.2.0
       </h2>
     </div>
-    
-  </a>
-
-  <div class="sidebar-search">
-    <i class="icon-search"></i>
-    <input type="text" class="sidebar-searchInput" placeholder="search" autocomplete="off" />
   </div>
 
   <ul class="sidebar-listNav">
     <li><a id="extras-list" href="#full-list">Pages</a></li>
 
-    
       <li><a id="modules-list" href="#full-list">Modules</a></li>
-    
 
-    
 
-    
   </ul>
-
+  <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
-  <div class="sidebar-noResults"></div>
 </section>
 
 <section class="content">
-  <div id="content" class="content-inner">
-
+  <div class="content-outer">
+    <div id="content" class="content-inner">
 
       <h1>
-        <small class="visible-xs">pco_api v0.1.0</small>
-        PcoApi.Query
-        
-        
-      </h1>
+        <small class="app-vsn">pco_api v0.2.0</small>
+PcoApi.Query      </h1>
 
-      
-        <section id="moduledoc" class="docstring">
-          <p>A set of functions to assist in composing queries to the API.</p>
 
+        <section id="moduledoc">
+<p>A set of functions to assist in composing queries to the API.</p>
         </section>
-      
 
-      
         <section id="summary" class="details-list">
           <h1 class="section-heading">
             <a class="hover-link" href="#summary">
-              <i class="icon-link"></i>
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
             </a>
             Summary
           </h1>
-          
-
-          
   <div class="summary-functions summary">
     <h2>
       <a href="#functions">Functions</a>
     </h2>
-    <div class="summary-row">
+<div class="summary-row">
   <div class="summary-signature">
     <a href="#after_record/1">after_record(value)</a>
   </div>
-  
-    <div class="summary-synopsis"><p>Creates a List of after params to pass on to the api call</p>
-</div>
-  
+    <div class="summary-synopsis"><p>Creates a List of after params to pass on to the api call.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#after_record/2">after_record(params, value)</a>
   </div>
-  
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#per_page/1">per_page(value)</a>
   </div>
-  
-    <div class="summary-synopsis"><p>Creates a list of per_page params to pass on to the api call</p>
-</div>
-  
+    <div class="summary-synopsis"><p>Creates a list of per_page params to pass on to the api call.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#per_page/2">per_page(params, value)</a>
   </div>
-  
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#where/1">where(param)</a>
   </div>
-  
     <div class="summary-synopsis"><p>Creates a list of where params to pass onto the api call.
-Returns a List of Tuples</p>
-</div>
-  
+Returns a List of Tuples.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#where/2">where(params, param)</a>
   </div>
-  
 </div>
-
   </div>
-
-
-          
-
-          
-
         </section>
-      
 
-      
-
-      
         <section id="functions" class="details-list">
           <h1 class="section-heading">
             <a class="hover-link" href="#functions">
-              <i class="icon-link"></i>
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
             </a>
-            Functions
-          </h1>
-          <div class="detail" id="after_record/1">
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="after_record/1">
   <div class="detail-header">
     <a href="#after_record/1" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">after_record(value)</span>
-      
+    <h1 class="signature">after_record(value)</h1>
   </div>
-  
   <section class="docstring">
-    <p>Creates a List of after params to pass on to the api call.</p>
+<p>Creates a List of after params to pass on to the api call.</p>
 <p>Returns a List of Tuples.</p>
-<h2>Examples:</h2>
-<pre><code class="iex elixir">iex&gt; PcoApi.Query.per_page(4) |&gt; PcoApi.Query.after_record(4)
-[{&quot;after&quot;, &quot;4&quot;}, {&quot;per_page&quot;, &quot;4&quot;}]</code></pre>
+<h2 id="after_record/1-examples" class="section-heading">
+  <a href="#after_record/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples:
+</h2>
 
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">PcoApi.Query</span><span class="o">.</span><span class="n">per_page</span><span class="p" data-group-id="6570832275-1">(</span><span class="mi">4</span><span class="p" data-group-id="6570832275-1">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">PcoApi.Query</span><span class="o">.</span><span class="n">after_record</span><span class="p" data-group-id="6570832275-2">(</span><span class="mi">4</span><span class="p" data-group-id="6570832275-2">)</span><span class="w">
+</span><span class="p" data-group-id="6570832275-3">[</span><span class="p" data-group-id="6570832275-4">{</span><span class="s">&quot;after&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;4&quot;</span><span class="p" data-group-id="6570832275-4">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6570832275-5">{</span><span class="s">&quot;per_page&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;4&quot;</span><span class="p" data-group-id="6570832275-5">}</span><span class="p" data-group-id="6570832275-3">]</span></code></pre>
   </section>
-</div>
-<div class="detail" id="after_record/2">
+</section>
+<section class="detail" id="after_record/2">
   <div class="detail-header">
     <a href="#after_record/2" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">after_record(params, value)</span>
-      
+    <h1 class="signature">after_record(params, value)</h1>
   </div>
-  
   <section class="docstring">
-    
   </section>
-</div>
-<div class="detail" id="per_page/1">
+</section>
+<section class="detail" id="per_page/1">
   <div class="detail-header">
     <a href="#per_page/1" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">per_page(value)</span>
-      
+    <h1 class="signature">per_page(value)</h1>
   </div>
-  
   <section class="docstring">
-    <p>Creates a list of per_page params to pass on to the api call.</p>
+<p>Creates a list of per_page params to pass on to the api call.</p>
 <p>Returns a List of Tuples.</p>
-<h2>Examples:</h2>
-<pre><code class="iex elixir">iex&gt; PcoApi.Query.where(first_name: &quot;John&quot;) |&gt; PcoApi.Query.per_page(3)
-[{&quot;per_page&quot;, &quot;3&quot;}, {&quot;where[first_name]&quot;, &quot;John&quot;}]</code></pre>
+<h2 id="per_page/1-examples" class="section-heading">
+  <a href="#per_page/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples:
+</h2>
 
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">PcoApi.Query</span><span class="o">.</span><span class="n">where</span><span class="p" data-group-id="0927164764-1">(</span><span class="ss">first_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="p" data-group-id="0927164764-1">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">PcoApi.Query</span><span class="o">.</span><span class="n">per_page</span><span class="p" data-group-id="0927164764-2">(</span><span class="mi">3</span><span class="p" data-group-id="0927164764-2">)</span><span class="w">
+</span><span class="p" data-group-id="0927164764-3">[</span><span class="p" data-group-id="0927164764-4">{</span><span class="s">&quot;per_page&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;3&quot;</span><span class="p" data-group-id="0927164764-4">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0927164764-5">{</span><span class="s">&quot;where[first_name]&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="p" data-group-id="0927164764-5">}</span><span class="p" data-group-id="0927164764-3">]</span></code></pre>
   </section>
-</div>
-<div class="detail" id="per_page/2">
+</section>
+<section class="detail" id="per_page/2">
   <div class="detail-header">
     <a href="#per_page/2" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">per_page(params, value)</span>
-      
+    <h1 class="signature">per_page(params, value)</h1>
   </div>
-  
   <section class="docstring">
-    
   </section>
-</div>
-<div class="detail" id="where/1">
+</section>
+<section class="detail" id="where/1">
   <div class="detail-header">
     <a href="#where/1" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">where(param)</span>
-      
+    <h1 class="signature">where(param)</h1>
   </div>
-  
   <section class="docstring">
-    <p>Creates a list of where params to pass onto the api call.
+<p>Creates a list of where params to pass onto the api call.
 Returns a List of Tuples.</p>
-<h2>Examples</h2>
-<pre><code class="iex elixir">iex&gt; PcoApi.Query.where(first_name: &quot;Geoffrey&quot;)
-[{&quot;where[first_name]&quot;, &quot;Geoffrey&quot;}]
+<h2 id="where/1-examples" class="section-heading">
+  <a href="#where/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
 
-iex&gt; PcoApi.Query.where(first_name: &quot;Geoffrey&quot;) |&gt; PcoApi.Query.where(last_name: &quot;Lessel&quot;)
-[{&quot;where[last_name]&quot;, &quot;Lessel&quot;}, {&quot;where[first_name]&quot;, &quot;Geoffrey&quot;}]</code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">PcoApi.Query</span><span class="o">.</span><span class="n">where</span><span class="p" data-group-id="4140651086-1">(</span><span class="ss">first_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Geoffrey&quot;</span><span class="p" data-group-id="4140651086-1">)</span><span class="w">
+</span><span class="p" data-group-id="4140651086-2">[</span><span class="p" data-group-id="4140651086-3">{</span><span class="s">&quot;where[first_name]&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Geoffrey&quot;</span><span class="p" data-group-id="4140651086-3">}</span><span class="p" data-group-id="4140651086-2">]</span><span class="w">
 
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">PcoApi.Query</span><span class="o">.</span><span class="n">where</span><span class="p" data-group-id="4140651086-4">(</span><span class="ss">first_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Geoffrey&quot;</span><span class="p" data-group-id="4140651086-4">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">PcoApi.Query</span><span class="o">.</span><span class="n">where</span><span class="p" data-group-id="4140651086-5">(</span><span class="ss">last_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Lessel&quot;</span><span class="p" data-group-id="4140651086-5">)</span><span class="w">
+</span><span class="p" data-group-id="4140651086-6">[</span><span class="p" data-group-id="4140651086-7">{</span><span class="s">&quot;where[last_name]&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Lessel&quot;</span><span class="p" data-group-id="4140651086-7">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4140651086-8">{</span><span class="s">&quot;where[first_name]&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Geoffrey&quot;</span><span class="p" data-group-id="4140651086-8">}</span><span class="p" data-group-id="4140651086-6">]</span></code></pre>
   </section>
-</div>
-<div class="detail" id="where/2">
+</section>
+<section class="detail" id="where/2">
   <div class="detail-header">
     <a href="#where/2" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">where(params, param)</span>
-      
+    <h1 class="signature">where(params, param)</h1>
   </div>
-  
   <section class="docstring">
-    
   </section>
-</div>
-
+</section>
+          </div>
         </section>
-      
-
-      
-
-      
-        <footer class="footer">
-      <p>
-        <span class="line">
-          Built using
-          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.11.5),
-        </span>
-        <span class="line">
-          designed by
-          <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
           </span>
-      </p>
-      <button class="night-mode-toggle" />
-    </footer>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
   </div>
 </section>
 </div>
-  <script src="dist/app-918614602f.js"></script>
   </body>
 </html>
-
