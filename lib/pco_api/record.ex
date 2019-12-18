@@ -1,4 +1,6 @@
 defmodule PcoApi.Record do
+  @moduledoc false
+
   defstruct [:attributes, :id, :links, :type]
 
   def to_json(%PcoApi.Record{attributes: attributes, type: type}) do

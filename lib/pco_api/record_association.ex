@@ -1,4 +1,6 @@
 defmodule PcoApi.RecordAssociation do
+  @moduledoc false
+
   defmacro linked_association(name) do
     quote do
       def unquote(:"#{name}")([]), do: []

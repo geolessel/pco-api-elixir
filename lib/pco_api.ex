@@ -1,4 +1,6 @@
 defmodule PcoApi do
+  @moduledoc false
+
   def key do
     Application.get_env(:pco_api, :api_key)
   end
