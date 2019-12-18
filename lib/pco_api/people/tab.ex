@@ -4,7 +4,6 @@ defmodule PcoApi.People.Tab do
 
   use PcoApi.Actions
 
-  def list, do: list([])
   def list(params) when is_list(params), do: get(params, "tabs")
 
   def get(id) when is_integer(id), do: get("tabs/#{id}")

@@ -4,7 +4,6 @@ defmodule PcoApi.People.SchoolOption do
 
   use PcoApi.Actions
   # endpoint "people/v2/school_options/"
-  def list, do: list([])
   def list(params) when is_list(params), do: get(params, "school_options")
 
   def get(id) when is_integer(id), do: get("school_options/#{id}")

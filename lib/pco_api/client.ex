@@ -19,14 +19,14 @@ defmodule PcoApi.Client do
         end
       end
 
-      defp process_url(url) do
+      def process_url(url) do
         endpoint_base = Application.get_env(:pco_api, :endpoint_base)
         processed = Regex.replace(~r|^https?://.+/(people/v2/)?|U, url, "")
         processed = Regex.replace(~r|people/v2/|, processed, "")
         endpoint_base <> "people/v2/" <> processed
       end
 
-      defp process_response_body(body) do
+      def process_response_body(body) do
         cond do
           body |> String.match?(~r|access denied|i) -> raise "Access denied. You may not have permission to view this resource."
           true -> body |> Poison.decode!
