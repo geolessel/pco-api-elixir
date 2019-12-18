@@ -51,7 +51,7 @@ defmodule PcoApi.Mixfile do
   defp package do
     [
       name: :pco_api,
-      maintainers: ["Geoffrey Lessel", "Jesse Anderson"],
+      maintainers: ["Geoffrey Lessel", "Jesse J. Anderson"],
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/geolessel/pco-api-elixir"}
     ]
