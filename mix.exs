@@ -32,7 +32,7 @@ defmodule PcoApi.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:bypass, git: "https://github.com/PSPDFKit-labs/bypass", only: :test},
+      {:bypass, "~> 1.0", only: :test},
       {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false},
       {:earmark, "~> 1.4.3", only: :dev},
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
