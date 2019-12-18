@@ -1,4 +1,6 @@
 defmodule PcoApi.People.Household.Membership do
+  @moduledoc false
+
   use PcoApi.Actions
   import PcoApi.RecordAssociation
   linked_association(:household)

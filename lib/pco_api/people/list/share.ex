@@ -1,4 +1,6 @@
 defmodule PcoApi.People.List.Share do
+  @moduledoc false
+
   use PcoApi.Actions, only: [:list, :get]
   import PcoApi.RecordAssociation
   linked_association(:person)

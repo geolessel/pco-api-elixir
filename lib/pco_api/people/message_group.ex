@@ -1,4 +1,6 @@
 defmodule PcoApi.People.MessageGroup do
+  @moduledoc false
+
   use PcoApi.Actions, only: [:list, :get]
 
   import PcoApi.RecordAssociation

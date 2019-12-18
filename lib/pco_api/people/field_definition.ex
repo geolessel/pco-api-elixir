@@ -1,4 +1,6 @@
 defmodule PcoApi.People.FieldDefinition do
+  @moduledoc false
+
   use PcoApi.Actions
   import PcoApi.RecordAssociation
   linked_association(:field_options)

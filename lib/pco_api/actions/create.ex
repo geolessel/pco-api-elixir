@@ -1,4 +1,6 @@
 defmodule PcoApi.Actions.Create do
+  @moduledoc false
+
   defmacro __using__(_opts) do
     quote do
       import PcoApi.Actions.Create

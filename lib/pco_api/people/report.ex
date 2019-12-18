@@ -1,4 +1,6 @@
 defmodule PcoApi.People.Report do
+  @moduledoc false
+
   import PcoApi.RecordAssociation
   linked_association(:created_by)
   linked_association(:owner)

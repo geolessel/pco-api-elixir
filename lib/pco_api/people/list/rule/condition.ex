@@ -1,4 +1,6 @@
 defmodule PcoApi.People.List.Rule.Condition do
+  @moduledoc false
+
   use PcoApi.Actions, only: [:list, :get]
   import PcoApi.RecordAssociation
   linked_association(:results)

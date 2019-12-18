@@ -1,4 +1,6 @@
 defmodule PcoApi.People.Tab do
+  @moduledoc false
+
   import PcoApi.RecordAssociation
   linked_association(:field_definitions)
 

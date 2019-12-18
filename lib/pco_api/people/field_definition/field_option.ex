@@ -1,4 +1,6 @@
 defmodule PcoApi.People.FieldDefinition.FieldOption do
+  @moduledoc false
+
   use PcoApi.Actions
 
   def list(%PcoApi.Record{type: "FieldDefinition", links: %{"field_options" => url}}),

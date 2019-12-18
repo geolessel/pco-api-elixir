@@ -1,4 +1,6 @@
 defmodule PcoApi.People.PhoneNumber do
+  @moduledoc false
+
   use PcoApi.Actions
 
   def list(%PcoApi.Record{type: "Person", links: %{"phone_numbers" => url}}), do: get(url)

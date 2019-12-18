@@ -1,4 +1,6 @@
 defmodule PcoApi.People.ConnectedPeople do
+  @moduledoc false
+
   use PcoApi.Actions, only: [:get, :list]
 
   def list(%PcoApi.Record{type: "Person", links: %{"connected_people" => url}}), do: get(url)

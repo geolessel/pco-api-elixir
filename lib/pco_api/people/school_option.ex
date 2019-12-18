@@ -1,4 +1,6 @@
 defmodule PcoApi.People.SchoolOption do
+  @moduledoc false
+
   import PcoApi.RecordAssociation
   linked_association(:promotes_to_school)
 
