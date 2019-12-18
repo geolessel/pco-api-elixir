@@ -10,7 +10,7 @@ defmodule PcoApi.People.SchoolOption do
 
   def self(%PcoApi.Record{id: id}), do: get("school_options/#{id}")
 
-  def create(record = %PcoApi.Record{type: "SchoolOption"}), do: create(record, "school_options")
+  def create(%PcoApi.Record{type: "SchoolOption"} = record), do: create(record, "school_options")
 
   def new(attrs) when is_list(attrs), do: new(attrs, "SchoolOption")
 end
