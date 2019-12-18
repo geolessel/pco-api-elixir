@@ -79,11 +79,11 @@ defmodule PcoApi.People.TabTest do
     end)
 
     assert [%PcoApi.Record{type: "FieldDefinition"} | _rest] =
-             record_with_link |> Tab.field_definitions()
+             record_with_link() |> Tab.field_definitions()
   end
 
   test ".new returns a Tab Record" do
-    assert %PcoApi.Record{type: "Tab"} = new_tab
+    assert %PcoApi.Record{type: "Tab"} = new_tab()
   end
 
   test ".create POSTs to the tab endpoint", %{bypass: bypass} do
@@ -93,7 +93,7 @@ defmodule PcoApi.People.TabTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    new_tab |> Tab.create()
+    new_tab() |> Tab.create()
   end
 
   def record_with_link do

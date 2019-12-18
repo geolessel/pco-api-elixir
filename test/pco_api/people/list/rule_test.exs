@@ -16,7 +16,7 @@ defmodule PcoApi.People.List.RuleTest do
       Plug.Conn.resp(conn, 200, Fixture.read("rules.json"))
     end)
 
-    bypass |> record_with_link |> Rule.list()
+    bypass |> record_with_link() |> Rule.list()
   end
 
   test ".list gets rules with a rules link", %{bypass: bypass} do
@@ -25,7 +25,7 @@ defmodule PcoApi.People.List.RuleTest do
       Plug.Conn.resp(conn, 200, Fixture.read("rules.json"))
     end)
 
-    bypass |> record_with_link |> Rule.list()
+    bypass |> record_with_link() |> Rule.list()
   end
 
   test ".list gets rules without a rules link", %{bypass: bypass} do
@@ -34,7 +34,7 @@ defmodule PcoApi.People.List.RuleTest do
       Plug.Conn.resp(conn, 200, Fixture.read("rules.json"))
     end)
 
-    record_without_link |> Rule.list()
+    record_without_link() |> Rule.list()
   end
 
   test ".get gets rules by rule id", %{bypass: bypass} do
@@ -43,7 +43,7 @@ defmodule PcoApi.People.List.RuleTest do
       Plug.Conn.resp(conn, 200, Fixture.read("rules.json"))
     end)
 
-    record_without_link |> Rule.get(1)
+    record_without_link() |> Rule.get(1)
   end
 
   test ".conditions gets a list of conditions with a conditions link", %{bypass: bypass} do
@@ -52,7 +52,7 @@ defmodule PcoApi.People.List.RuleTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    assert %PcoApi.Record{} = bypass |> rule_record_with_links |> Rule.conditions()
+    assert %PcoApi.Record{} = bypass |> rule_record_with_links() |> Rule.conditions()
   end
 
   test ".results gets a list of results with a results link", %{bypass: bypass} do
@@ -61,7 +61,7 @@ defmodule PcoApi.People.List.RuleTest do
       Plug.Conn.resp(conn, 200, Fixture.read("dummy.json"))
     end)
 
-    assert %PcoApi.Record{} = bypass |> rule_record_with_links |> Rule.results()
+    assert %PcoApi.Record{} = bypass |> rule_record_with_links() |> Rule.results()
   end
 
   def rule_record_with_links(bypass) do

@@ -16,7 +16,7 @@ defmodule PcoApi.People.Workflow.StepTest do
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_steps.json"))
     end)
 
-    record_with_link |> Step.get()
+    record_with_link() |> Step.get()
   end
 
   test ".get gets steps with a steps link", %{bypass: bypass} do
@@ -25,7 +25,7 @@ defmodule PcoApi.People.Workflow.StepTest do
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_steps.json"))
     end)
 
-    record_with_link |> Step.get()
+    record_with_link() |> Step.get()
   end
 
   test ".get gets steps without a steps link", %{bypass: bypass} do
@@ -34,7 +34,7 @@ defmodule PcoApi.People.Workflow.StepTest do
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_steps.json"))
     end)
 
-    record_without_link |> Step.get()
+    record_without_link() |> Step.get()
   end
 
   test ".get gets steps by workflow id", %{bypass: bypass} do
@@ -43,7 +43,7 @@ defmodule PcoApi.People.Workflow.StepTest do
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_steps.json"))
     end)
 
-    record_without_link |> Step.get()
+    record_without_link() |> Step.get()
   end
 
   test ".get gets steps by step id", %{bypass: bypass} do
@@ -52,7 +52,7 @@ defmodule PcoApi.People.Workflow.StepTest do
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_steps.json"))
     end)
 
-    record_without_link |> Step.get(1)
+    record_without_link() |> Step.get(1)
   end
 
   test ".default_assignee gets a person record with a default_assignee link", %{bypass: bypass} do
@@ -61,7 +61,7 @@ defmodule PcoApi.People.Workflow.StepTest do
       Plug.Conn.resp(conn, 200, Fixture.read("me.json"))
     end)
 
-    step_record_with_links |> Step.default_assignee()
+    step_record_with_links() |> Step.default_assignee()
   end
 
   def step_record_with_links do

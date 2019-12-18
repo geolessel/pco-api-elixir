@@ -16,7 +16,7 @@ defmodule PcoApi.People.Person.FieldDefinition.FieldOptionTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    field_definition_with_links |> FieldOption.list()
+    field_definition_with_links() |> FieldOption.list()
   end
 
   test ".list lists field options with a definition id", %{bypass: bypass} do
@@ -26,7 +26,7 @@ defmodule PcoApi.People.Person.FieldDefinition.FieldOptionTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    field_definition_without_links |> FieldOption.list()
+    field_definition_without_links() |> FieldOption.list()
   end
 
   test ".get gets a field option by id with a definition link", %{bypass: bypass} do
@@ -36,7 +36,7 @@ defmodule PcoApi.People.Person.FieldDefinition.FieldOptionTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    field_definition_with_links |> FieldOption.get(2)
+    field_definition_with_links() |> FieldOption.get(2)
   end
 
   test ".get gets a field option by id with a definition id", %{bypass: bypass} do
@@ -46,12 +46,12 @@ defmodule PcoApi.People.Person.FieldDefinition.FieldOptionTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    field_definition_without_links |> FieldOption.get(2)
+    field_definition_without_links() |> FieldOption.get(2)
   end
 
   test ".new with attributes builds a PcoApi.Record" do
     attrs = [value: "Elixir", sequence: 1]
-    assert FieldOption.new(attrs) == new_record
+    assert FieldOption.new(attrs) == new_record()
   end
 
   test ".create with a new record and a definition creates a record", %{bypass: bypass} do
@@ -61,7 +61,7 @@ defmodule PcoApi.People.Person.FieldDefinition.FieldOptionTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    new_record |> FieldOption.create(field_definition_without_links)
+    new_record() |> FieldOption.create(field_definition_without_links())
   end
 
   test ".create with a definition and a new record creates a record", %{bypass: bypass} do
@@ -71,7 +71,7 @@ defmodule PcoApi.People.Person.FieldDefinition.FieldOptionTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    field_definition_without_links |> FieldOption.create(new_record)
+    field_definition_without_links() |> FieldOption.create(new_record())
   end
 
   defp field_definition_with_links do

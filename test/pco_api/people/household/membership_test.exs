@@ -16,7 +16,7 @@ defmodule PcoApi.People.Household.MembershipTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    record_with_link |> Membership.list()
+    record_with_link() |> Membership.list()
   end
 
   test ".list lists households with an id", %{bypass: bypass} do
@@ -26,7 +26,7 @@ defmodule PcoApi.People.Household.MembershipTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    record_without_link |> Membership.list()
+    record_without_link() |> Membership.list()
   end
 
   test ".get gets a household membership by id", %{bypass: bypass} do
@@ -36,7 +36,7 @@ defmodule PcoApi.People.Household.MembershipTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    record_with_link |> Membership.get(2)
+    record_with_link() |> Membership.get(2)
   end
 
   test ".new with attributes builds a PcoApi.Record" do
@@ -55,7 +55,7 @@ defmodule PcoApi.People.Household.MembershipTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    membership |> Membership.household()
+    membership() |> Membership.household()
   end
 
   test ".person gets the associated household", %{bypass: bypass} do
@@ -65,7 +65,7 @@ defmodule PcoApi.People.Household.MembershipTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    membership |> Membership.person()
+    membership() |> Membership.person()
   end
 
   defp record_with_link do

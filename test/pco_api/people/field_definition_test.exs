@@ -39,7 +39,7 @@ defmodule PcoApi.People.Person.FieldDefinitionTest do
       slug: "elixir"
     ]
 
-    assert FieldDefinition.new(attrs) == new_record
+    assert FieldDefinition.new(attrs) == new_record()
   end
 
   test ".create with a new record creates a record", %{bypass: bypass} do
@@ -49,7 +49,7 @@ defmodule PcoApi.People.Person.FieldDefinitionTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    new_record |> FieldDefinition.create()
+    new_record() |> FieldDefinition.create()
   end
 
   test ".field_options gets the associated field options", %{bypass: bypass} do
@@ -59,7 +59,7 @@ defmodule PcoApi.People.Person.FieldDefinitionTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    field_definition |> FieldDefinition.field_options()
+    field_definition() |> FieldDefinition.field_options()
   end
 
   test ".tab gets the associated tab", %{bypass: bypass} do
@@ -69,7 +69,7 @@ defmodule PcoApi.People.Person.FieldDefinitionTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    field_definition |> FieldDefinition.tab()
+    field_definition() |> FieldDefinition.tab()
   end
 
   defp field_definition do

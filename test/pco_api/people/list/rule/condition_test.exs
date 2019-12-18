@@ -16,7 +16,7 @@ defmodule PcoApi.People.List.Rule.ConditionTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    record_with_link |> Condition.list()
+    record_with_link() |> Condition.list()
   end
 
   test ".get gets a condition by id", %{bypass: bypass} do
@@ -26,7 +26,7 @@ defmodule PcoApi.People.List.Rule.ConditionTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    record_with_link |> Condition.get(3)
+    record_with_link() |> Condition.get(3)
   end
 
   test ".results gets the associated results for a condition", %{bypass: bypass} do
@@ -36,7 +36,7 @@ defmodule PcoApi.People.List.Rule.ConditionTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    rule_result |> Condition.results()
+    rule_result() |> Condition.results()
   end
 
   defp record_with_link do

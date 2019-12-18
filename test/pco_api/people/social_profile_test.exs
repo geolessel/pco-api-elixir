@@ -16,7 +16,7 @@ defmodule PcoApi.People.SocialProfileTest do
       Plug.Conn.resp(conn, 200, Fixture.read("social_profiles.json"))
     end)
 
-    record_with_link |> SocialProfile.list()
+    record_with_link() |> SocialProfile.list()
   end
 
   test ".list gets social_profiles with an social_profiles link", %{bypass: bypass} do
@@ -25,7 +25,7 @@ defmodule PcoApi.People.SocialProfileTest do
       Plug.Conn.resp(conn, 200, Fixture.read("social_profiles.json"))
     end)
 
-    record_with_link |> SocialProfile.list()
+    record_with_link() |> SocialProfile.list()
   end
 
   test ".list gets social_profiles without an address link", %{bypass: bypass} do
@@ -34,7 +34,7 @@ defmodule PcoApi.People.SocialProfileTest do
       Plug.Conn.resp(conn, 200, Fixture.read("social_profiles.json"))
     end)
 
-    record_with_link |> SocialProfile.list()
+    record_with_link() |> SocialProfile.list()
   end
 
   test ".list gets social_profiles by person id", %{bypass: bypass} do
@@ -43,7 +43,7 @@ defmodule PcoApi.People.SocialProfileTest do
       Plug.Conn.resp(conn, 200, Fixture.read("social_profiles.json"))
     end)
 
-    record_with_link |> SocialProfile.list()
+    record_with_link() |> SocialProfile.list()
   end
 
   test ".get(id) gets social_profiles by person id", %{bypass: bypass} do
@@ -52,7 +52,7 @@ defmodule PcoApi.People.SocialProfileTest do
       Plug.Conn.resp(conn, 200, Fixture.read("social_profile.json"))
     end)
 
-    record_without_link |> SocialProfile.get(1)
+    record_without_link() |> SocialProfile.get(1)
   end
 
   test ".person gets a person record with a person link", %{bypass: bypass} do
@@ -62,11 +62,11 @@ defmodule PcoApi.People.SocialProfileTest do
     end)
 
     assert %PcoApi.Record{type: "Person"} =
-             social_profile_record_with_links |> SocialProfile.person()
+             social_profile_record_with_links() |> SocialProfile.person()
   end
 
   test ".new returns a SocialProfile Record" do
-    assert %PcoApi.Record{type: "SocialProfile"} = profile
+    assert %PcoApi.Record{type: "SocialProfile"} = profile()
   end
 
   test ".create POSTs to a Person's social_profiles URL", %{bypass: bypass} do
@@ -76,7 +76,7 @@ defmodule PcoApi.People.SocialProfileTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    %PcoApi.Record{type: "Person", id: 1} |> SocialProfile.create(profile)
+    %PcoApi.Record{type: "Person", id: 1} |> SocialProfile.create(profile())
   end
 
   defp social_profile_record_with_links do

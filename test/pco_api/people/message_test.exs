@@ -36,7 +36,7 @@ defmodule PcoApi.People.MessageTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    message |> Message.message_group()
+    message() |> Message.message_group()
   end
 
   test ".to requests the message recipient", %{bypass: bypass} do
@@ -46,7 +46,7 @@ defmodule PcoApi.People.MessageTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    message |> Message.to()
+    message() |> Message.to()
   end
 
   defp message do

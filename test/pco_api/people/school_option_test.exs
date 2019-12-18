@@ -80,7 +80,7 @@ defmodule PcoApi.People.SchoolOptionTest do
     end)
 
     assert %PcoApi.Record{type: "SchoolOption"} =
-             record_with_link |> SchoolOption.promotes_to_school()
+             record_with_link() |> SchoolOption.promotes_to_school()
   end
 
   test ".create POSTs to the endpoint", %{bypass: bypass} do
@@ -90,11 +90,11 @@ defmodule PcoApi.People.SchoolOptionTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    elementary_school |> SchoolOption.create()
+    elementary_school() |> SchoolOption.create()
   end
 
   test ".new returns a List Record" do
-    assert %PcoApi.Record{type: "SchoolOption"} = elementary_school
+    assert %PcoApi.Record{type: "SchoolOption"} = elementary_school()
   end
 
   defp elementary_school do

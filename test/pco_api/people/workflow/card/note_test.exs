@@ -16,7 +16,7 @@ defmodule PcoApi.People.Workflow.Card.NoteTest do
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_card_notes.json"))
     end)
 
-    record_with_link |> Note.list()
+    record_with_link() |> Note.list()
   end
 
   test ".list gets notes with a notes link", %{bypass: bypass} do
@@ -25,7 +25,7 @@ defmodule PcoApi.People.Workflow.Card.NoteTest do
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_card_notes.json"))
     end)
 
-    record_with_link |> Note.list()
+    record_with_link() |> Note.list()
   end
 
   test ".list gets notes with only a self link", %{bypass: bypass} do
@@ -34,7 +34,7 @@ defmodule PcoApi.People.Workflow.Card.NoteTest do
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_card_notes.json"))
     end)
 
-    record_with_self_link |> Note.list()
+    record_with_self_link() |> Note.list()
   end
 
   test ".get gets note by notes id", %{bypass: bypass} do
@@ -43,11 +43,11 @@ defmodule PcoApi.People.Workflow.Card.NoteTest do
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_card_note.json"))
     end)
 
-    record_with_self_link |> Note.get(1)
+    record_with_self_link() |> Note.get(1)
   end
 
   test ".new returns a WorkflowCardNote Record" do
-    assert %PcoApi.Record{type: "WorkflowCardNote"} = new_note
+    assert %PcoApi.Record{type: "WorkflowCardNote"} = new_note()
   end
 
   test ".create POSTs to the workflow card endpoint", %{bypass: bypass} do
@@ -57,7 +57,7 @@ defmodule PcoApi.People.Workflow.Card.NoteTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    record_with_self_link |> Note.create(new_note)
+    record_with_self_link() |> Note.create(new_note())
   end
 
   defp new_note do

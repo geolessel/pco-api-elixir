@@ -16,7 +16,7 @@ defmodule PcoApi.People.Person.FieldDatumTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    record_with_link |> FieldDatum.list()
+    record_with_link() |> FieldDatum.list()
   end
 
   test ".list lists a Person's field data with a Person id", %{bypass: bypass} do
@@ -26,7 +26,7 @@ defmodule PcoApi.People.Person.FieldDatumTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    record_without_link |> FieldDatum.list()
+    record_without_link() |> FieldDatum.list()
   end
 
   test ".get gets a field datum by id", %{bypass: bypass} do
@@ -36,7 +36,7 @@ defmodule PcoApi.People.Person.FieldDatumTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    record_with_link |> FieldDatum.get(2)
+    record_with_link() |> FieldDatum.get(2)
   end
 
   test ".get gets a field datum by id with a person id", %{bypass: bypass} do
@@ -46,11 +46,11 @@ defmodule PcoApi.People.Person.FieldDatumTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    record_without_link |> FieldDatum.get(2)
+    record_without_link() |> FieldDatum.get(2)
   end
 
   test ".new with attributes builds a PcoApi.Record" do
-    assert FieldDatum.new(value: "Grilled Cheese") == new_record
+    assert FieldDatum.new(value: "Grilled Cheese") == new_record()
   end
 
   test ".create with a record link and person creates a record", %{bypass: bypass} do
@@ -60,7 +60,7 @@ defmodule PcoApi.People.Person.FieldDatumTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    new_record |> FieldDatum.create(%PcoApi.Record{type: "Person", id: "1"})
+    new_record() |> FieldDatum.create(%PcoApi.Record{type: "Person", id: "1"})
   end
 
   test ".create with a person and record link creates a record", %{bypass: bypass} do
@@ -70,7 +70,7 @@ defmodule PcoApi.People.Person.FieldDatumTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    %PcoApi.Record{type: "Person", id: "1"} |> FieldDatum.create(new_record)
+    %PcoApi.Record{type: "Person", id: "1"} |> FieldDatum.create(new_record())
   end
 
   test ".field_definition gets the associated field definition", %{bypass: bypass} do
@@ -80,7 +80,7 @@ defmodule PcoApi.People.Person.FieldDatumTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    field_datum |> FieldDatum.field_definition()
+    field_datum() |> FieldDatum.field_definition()
   end
 
   test ".field_option gets the associated field option", %{bypass: bypass} do
@@ -90,7 +90,7 @@ defmodule PcoApi.People.Person.FieldDatumTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    field_datum |> FieldDatum.field_option()
+    field_datum() |> FieldDatum.field_option()
   end
 
   test ".tab gets the associated field option", %{bypass: bypass} do
@@ -100,7 +100,7 @@ defmodule PcoApi.People.Person.FieldDatumTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    field_datum |> FieldDatum.tab()
+    field_datum() |> FieldDatum.tab()
   end
 
   defp record_with_link do

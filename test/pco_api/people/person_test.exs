@@ -89,7 +89,7 @@ defmodule PcoApi.People.PersonTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    new_person |> Person.create()
+    new_person() |> Person.create()
   end
 
   def new_person do

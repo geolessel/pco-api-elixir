@@ -44,7 +44,7 @@ defmodule PcoApi.People.ListTest do
       Plug.Conn.resp(conn, 200, Fixture.read("list.json"))
     end)
 
-    assert %PcoApi.Record{} = bypass |> record_with_links |> List.created_by()
+    assert %PcoApi.Record{} = bypass |> record_with_links() |> List.created_by()
   end
 
   test ".owner gets the list's owner", %{bypass: bypass} do
@@ -53,7 +53,7 @@ defmodule PcoApi.People.ListTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    assert %PcoApi.Record{} = bypass |> record_with_links |> List.owner()
+    assert %PcoApi.Record{} = bypass |> record_with_links() |> List.owner()
   end
 
   test ".people gets people in the list", %{bypass: bypass} do
@@ -62,7 +62,7 @@ defmodule PcoApi.People.ListTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    assert %PcoApi.Record{} = bypass |> record_with_links |> List.people()
+    assert %PcoApi.Record{} = bypass |> record_with_links() |> List.people()
   end
 
   test ".rules gets list rules", %{bypass: bypass} do
@@ -71,7 +71,7 @@ defmodule PcoApi.People.ListTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    assert %PcoApi.Record{} = bypass |> record_with_links |> List.rules()
+    assert %PcoApi.Record{} = bypass |> record_with_links() |> List.rules()
   end
 
   test ".shares gets list shares", %{bypass: bypass} do
@@ -80,7 +80,7 @@ defmodule PcoApi.People.ListTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    assert %PcoApi.Record{} = bypass |> record_with_links |> List.shares()
+    assert %PcoApi.Record{} = bypass |> record_with_links() |> List.shares()
   end
 
   test ".updated_by gets list updated_by", %{bypass: bypass} do
@@ -89,7 +89,7 @@ defmodule PcoApi.People.ListTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    assert %PcoApi.Record{} = bypass |> record_with_links |> List.updated_by()
+    assert %PcoApi.Record{} = bypass |> record_with_links() |> List.updated_by()
   end
 
   test ".run POSTs to the list's URL", %{bypass: bypass} do

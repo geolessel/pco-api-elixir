@@ -16,7 +16,7 @@ defmodule PcoApi.People.ConnectedPeopleTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    record_with_link |> ConnectedPeople.list()
+    record_with_link() |> ConnectedPeople.list()
   end
 
   test ".list lists connected people without a url", %{bypass: bypass} do
@@ -26,7 +26,7 @@ defmodule PcoApi.People.ConnectedPeopleTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    record_without_link |> ConnectedPeople.list()
+    record_without_link() |> ConnectedPeople.list()
   end
 
   test ".get gets a connected_person by id", %{bypass: bypass} do
@@ -36,7 +36,7 @@ defmodule PcoApi.People.ConnectedPeopleTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    record_without_link |> ConnectedPeople.get(2)
+    record_without_link() |> ConnectedPeople.get(2)
   end
 
   defp record_with_link do

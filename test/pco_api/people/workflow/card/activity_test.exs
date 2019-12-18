@@ -16,7 +16,7 @@ defmodule PcoApi.People.Workflow.Card.ActivityTest do
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_card_activities.json"))
     end)
 
-    record_with_link |> Activity.list()
+    record_with_link() |> Activity.list()
   end
 
   test ".list gets activities with an activities link", %{bypass: bypass} do
@@ -25,7 +25,7 @@ defmodule PcoApi.People.Workflow.Card.ActivityTest do
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_card_activities.json"))
     end)
 
-    record_with_link |> Activity.list()
+    record_with_link() |> Activity.list()
   end
 
   test ".list gets activities with only a self link", %{bypass: bypass} do
@@ -34,7 +34,7 @@ defmodule PcoApi.People.Workflow.Card.ActivityTest do
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_card_activities.json"))
     end)
 
-    record_with_self_link |> Activity.list()
+    record_with_self_link() |> Activity.list()
   end
 
   test ".get gets activity by activities id", %{bypass: bypass} do
@@ -43,7 +43,7 @@ defmodule PcoApi.People.Workflow.Card.ActivityTest do
       Plug.Conn.resp(conn, 200, Fixture.read("workflow_card_activity.json"))
     end)
 
-    record_with_self_link |> Activity.get(1)
+    record_with_self_link() |> Activity.get(1)
   end
 
   defp record_with_link do

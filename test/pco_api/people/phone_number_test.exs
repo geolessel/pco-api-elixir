@@ -16,7 +16,7 @@ defmodule PcoApi.People.PhoneNumberTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    person_with_links |> PhoneNumber.list()
+    person_with_links() |> PhoneNumber.list()
   end
 
   test ".list lists phone numbers without a link", %{bypass: bypass} do
@@ -26,7 +26,7 @@ defmodule PcoApi.People.PhoneNumberTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    person_without_link |> PhoneNumber.list()
+    person_without_link() |> PhoneNumber.list()
   end
 
   test ".get gets phone numbers by id", %{bypass: bypass} do
@@ -35,7 +35,7 @@ defmodule PcoApi.People.PhoneNumberTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    person_without_link |> PhoneNumber.get(2)
+    person_without_link() |> PhoneNumber.get(2)
   end
 
   test ".new builds a record" do
@@ -59,7 +59,7 @@ defmodule PcoApi.People.PhoneNumberTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    person_without_link |> PhoneNumber.create(new_phone)
+    person_without_link() |> PhoneNumber.create(new_phone())
   end
 
   defp person_with_links do

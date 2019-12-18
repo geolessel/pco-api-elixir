@@ -16,7 +16,7 @@ defmodule PcoApi.People.List.ShareTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    record_with_link |> Share.list()
+    record_with_link() |> Share.list()
   end
 
   test ".list lists shares without a url", %{bypass: bypass} do
@@ -26,7 +26,7 @@ defmodule PcoApi.People.List.ShareTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    record_without_link |> Share.list()
+    record_without_link() |> Share.list()
   end
 
   test ".get gets a share by id", %{bypass: bypass} do
@@ -36,7 +36,7 @@ defmodule PcoApi.People.List.ShareTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    record_with_link |> Share.get(2)
+    record_with_link() |> Share.get(2)
   end
 
   test ".person gets the associated person for a share", %{bypass: bypass} do
@@ -46,7 +46,7 @@ defmodule PcoApi.People.List.ShareTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    share |> Share.person()
+    share() |> Share.person()
   end
 
   defp record_with_link do

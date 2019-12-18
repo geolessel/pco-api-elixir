@@ -44,7 +44,7 @@ defmodule PcoApi.People.ReportTest do
       Plug.Conn.resp(conn, 200, Fixture.read("report.json"))
     end)
 
-    assert %PcoApi.Record{} = bypass |> record_with_links |> Report.created_by()
+    assert %PcoApi.Record{} = bypass |> record_with_links() |> Report.created_by()
   end
 
   test ".updated_by gets list updated_by", %{bypass: bypass} do
@@ -53,7 +53,7 @@ defmodule PcoApi.People.ReportTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    assert %PcoApi.Record{} = bypass |> record_with_links |> Report.updated_by()
+    assert %PcoApi.Record{} = bypass |> record_with_links() |> Report.updated_by()
   end
 
   test ".self gets Report details even if no self link", %{bypass: bypass} do
@@ -81,7 +81,7 @@ defmodule PcoApi.People.ReportTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    new_report |> Report.create()
+    new_report() |> Report.create()
   end
 
   def new_report do

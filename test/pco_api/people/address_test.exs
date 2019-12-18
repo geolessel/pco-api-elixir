@@ -16,7 +16,7 @@ defmodule PcoApi.People.AddressTest do
       Plug.Conn.resp(conn, 200, Fixture.read("addresses.json"))
     end)
 
-    record_with_link |> Address.list()
+    record_with_link() |> Address.list()
   end
 
   test ".list lists addresses with an addresses link", %{bypass: bypass} do
@@ -25,7 +25,7 @@ defmodule PcoApi.People.AddressTest do
       Plug.Conn.resp(conn, 200, Fixture.read("addresses.json"))
     end)
 
-    record_with_link |> Address.list()
+    record_with_link() |> Address.list()
   end
 
   test ".list lists addresses without an address link", %{bypass: bypass} do
@@ -34,7 +34,7 @@ defmodule PcoApi.People.AddressTest do
       Plug.Conn.resp(conn, 200, Fixture.read("addresses.json"))
     end)
 
-    record_without_link |> Address.list()
+    record_without_link() |> Address.list()
   end
 
   test ".list lists addresses by person id", %{bypass: bypass} do
@@ -43,7 +43,7 @@ defmodule PcoApi.People.AddressTest do
       Plug.Conn.resp(conn, 200, Fixture.read("addresses.json"))
     end)
 
-    record_without_link |> Address.list()
+    record_without_link() |> Address.list()
   end
 
   test ".get gets addresses by address id", %{bypass: bypass} do
@@ -52,7 +52,7 @@ defmodule PcoApi.People.AddressTest do
       Plug.Conn.resp(conn, 200, Fixture.read("address.json"))
     end)
 
-    record_without_link |> Address.get(1)
+    record_without_link() |> Address.get(1)
   end
 
   test ".new builds a record" do
@@ -74,7 +74,7 @@ defmodule PcoApi.People.AddressTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    record_without_link |> Address.create(new_address)
+    record_without_link() |> Address.create(new_address())
   end
 
   def record_with_link do

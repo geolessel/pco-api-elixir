@@ -16,7 +16,7 @@ defmodule PcoApi.People.List.Rule.ResultTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    record_with_link |> Result.list()
+    record_with_link() |> Result.list()
   end
 
   test ".get gets a result by id", %{bypass: bypass} do
@@ -26,7 +26,7 @@ defmodule PcoApi.People.List.Rule.ResultTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    record_with_link |> Result.get(3)
+    record_with_link() |> Result.get(3)
   end
 
   test ".person gets the associated person for a result", %{bypass: bypass} do
@@ -36,7 +36,7 @@ defmodule PcoApi.People.List.Rule.ResultTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    rule_result |> Result.person()
+    rule_result() |> Result.person()
   end
 
   defp record_with_link do

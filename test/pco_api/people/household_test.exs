@@ -36,7 +36,7 @@ defmodule PcoApi.People.HouseholdTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    with_links |> Household.self()
+    with_links() |> Household.self()
   end
 
   test ".self retrieves a singular Household record with an id", %{bypass: bypass} do
@@ -46,7 +46,7 @@ defmodule PcoApi.People.HouseholdTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    without_links |> Household.self()
+    without_links() |> Household.self()
   end
 
   test ".new with attributes builds a PcoApi.Record" do
@@ -75,7 +75,7 @@ defmodule PcoApi.People.HouseholdTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    with_links |> Household.household_memberships()
+    with_links() |> Household.household_memberships()
   end
 
   test ".people requests household people", %{bypass: bypass} do
@@ -85,7 +85,7 @@ defmodule PcoApi.People.HouseholdTest do
       Plug.Conn.resp(conn, 200, Fixture.dummy())
     end)
 
-    with_links |> Household.people()
+    with_links() |> Household.people()
   end
 
   defp with_links do
