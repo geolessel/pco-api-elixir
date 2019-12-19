@@ -10,8 +10,8 @@ defmodule PcoApi.People.List.Rule do
   use PcoApi.Actions
 
   import PcoApi.RecordAssociation
-  linked_association :conditions
-  linked_association :results
+  linked_association(:conditions)
+  linked_association(:results)
 
   @doc """
   Gets associated Rule records from a List Record from links.

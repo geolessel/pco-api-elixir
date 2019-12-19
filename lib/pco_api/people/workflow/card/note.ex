@@ -18,7 +18,7 @@ defmodule PcoApi.People.Workflow.Card.Note do
       %PcoApi.Record{type: "WorkflowCardNote", ...}
 
   """
-  def list(%PcoApi.Record{type: "WorkflowCard", links: %{"notes" => url}}), do: get url
+  def list(%PcoApi.Record{type: "WorkflowCard", links: %{"notes" => url}}), do: get(url)
 
   @doc """
   Gets associated WorkflowCardNotes records from a WorkflowCard Record when no notes link is found.
@@ -45,8 +45,11 @@ defmodule PcoApi.People.Workflow.Card.Note do
       %PcoApi.Record{type: "WorkflowCardNote", id: 2} # for WorkflowCard.id == 1
 
   """
-  def get(%PcoApi.Record{type: "WorkflowCard"} = card, id) when is_integer(id), do: get(card, Integer.to_string(id))
-  def get(%PcoApi.Record{type: "WorkflowCard", links: %{"notes" => url}}, id), do: get(url <> "/" <> id)
+  def get(%PcoApi.Record{type: "WorkflowCard"} = card, id) when is_integer(id),
+    do: get(card, Integer.to_string(id))
+
+  def get(%PcoApi.Record{type: "WorkflowCard", links: %{"notes" => url}}, id),
+    do: get(url <> "/" <> id)
 
   @doc """
   Gets a single WorkflowCardNote for a WorkflowCard.
@@ -59,9 +62,14 @@ defmodule PcoApi.People.Workflow.Card.Note do
       %PcoApi.Record{type: "WorkflowCardNote", id: 2} # for Person.id == 1
 
   """
-  def get(%PcoApi.Record{type: "WorkflowCard", links: %{"self" => url}}, id), do: get(url <> "/notes/" <> id)
+  def get(%PcoApi.Record{type: "WorkflowCard", links: %{"self" => url}}, id),
+    do: get(url <> "/notes/" <> id)
 
   def new(attrs), do: new(attrs, "WorkflowCardNote")
 
-  def create(%PcoApi.Record{type: "WorkflowCard", links: %{"self" => url}} = card, %PcoApi.Record{type: "WorkflowCardNote"} = record), do: create(record, url <> "/notes")
+  def create(
+        %PcoApi.Record{type: "WorkflowCard", links: %{"self" => url}},
+        %PcoApi.Record{type: "WorkflowCardNote"} = record
+      ),
+      do: create(record, url <> "/notes")
 end

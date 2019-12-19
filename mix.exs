@@ -2,14 +2,16 @@ defmodule PcoApi.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :pco_api,
-     version: "0.1.0",
-     elixir: "~> 1.2",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     description: description,
-     package: package,
-     deps: deps]
+    [
+      app: :pco_api,
+      version: "0.2.0",
+      elixir: "~> 1.2",
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      description: description(),
+      package: package(),
+      deps: deps()
+    ]
   end
 
   # Configuration for the OTP application
@@ -30,14 +32,13 @@ defmodule PcoApi.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:httpoison, "~> 0.8"},
-      {:poison, "~> 2.0"},
-      {:ex_doc, "~> 0.11", only: :dev},
-      {:earmark, "~> 0.1", only: :dev},
-      {:mix_test_watch, "~> 0.2", only: :dev},
-      {:credo, "~> 0.3", only: [:dev, :test]},
-      {:bypass, git: "https://github.com/PSPDFKit-labs/bypass", only: :test},
-      {:mix_test_watch, "~> 0.2", only: :dev}
+      {:bypass, "~> 1.0", only: :test},
+      {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false},
+      {:earmark, "~> 1.4.3", only: :dev},
+      {:ex_doc, "~> 0.21", only: :dev, runtime: false},
+      {:httpoison, "~> 1.6"},
+      {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
+      {:poison, "~> 3.1"}
     ]
   end
 
@@ -50,7 +51,7 @@ defmodule PcoApi.Mixfile do
   defp package do
     [
       name: :pco_api,
-      maintainers: ["Geoffrey Lessel", "Jesse Anderson"],
+      maintainers: ["Geoffrey Lessel", "Jesse J. Anderson"],
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/geolessel/pco-api-elixir"}
     ]

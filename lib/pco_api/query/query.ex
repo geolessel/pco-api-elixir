@@ -17,6 +17,7 @@ defmodule PcoApi.Query do
 
   """
   def where(param) when is_list(param), do: where([], param)
+
   def where(params, param) when is_list(params) do
     {attr, value} = param |> hd
     prefix_params(params, {"where[#{attr}]", value})
@@ -34,7 +35,10 @@ defmodule PcoApi.Query do
 
   """
   def per_page(value) when is_integer(value), do: per_page([], Integer.to_string(value))
-  def per_page(params, value) when is_integer(value), do: per_page(params, Integer.to_string(value))
+
+  def per_page(params, value) when is_integer(value),
+    do: per_page(params, Integer.to_string(value))
+
   def per_page(params, value) when is_binary(value) do
     prefix_params(params, {"per_page", value})
   end
@@ -51,9 +55,12 @@ defmodule PcoApi.Query do
 
   """
   def after_record(value) when is_integer(value), do: after_record([], Integer.to_string(value))
-  def after_record(params, value) when is_integer(value), do: after_record(params, Integer.to_string(value))
+
+  def after_record(params, value) when is_integer(value),
+    do: after_record(params, Integer.to_string(value))
+
   def after_record(params, value) when is_binary(value) do
-      prefix_params(params, {"after", value})
+    prefix_params(params, {"after", value})
   end
 
   defp prefix_params(params, param) do

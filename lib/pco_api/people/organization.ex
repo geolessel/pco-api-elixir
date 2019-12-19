@@ -1,4 +1,6 @@
 defmodule PcoApi.People.Organization do
+  @moduledoc false
+
   use PcoApi.Actions, only: [:get]
 
   def get, do: get("")

@@ -1,10 +1,11 @@
 defmodule PcoApi.People.Tab do
+  @moduledoc false
+
   import PcoApi.RecordAssociation
-  linked_association :field_definitions
+  linked_association(:field_definitions)
 
   use PcoApi.Actions
 
-  def list, do: list([])
   def list(params) when is_list(params), do: get(params, "tabs")
 
   def get(id) when is_integer(id), do: get("tabs/#{id}")

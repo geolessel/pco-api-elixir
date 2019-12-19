@@ -1,10 +1,12 @@
 defmodule PcoApi.People.MessageGroup do
+  @moduledoc false
+
   use PcoApi.Actions, only: [:list, :get]
 
   import PcoApi.RecordAssociation
-  linked_association :app
-  linked_association :from
-  linked_association :messages
+  linked_association(:app)
+  linked_association(:from)
+  linked_association(:messages)
 
   def list(params) when is_list(params), do: get(params, "message_groups")
 
